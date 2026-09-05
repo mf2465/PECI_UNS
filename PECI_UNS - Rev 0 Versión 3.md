@@ -305,11 +305,16 @@ RACUNS se activa como medio principal de coordinación cuando el Nodo Central ve
 | H-11 | Móvil de Cuadrilla de Mantenimiento / Obras | Desplazamiento operativo de auxilio en vehículos | Titular del sector |
 | H-12 | Reserva / Respaldo Técnico | Reemplazo inmediato por falla, refuerzo, o enlace interinstitucional en COE | Telecomunicaciones |
 
-### 11.7. Metodología bibanda y subcapas de retransmisión
-1. **Canal principal VHF:** enlace por línea de vista, libre de interferencia por obstáculos (árboles, edificios de hormigón), para troncal y enlaces entre nodos.
-2. **Canal secundario UHF:** conectividad en espacios cerrados o por rebotes, donde VHF no alcanza.
-3. **Subcapa de retransmisión:** todo mensaje recibido por UHF en un nodo que no alcance punto a punto su destino será retransmitido por el operador del nodo en VHF hacia el siguiente nodo; en tránsito entre nodos, si VHF no fuera posible, se intentará UHF por proximidad.
-4. Los handies permanecerán en escucha del canal troncal e interactuarán con el sistema según su posición lo favorezca.
+### 11.8. Arquitectura en capas (redundancia funcional)
+
+| Capa | Tecnología | Rol | Fortalezas / límites |
+|---|---|---|---|
+| **1 – Troncal** | VHF repetidora (Alem, 50 W) + bases fijas | Mando y emergencia (CH1) | Línea de vista, cobertura urbana; cae si cae el repetidor |
+| **2 – Proximidad** | UHF simplex / rebotes | Interior de edificios, sombra radioeléctrica | Penetra hormigón; menor alcance |
+| **3 – Datos** | Starlink móvil en camioneta | Internet de contingencia; réplica Alem↔Palihue; emisión de comunicados web | Satelital, independiente; requiere apuntamiento y energía | 
+| **4 – Malla** | Meshtastic / LoRa (a incorporar) | Mensajería de texto sin infraestructura | Autónoma, bajo consumo; sin voz |
+
+Los handies permanecerán en escucha del canal troncal e interactuarán con el sistema según su posición lo favorezca.
 
 ### 11.8. Disciplina radial y prueba semanal
 1. Identificación con indicativo del puesto en toda transmisión; mensajes breves y claros; confirmación de recepción por repetición.
