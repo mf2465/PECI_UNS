@@ -323,6 +323,16 @@ Licencia ENACOM vigente para banda VHF (expediente CNC 11660/1998). El uso de UH
 * **Capa 3 – Conectividad satelital móvil (Starlink):** unidad en vehículo y enlace de respaldo en el Centro de Datos / San Juan 670, para sostener salida a internet, consulta de radares meteorológicos, emisión de comunicados web y conectividad entre los servidores del Complejo Alem y su respaldo en Campus Palihue ante caída de proveedores.
 * **Capa 4 – Malla LoRa (Meshtastic):** red de mensajería de texto autónoma, sin infraestructura, como último recurso de brigadas y puestos de terreno (piloto de mediano plazo).
 
+### 11.8. Arquitectura en capas (redundancia funcional)
+
+| Capa | Tecnología | Rol | Fortalezas / límites |
+|---|---|---|---|
+| **1 – Troncal** | VHF repetidora (Alem, 50 W) + bases fijas | Mando y emergencia (CH1) | Línea de vista, cobertura urbana; cae si cae el repetidor |
+| **2 – Proximidad** | UHF simplex / rebotes | Interior de edificios, sombra radioeléctrica | Penetra hormigón; menor alcance |
+| **3 – Malla** | Meshtastic / LoRa (a incorporar) | Mensajería de texto sin infraestructura | Autónoma, bajo consumo; sin voz |
+| **4 – Datos** | Starlink móvil en camioneta | Internet de contingencia; réplica Alem↔Palihue; emisión de comunicados web | Satelital, independiente; requiere apuntamiento y energía |
+| **5 – Difusión masiva** | Radio AM UNS + FM UTN-FRBB (convenio) | Comunicados a la comunidad cuando cae todo lo digital | Alcance masivo; unidireccional |
+
 ### 11.11. Redundancia energética por nodo
 Red eléctrica (primaria) → UPS / banco de baterías 24–48 h (secundaria) → grupo electrógeno institucional o paneles solares (terciaria).
 
