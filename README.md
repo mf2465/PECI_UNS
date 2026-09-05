@@ -272,7 +272,7 @@ Temporal e inundación del 07/03/2025, tornado del 17/12/2023 y apagón del 16/0
 RACUNS se activa como medio principal de coordinación cuando el Nodo Central verifique la caída o inutilización de los medios convencionales (telefonía celular, internet y/o energía de red) y el CDE declare el **Estado de Comunicaciones Degradadas**. La verificación y la declaración quedarán asentadas en el libro de guardia.
 
 ### 11.4. Infraestructura
-* **Repetidor principal VHF (50 W):** Complejo Alem, edificio BBYF/Geología, sobre torre metálica existente de 10 m con pararrayos y puesta a tierra (altura relativa 28 m); antena omnidireccional de alto rendimiento, duplexor y gabinete protegido con ventilación y protección contra sobretensiones.
+* **Repetidor principal VHF (50 W):** Complejo Alem, edificio BByF, sobre torre metálica existente de 10 mts. con pararrayos y puesta a tierra (altura relativa 28 m); antena omnidireccional de alto rendimiento, duplexor y gabinete protegido con ventilación y protección contra sobretensiones.
 * **BASE CENTRAL:** Mayordomía San Juan 670 (24 hs) – control troncal, libro de guardia y despacho.
 * **BASE RECTORADO:** Colón 80 (Sala de Crisis) – comando de autoridades.
 * **BASE PALIHUE:** Edificio Central del Campus Palihue – supervisión del predio abierto y accesos.
@@ -283,7 +283,7 @@ RACUNS se activa como medio principal de coordinación cuando el Nodo Central ve
 ### 11.5. Plan de canales
 | Canal | Modo | Uso operativo y disciplina |
 |---|---|---|
-| CH1 | Repetidor Alem (semidúplex) | Troncal de Mando y Emergencia: exclusivo directivas del CDE, novedades de Bases y reportes críticos. Escucha permanente en Naranja/Rojo. Prohibido el tráfico secundario |
+| CH1 | Repetidor Alem (semidúplex) | Troncal de Mando y Emergencia: exclusivo directivas del CDE, novedades de Bases y reportes críticos. Escucha permanente en estados de Alerta Naranja/Roja. Prohibido el tráfico secundario |
 | CH2 | Simplex operativo | Coordinación logística y cuadrillas: mantenimiento edilicio, choferes, maniobras de generadores y grupos técnicos |
 | CH3 | Simplex local | Coordinación interna de predio: mayordomos, brigadistas y personal de seguridad dentro del campus |
 | CH4 | Enlace | Interoperabilidad con el COE de Defensa Civil Bahía Blanca |
