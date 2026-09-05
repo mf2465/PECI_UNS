@@ -365,6 +365,22 @@ Inspección mensual de antena y conexiones; verificación semestral del banco de
 5. **Interpretación:** toda interpretación divergente deberá ser consultada al Nodo Central (Base Central San Juan 670) y al SHST, únicos órganos autorizados para emitir aclaraciones operativas.
 
 ---
+## ANEXO A – PROCESOS DE INICIO A FIN (P1→P10)
+
+| # | Proceso | Responsable | Entrada | Salida | Redundancia |
+|---|---|---|---|---|---|
+| P1 | Monitoreo permanente 24/7 | Nodo Central SJ670 (Op. A) + guardia SHST (Op. B) | SAT web/app | Libro de guardia | Doble operador; doble fuente; app con notificaciones |
+| P2 | Recepción y validación | Op. de guardia | Alerta/Advertencia/ACP | Ficha del Alerta (Anexo B) | Web + app + correo SMN |
+| P3 | Cruce vigencia × turnos × cortes | Op. + SHST | Ficha | Turnos intersectados | Matriz de cortes (22:00 / 10:00 / 16:00) |
+| P4 | Recomendación técnica | CDE (Higiene y Seguridad eleva) | Ficha + cruce | Dictamen al Rector | Reunión presencial / virtual / WhatsApp institucional |
+| P5 | Decisión | **Rector** | Dictamen | Resolución (continuar / suspender / confinar) | Suplente designado por área |
+| P6 | Difusión | Vocero (Comunicación Institucional) | Resolución | Comunicado ×3 canales mínimos | Digital → RACUNS → megafonía |
+| P7 | Ejecución por nivel | Decanos/Directores/Mayordomías | Resolución | Acciones en predios | CH1–CH3, megáfonos |
+| P8 | Custodia y resguardo | Directores de escuelas / docentes | Nivel durante cursada | Menores custodiados; población confinada | Handy H-08/H-09 → Base Central; Registro Anexo F |
+| P9 | Cese y reanudación | Rector (sobre cese SMN) | Verde / cese oficial | Resolución de reanudación | Mismos canales de P6 |
+| P10 | Informe y mejora | SHST + Comité | Novedades | Informe en 72 h; lecciones aprendidas | Archivo documental + Moodle |
+
+**Regla de lectura:** los procesos corren en secuencia P1→P9 en toda activación; P10 se ejecuta después de cada evento real o simulacro. P7 y P8 pueden correr en paralelo durante el evento.
 
 ## ANEXO B – FICHA DEL ALERTA (PLANTILLA)
 | Campo | Contenido |
