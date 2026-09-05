@@ -387,25 +387,6 @@ Inspección mensual de antena y conexiones; verificación semestral del banco de
 ## ANEXO C – DIAGRAMAS DE FLUJO
 
 ### C.1. Diagrama de Alto Nivel (presentación institucional)
-SMN SAT (Alertas 06/18 h · Temperaturas 19 h · ACP 24/7 · Advertencias)
-│
-▼
-[1] MONITOREO 24/7 (Nodo SJ670 + guardia SHST · doble operador)
-▼
-[2] FICHA DEL ALERTA (fenómeno·nivel·zona·desde·hasta·línea de tiempo)
-▼
-[3] CRUCE CON CORTES (22:00 · 10:00 · 16:00)
-▼
-[4] CDE RECOMIENDA ──► [5] RECTOR DECIDE
-▼
-[6] DIFUSIÓN MULTICANAL (digital │ si cae: RACUNS VHF/UHF │ AM–FM │ megafonía)
-▼
-[7] EJECUCIÓN POR NIVEL (Amarillo · Naranja · Rojo · ACP = confinamiento)
-▼
-[8] CESE / REANUDACIÓN ──► [9] INFORME 72 h ──► MEJORA CONTINUA
-
-### C.1. Diagrama de Alto Nivel (para presentaciones institucionales)
-
 ```
 ┌───────────────────────────────────────────────────────────┐
 │                    SMN - SAT (fuente única)               │
@@ -421,7 +402,7 @@ SMN SAT (Alertas 06/18 h · Temperaturas 19 h · ACP 24/7 · Advertencias)
              [4] CDE recomienda ──► [5] RECTOR decide
                               ▼
              [6] DIFUSIÓN MULTICANAL
-                 digital │ si cae → RACUNS VHF/UHF │ AM–FM │ megafonía
+                 digital │ si cae → RACUNS VHF/UHF │ megafonía
                               ▼
              [7] EJECUCIÓN POR NIVEL
                  Amarillo · Naranja · Rojo · ACP (confinamiento)
@@ -431,34 +412,41 @@ SMN SAT (Alertas 06/18 h · Temperaturas 19 h · ACP 24/7 · Advertencias)
 
 ### C.2. Diagrama Técnico Detallado (operativo)
 
-SMN SAT ─(06h/18h; 19h temp; ACP/actualiz. extraordinarias)─► [NODO 24/7 SJ670]
-Op. A Mayordomía │ Op. B guardia SHST (fuentes: web + app + correo)
-│
-▼
-¿Alerta/Advertencia/ACP para zona Bahía Blanca o destino de campo?
-NO → registro y seguimiento
-SÍ ▼
-[FICHA DEL ALERTA] ──notificación inmediata al CDE (WhatsApp inst. + tel. + CH1)
-│
-├─ ¿ACP vigente DURANTE cursada? SÍ → [CONFINAMIENTO] → expira/cese → reanuda o cese
-▼
-¿NIVEL?
-├─ AMARILLO → exteriores/campo suspendidos; aulas normales; prealerta mantenimiento
-├─ NARANJA/ROJO → ¿ANTES del corte del turno (7.1)?
-│ SÍ → CDE recomienda ► RECTOR suspende turno ► difusión ×3 canales (repetir c/30 min)
-│ NO (durante cursada) → [CONFINAMIENTO]
-│ └─ ¿riesgo estructural / incendio / inundación grave?
-│ NO → mantener confinamiento hasta cese SMN
-│ SÍ → EVACUACIÓN EXTERNA controlada (CH1 + CH4 Defensa Civil)
-▼
-[EJECUCIÓN PARALELA]
-· ESCUELAS: custodia estricta; retiro solo autorizado acreditado (Anexo F)
-· INFRAESTRUCTURA: ATS/generadores, motobombas, cortinas, ascensores OFF (Rojo)
-· COMUNICACIONES: ¿caída de medios convencionales? SÍ → CDE declara Estado de
-Comunicaciones Degradadas → RACUNS (VHF → UHF → LoRa) + Capa 4 Starlink + Capa 5 AM/FM
-▼
-[CESE SMN] ► RECTOR reanuda ► [INFORME 72 h] ► lecciones aprendidas ► revisión del plan
-
+```
+SMN SAT ─(06h/18h; 19h temp; ACP cualquier hora)─► [NODO 24/7 SJ670]
+   Op.A Mayordomía │ Op.B SHST (redundancia de personas)
+                           │
+                           ▼
+   ¿Alerta/ACP para Bahía Blanca o destino de campo?
+        │NO → registro y seguimiento
+        │SÍ
+        ▼
+   [FICHA] ──notificación inmediata al CDE──► (WhatsApp inst. + tel. + CH1)
+        │
+        ├── ¿ACP vigente DURANTE cursada? ──SÍ──► [CONFINAMIENTO]
+        │        (no evacuar; alejar de vidrios; docentes retienen)
+        │        └─ expira ACP / cese SMN ─► reanuda o P9
+        ▼
+   ¿NIVEL?
+   ├─ AMARILLO → suspende exteriores/campo; aulas normales;
+   │             prealerta Mantenimiento; difusión preventiva
+   ├─ NARANJA / ROJO → ¿ANTES del corte del turno?
+   │        ├─ SÍ → CDE recomienda ► RECTOR suspende turno
+   │        │       ► difusión x3 canales (repetir a los 30 min)
+   │        └─ NO (durante cursada) → [CONFINAMIENTO]
+   │                 └─ ¿riesgo estructural / incendio / inundación grave?
+   │                       ├─ NO → mantener confinamiento hasta cese SMN
+   │                       └─ SÍ → EVACUACIÓN EXTERNA controlada
+   │                                (CH1 interno + CH4 Defensa Civil)
+   ▼
+   [EJECUCIÓN PARALELA]
+   · ESCUELAS: custodia estricta; sin retiro individual de menores (H-08/H-09)
+   · INFRAESTRUCTURA: generadores ATS, motobombas, cortinas, ascensores OFF (Rojo)
+   · COMUNICACIONES: ¿medios tradicionales caídos? ──SÍ──► DECLARA
+     "ESTADO DE COMUNICACIONES DEGRADADAS" ► activa RACUNS (capas 1→5)
+   ▼
+   [CESE SMN] ► RECTOR reanuda ► [INFORME 72 h] ► lecciones ► mejora del plan
+```
 
 ### C.3. Subflujo de Custodia Escolar
 
