@@ -313,11 +313,11 @@ RACUNS se activa como medio principal de coordinación cuando el Nodo Central ve
 
 ### 11.8. Disciplina radial y prueba semanal
 1. Identificación con indicativo del puesto en toda transmisión; mensajes breves y claros; confirmación de recepción por repetición.
-2. Prioridad absoluta de CH1; el tráfico de trabajo se cursará por CH2/CH3 o memororias de grupo.
+2. Prioridad absoluta de CH1; el tráfico de trabajo se cursará por CH2/CH3 o memorias de grupo.
 3. **Prueba radial semanal:** día y hora definidos por la Dirección de Telecomunicaciones; cada Base y handy reportará ubicación, estado del equipo y batería; resultado asentado en libro de guardia; fallas reportadas a Telecomunicaciones dentro de las 24 horas.
 
 ### 11.9. Marco regulatorio
-Licencia ENACOM vigente para banda VHF (expediente CNC 11660/1998). El uso de UHF se realizará en frecuencia fuera de la reservada para uso de radioaficionados, **sujeto a regularización y verificación ante ENACOM** como tarea de mediano plazo.
+Licencia ENACOM vigente para banda VHF (expediente CNC 11660/1998). El uso de UHF se realizará en frecuencia fuera de la reservada para uso de radioaficionados.
 
 ### 11.10. Capas complementarias de comunicación
 * **Capa 3 – Malla LoRa (Meshtastic):** red de mensajería de texto autónoma, sin infraestructura, como último recurso de brigadas y puestos de terreno (piloto de mediano plazo).
