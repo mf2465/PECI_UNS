@@ -320,9 +320,8 @@ RACUNS se activa como medio principal de coordinación cuando el Nodo Central ve
 Licencia ENACOM vigente para banda VHF (expediente CNC 11660/1998). El uso de UHF se realizará en frecuencia fuera de la reservada para uso de radioaficionados.
 
 ### 11.10. Capas complementarias de comunicación
-* **Capa 3 – Malla LoRa (Meshtastic):** red de mensajería de texto autónoma, sin infraestructura, como último recurso de brigadas y puestos de terreno (piloto de mediano plazo).
-* **Capa 4 – Conectividad satelital móvil (Starlink):** unidad en vehículo y enlace de respaldo en el Centro de Datos / San Juan 670, para sostener salida a internet, consulta de radares meteorológicos, emisión de comunicados web y conectividad entre los servidores del Complejo Alem y su respaldo en Campus Palihue ante caída de proveedores.
-* **Capa 5 – Difusión masiva:** Radio AM de la UNS y, mediante convenio de colaboración a firmar por el Rectorado, la FM de la Universidad Tecnológica Nacional – Facultad Regional Bahía Blanca (edificio vecino a las Escuelas Medias en calle 11 de Abril), para transmisión en dúplex de comunicados a la comunidad.
+* **Capa 3 – Conectividad satelital móvil (Starlink):** unidad en vehículo y enlace de respaldo en el Centro de Datos / San Juan 670, para sostener salida a internet, consulta de radares meteorológicos, emisión de comunicados web y conectividad entre los servidores del Complejo Alem y su respaldo en Campus Palihue ante caída de proveedores.
+* **Capa 4 – Malla LoRa (Meshtastic):** red de mensajería de texto autónoma, sin infraestructura, como último recurso de brigadas y puestos de terreno (piloto de mediano plazo).
 
 ### 11.11. Redundancia energética por nodo
 Red eléctrica (primaria) → UPS / banco de baterías 24–48 h (secundaria) → grupo electrógeno institucional o paneles solares (terciaria).
