@@ -404,6 +404,30 @@ SMN SAT (Alertas 06/18 h · Temperaturas 19 h · ACP 24/7 · Advertencias)
 ▼
 [8] CESE / REANUDACIÓN ──► [9] INFORME 72 h ──► MEJORA CONTINUA
 
+### C.1. Diagrama de Alto Nivel (para presentaciones institucionales)
+
+```
+┌───────────────────────────────────────────────────────────┐
+│                    SMN - SAT (fuente única)               │
+│      Alertas 06/18 h · Temperaturas 19 h · ACP 24/7       │
+└─────────────────────────────┬─────────────────────────────┘
+                              ▼
+             [1] MONITOREO 24/7  (SJ670 + SHST · doble operador)
+                              ▼
+             [2] FICHA DEL ALERTA (fenómeno·nivel·zona·desde·hasta)
+                              ▼
+             [3] CRUCE CON CORTES  22:00 · 10:00 · 16:00
+                              ▼
+             [4] CDE recomienda ──► [5] RECTOR decide
+                              ▼
+             [6] DIFUSIÓN MULTICANAL
+                 digital │ si cae → RACUNS VHF/UHF │ AM–FM │ megafonía
+                              ▼
+             [7] EJECUCIÓN POR NIVEL
+                 Amarillo · Naranja · Rojo · ACP (confinamiento)
+                              ▼
+             [8] CESE / REANUDACIÓN ──► [9] INFORME 72 h → MEJORA
+```
 
 ### C.2. Diagrama Técnico Detallado (operativo)
 
