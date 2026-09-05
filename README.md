@@ -124,7 +124,7 @@ Actualización diaria **~19:00 h**; validez de 24 horas. Umbrales de calor basad
 |---|---|---|
 | Campus Altos de Palihue | Exposición a campo abierto frente a vientos SO/NO; arbolado de gran porte sobre sendas y estacionamientos; cubiertas livianas; riesgo de aislamiento vehicular por anegamiento de accesos | Poda preventiva semestral; clausura anticipada de sendas arboladas en Alerta Naranja/Roja; confinamiento en pabellones centrales de hormigón; resguardo vehicular fuera de la proyección del arbolado |
 | Complejo Alem / San Juan / 12 de Octubre | Edificaciones de gran altura (San Juan 670, 7 pisos); grandes superficies vidriadas; riesgo de anegamiento en subsuelos, depósitos y salas de calderas; alta densidad poblacional | Revisión permanente de bombas de achique y sumideros; bajada obligatoria de cortinas metálicas y cierre de ventanales; confinamiento en pasillos internos y plantas bajas; desconexión preventiva de ascensores en Alerta Roja |
-| Sede Rectorado (Colón 80) y Casa de la Cultura | Patrimonio histórico; cubiertas y aberturas tradicionales; Sala de Crisis institucional y archivos históricos | Inspección y sellado de cubiertas y desagües pluviales; activación de la Base Fija VHF de comando; protección preventiva de archivos |
+| Sede Rectorado (Colón 80), Centro Histórico Rondeau 29 y Casa de la Cultura | Patrimonio histórico; cubiertas y aberturas tradicionales; Sala de Crisis institucional y archivos históricos | Inspección y sellado de cubiertas y desagües pluviales; activación de la Base Fija VHF de comando; protección preventiva de archivos |
 | Escuelas Preuniversitarias (11 de Abril, Agraria, etc.) | Población de menores; dependencia de transporte público y retiro de tutores; talleres y galpones en la Escuela Agraria | Aplicación del Protocolo Estricto de Custodia y Retiro Autorizado (Sección 8); comunicación directa vía handy VHF con Base Central |
 
 ### 6.3. Infraestructura crítica y respaldo energético / tecnológico
@@ -278,7 +278,7 @@ RACUNS se activa como medio principal de coordinación cuando el Nodo Central ve
 * **BASE PALIHUE:** Edificio Central del Campus Palihue – supervisión del predio abierto y accesos.
 * **Radiobases bibanda (proyectadas):** nodos Colón 80, Escuelas Medias y Campus Palihue.
 * **Radiobase móvil:** unidad vehicular con equipo bibanda y kit de conectividad satelital (Starlink); el área proveedora del vehículo y el personal afectado serán designados por resolución del CDE.
-* **Flota de handies:** 12 unidades bibanda operativas con canales pregrabados, cada una con responsable por sector, rol o responsabilidad.
+* **Flota de handies:** 12 unidades bibanda operativas con canales pregrabados, cada una con asignado a un sector, rol o responsabilidad.
 
 ### 11.5. Plan de canales
 | Canal | Modo | Uso operativo y disciplina |
