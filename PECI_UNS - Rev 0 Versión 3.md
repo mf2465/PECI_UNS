@@ -450,17 +450,18 @@ SMN SAT ─(06h/18h; 19h temp; ACP cualquier hora)─► [NODO 24/7 SJ670]
 
 ### C.3. Subflujo de Custodia Escolar
 
+```
 Alerta Naranja/Roja o ACP durante horario escolar
-▼
+        ▼
 Permanencia protegida en sectores seguros │ prohibido retiro individual
-▼
+        ▼
 ¿Adulto autorizado presente? ─ NO → custodia extendida (agua, resguardo, comunicación)
-│ SÍ
-▼
+        │ SÍ
+        ▼
 Verificación DNI vs. listado autorizado ► firma Registro de Retiro (Anexo F)
-▼
+        ▼
 Egreso por ruta segura ► reporte a Base Central (CH1 / H-08·H-09)
-
+```
 
 ## ANEXO D – PLAN DE TRABAJO (ALTERNATIVA 1: POR FASES)
 
