@@ -10,7 +10,7 @@
 | 0 | 1 | 25/08/2026 | Documento inicial de la Comisión de Plan de Emergencia |
 | 0 | 2 | 2026 | Revisión integral: ventanas horarias de decisión, protocolo de custodia escolar, doctrina de resguardo, plan de canales VHF |
 | 0 | 3 | 2026 | Consolidado institucional: glosario unificado SMN, umbrales regionales, ingeniería RACUNS, capas de comunicación redundantes, convenios y mejora continua |
-| 0 | 4 | 2026 | Inserción del Sistema de Difusión y Comunicación Pública (P6) como Sección 11; renumeración de Secciones 12–15 y subnumerales de RACUNS; actualización de la fila P6 del Anexo A y del Anexo C.1 |
+| 0 | 4 | 2026 | Inserción del Sistema de Difusión y Comunicación Pública (P6) como Sección |
 
 | Confeccionó: | Revisó: | Aprobó: | Aprobó: |
 |---|---|---|---|
