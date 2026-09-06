@@ -10,7 +10,7 @@
 | 0 | 1 | 25/08/2026 | Documento inicial de la Comisión de Plan de Emergencia |
 | 0 | 2 | 2026 | Revisión integral: ventanas horarias de decisión, protocolo de custodia escolar, doctrina de resguardo, plan de canales VHF |
 | 0 | 3 | 2026 | Consolidado institucional: glosario unificado SMN, umbrales regionales, ingeniería RACUNS, capas de comunicación redundantes, convenios y mejora continua |
-| 0 | 4 | 2026 | Inserción del Sistema de Difusión y Comunicación Pública (P6) como Sección |
+| 0 | 4 | 2026 | Inserción del Sistema de Difusión y Comunicación Pública como Sección |
 
 | Confeccionó: | Revisó: | Aprobó: | Aprobó: |
 |---|---|---|---|
@@ -303,7 +303,7 @@ Primaria: **Colón 80** (BASE RECTORADO). Alternativa: **San Juan 670** (BASE CE
 
 Directores Decanos de Departamento y Directores Administrativos, como jefes de la emergencia en sus dependencias; docentes y personal nodocente capacitados para guiar a estudiantes, identificar zonas seguras y asistir en evacuaciones; Brigadas de Primera Intervención voluntarias capacitadas en primeros auxilios y evacuación.
 
-## 11. SISTEMA DE DIFUSIÓN Y COMUNICACIÓN PÚBLICA DE EMERGENCIAS (PROCESO P6)
+## 11. SISTEMA DE DIFUSIÓN Y COMUNICACIÓN PÚBLICA DE EMERGENCIAS
 
 ### 11.1. Propósito y principios rectores
 
