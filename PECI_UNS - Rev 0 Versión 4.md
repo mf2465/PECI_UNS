@@ -359,21 +359,7 @@ Señaletica universal: se emplearán los colores oficiales del SMN y pictogramas
 | ACP durante cursada | Megafonía + WhatsApp interno + AM/FM + pantallas | Inmediata + cada 30 min |
 | Cese / reanudación | Mismos canales del comunicado de suspensión | Una emisión + confirmación a escuelas |
 
-### 11.7. Referencias internacionales y adaptación a la UNS
-
-| Referencia | Origen | Mecanismo probado | Adaptación a la UNS |
-|---|---|---|---|
-| J-Alert | Japón | Activación multicanal automática (sirenas, celdas, radio/TV) desde una fuente única | Voz oficial única y plantillas digitales de disparo inmediato desde el SAT (11.5) |
-| SAE / SENAPRED | Chile | Niveles de color idénticos al servicio meteorológico + alerta por celdas | Mismo lenguaje SMN (Sección 4); gestión de integración al SAE nacional a mediano plazo |
-| Australian Warning System | Australia | Iconos estandarizados y una sola instrucción de acción por nivel | Una acción por mensaje; señaletica ISO 7010 + colores SMN (11.4) |
-| NL-Alert / EU-Alert | Países Bajos / UE | Alerta masiva geolocalizada por difusión por celdas | Gestión ante ENACOM / Defensa Civil (mediano plazo) |
-| Sistemas universitarios (Clery Act) | EE. UU. | Obligación de notificación de emergencias con capas (sirenas, SMS, correo, cartelería) y ejercicios periódicos | Política de mínimo 3 canales + ejercicios trimestrales de difusión (11.8) |
-| NOAA Weather Radio | EE. UU. | Radio meteorológica continua como referencia de comunidad | AM UNS + FM UTN-FRBB como radio oficial universitaria (11.3) |
-| CAP / ISO 22320 | Internacional | Formato estándar estructurado de mensajes de alerta | Estructura estándar del mensaje (11.4) |
-| ISO 7010 | Internacional | Símbolos universales de seguridad | Cartelería permanente en accesos y aulas (11.4) |
-| Plan Nacional de Lenguaje Claro | Argentina | Pautas de comunicación clara en la administración pública | Criterios de redacción de plantillas (11.4–11.5) |
-
-### 11.8. Pruebas, ejercicios e indicadores
+### 11.7. Pruebas, ejercicios e indicadores
 
 1. Prueba trimestral de difusión masiva con verificación de recepción en todos los predios y escuelas.
 2. Indicadores: tiempo decisión→difusión (antes de la hora de corte del turno); cobertura de canales efectivos por emisión; confirmación de recepción en escuelas al 100 %.
