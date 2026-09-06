@@ -433,11 +433,12 @@ RACUNS se activa como medio principal de coordinación cuando el Nodo Central ve
 | **4 – Datos** | Starlink móvil en camioneta | Internet de contingencia; réplica Alem↔Palihue; emisión de comunicados web | Satelital, independiente; requiere apuntamiento y energía |
 | **5 – Difusión masiva** | Radio AM UNS + FM UTN-FRBB (convenio) | Comunicados a la comunidad cuando cae todo lo digital | Alcance masivo; unidireccional |
 
-### 12.9. Disciplina radial y prueba semanal
+### 12.9. Disciplina radial, prueba semanal y capacitación
 
-1. Identificación con indicativo del puesto en toda transmisión; mensajes breves y claros; confirmación de recepción por repetición.
-2. Prioridad absoluta de CH1; el tráfico de trabajo se cursará por CH2/CH3 o memorias de grupo.
-3. **Prueba radial semanal:** día y hora definidos por la Dirección de Telecomunicaciones; cada Base y handy reportará ubicación, estado del equipo y batería; resultado asentado en libro de guardia; fallas reportadas a Telecomunicaciones dentro de las 24 horas.
+1. **Protocolo de enlace:** Identificación con el indicativo del puesto asignado en toda transmisión; mensajes breves, claros y estructurados; confirmación de recepción por repetición (colación).
+2. **Disciplina de canales:** Prioridad absoluta de CH1 para mando y emergencia; el tráfico de trabajo, logístico o rutinario se cursará estrictamente por CH2/CH3 o por las memorias de grupo pregrabadas.
+3. **Prueba radial semanal:** Día y hora definidos por la Dirección de Telecomunicaciones; cada Base y handy reportará ubicación, estado del equipo y nivel de batería. El resultado será asentado en el libro de guardia y cualquier falla deberá ser reportada a Telecomunicaciones dentro de las 24 horas para su inmediata subsanación.
+4. **Capacitación para operadores no especializados:** La Dirección de Telecomunicaciones, en articulación con la Jefatura de Higiene y Seguridad (SHST), dictará módulos de instrucción práctica obligatoria destinados a todo el personal asignado a la flota de handies que no posea formación técnica previa en radiocomunicaciones. Esta capacitación incluirá: protocolo básico de enlace, códigos de brevedad, disciplina de escucha (pensar antes de transmitir) y procedimientos específicos para reportar emergencias, garantizando que la red mantenga su eficiencia y no se sature por mal uso durante una crisis.
 
 ### 12.10. Marco regulatorio
 
