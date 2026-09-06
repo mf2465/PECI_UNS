@@ -21,3 +21,4 @@ Este repositorio almacena la evolución cronológica de los documentos correspon
 5. **Prompt de Validación:** [prompt_validador_protocolo.md](prompt_validador_protocolo.md) – Herramienta de instrucciones inicial utilizada para la revisión y validación normativa.
 6. **Auditoría Multiagente (Alternativa CLD):** [auditoria_CLD_multiagente_PECI-UNS.md](auditoria_CLD_multiagente_PECI-UNS.md) – Informe de auditoría multiagente complementario.
 7. **Auditoría Multiagente (Alternativa Z):** [Auditoria_Z_Multiagente_PECI_UNS_Rev0_V4.md](Auditoria_Z_Multiagente_PECI_UNS_Rev0_V4.md) – Informe de cierre y validación final sobre la versión 4.
+8. **Auditoría Multiagente (Alternativa GPT):** [auditoria_GPT_multiagente_PECI-UNS.md](auditoria_GPT_multiagente_PECI-UNS.md) – Informe de cierre y validación final sobre la versión 4.
