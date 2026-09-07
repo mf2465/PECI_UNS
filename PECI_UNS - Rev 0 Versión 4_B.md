@@ -40,7 +40,6 @@ Este documento es de uso obligatorio para: Dirección General de Telecomunicacio
 | --- | --- | --- | --- |
 | **Lluvias / Tormentas** | 15 mm en 12 h ó 30 mm en 24 h | 30 mm en 12 h ó 60 mm en 24 h | 60 mm en 12 h ó 90 mm en 24 h |
 | **Viento (sostenido / ráfagas)** | 55 km/h / 65 km/h | 75 km/h / 90 km/h | 90 km/h / 110 km/h |
-| **Viento Zonda (ráfagas)** | Z1: hasta 65 km/h | Z2: 65–90 km/h | Z3/Z4: más de 90 km/h |
 | **Nevadas** | En zonas bajas donde el fenómeno es raro, su ocurrencia con acumulación constituye, a priori, nivel amarillo | — | — |
 
 **Notas técnicas:** para amarillo y naranja se considera acumulado en 12 h (sin descartar lluvias intensas en períodos más cortos); para rojo, 24 h. Los umbrales son dinámicos y públicos; Telecomunicaciones y LH verificarán periódicamente su vigencia en el sitio del SMN y actualizarán este cuadro mediante control de versiones.
@@ -70,7 +69,7 @@ Este documento es de uso obligatorio para: Dirección General de Telecomunicacio
 2. Mantenimiento programado de sistemas pluviales y cubiertas: limpieza de canaletas y sumideros.
 3. Pruebas bajo carga de grupos electrógenos (ATS) y motobombas de achique, con registro.
 4. Verificación semestral de UPS, bancos de baterías y tableros de transferencia.
-5. El cumplimiento se registrará en el Checklist de Mantenimiento Preventivo (Anexo C).
+5. El cumplimiento se registrará en el Checklist de Mantenimiento Preventivo (Anexo A.3).
 
 ## 4. RACUNS – RED ALTERNATIVA DE COMUNICACIONES DE LA UNS
 
@@ -82,20 +81,11 @@ Red autónoma de comunicaciones basada en tecnología VHF, destinada a asegurar 
 
 Temporal e inundación del 07/03/2025, tornado del 17/12/2023 y apagón del 16/06/2019: interrupciones simultáneas de energía, telefonía celular e internet. Durante 2025 la UNS colaboró con Defensa Civil mediante el monitoreo del arroyo Napostá Grande (Unidad Remota de Telemetría Puente Canessa) y el Complejo Alem como centro de acopio de donaciones. Experiencia piloto validada en la Feria Gastronómica del Sudoeste Bonaerense 2025 (20.000 asistentes, colapso de telefonía celular, operación efectiva de handies VHF por operadores sin experiencia previa).
 
-### 4.3. Comparativa técnica de alternativas
-
-| Tecnología | Dependencia de infraestructura externa | Autonomía ante corte eléctrico | Cobertura local | Capacidad de interconexión | Costo operativo | Adecuación para emergencias |
-| --- | --- | --- | --- | --- | --- | --- |
-| Telefonía celular | Alta (antenas, red comercial, energía, proveedor privado) | Nula sin respaldo | Variable según señal | Limitada en congestión | Medio | Baja: se satura o cae en emergencias |
-| Radio digital / trunking | Media (requiere red troncal de terceros y atributos) | Parcial con respaldo | Alta en zonas concretas | Media | Alto | Moderada: requiere infraestructura compleja |
-| Radiocomunicaciones HF | Baja | Alta con fuente autónoma | Muy amplia (nacional/internacional) | Media (configuración compleja) | Medio | Alta, pero requiere operadores especializados |
-| Radiocom. VHF con repetidora propia (RACUNS) | Nula: infraestructura autónoma | Alta: baterías, grupo o paneles solares | Alta: cobertura urbana/región | Alta: extensible a redes y radioclubes | Bajo (mantenimiento mínimo) | Muy alta: operativa aun en catástrofes |
-
-### 4.4. Criterio de activación
+### 4.3. Criterio de activación
 
 RACUNS se activa como medio principal de coordinación cuando el Nodo Central verifique la caída o inutilización de los medios convencionales (telefonía celular, internet y/o energía de red) y el CDE declare el **Estado de Comunicaciones Degradadas**. La verificación y la declaración quedarán asentadas en el libro de guardia.
 
-### 4.5. Infraestructura
+### 4.4. Infraestructura
 
 1. **Repetidor principal VHF (50 W):** Complejo Alem, edificio BBYF, sobre torre metálica existente de 10 m con pararrayos y puesta a tierra (altura relativa 28 m); antena omnidireccional de alto rendimiento, duplexor y gabinete protegido con ventilación y protección contra sobretensiones.
 2. **BASE CENTRAL:** Mayordomía San Juan 670 (24 hs) – control troncal, libro de guardia y despacho.
@@ -105,7 +95,7 @@ RACUNS se activa como medio principal de coordinación cuando el Nodo Central ve
 6. **Radiobase móvil:** unidad vehicular con equipo bibanda y kit de conectividad satelital (Starlink); el área proveedora del vehículo y el personal afectado serán designados por resolución del CDE.
 7. **Flota de handies:** 12 unidades bibanda operativas con canales pregrabados, cada una con responsable por sector, rol o responsabilidad.
 
-### 4.6. Plan de canales
+### 4.5. Plan de canales
 
 | Canal | Modo | Uso operativo y disciplina |
 | --- | --- | --- |
@@ -115,7 +105,7 @@ RACUNS se activa como medio principal de coordinación cuando el Nodo Central ve
 | CH4 | Enlace | Interoperabilidad con el COE de Defensa Civil Bahía Blanca |
 | Memorias adicionales | Simplex | Frecuencias pregrabadas por grupos operativos (mantenimiento, SHST, eléctricos, autoridades, brigadistas, logística), definidas por la Dirección de Telecomunicaciones en el Anexo Técnico de Radiocomunicaciones |
 
-### 4.7. Asignación de la flota de handies (12 unidades)
+### 4.6. Asignación de la flota de handies (12 unidades)
 
 | ID | Puesto asignado | Misión operativa | Responsable |
 | --- | --- | --- | --- |
@@ -132,14 +122,14 @@ RACUNS se activa como medio principal de coordinación cuando el Nodo Central ve
 | H-11 | Móvil de Cuadrilla de Mantenimiento / Obras | Desplazamiento operativo de auxilio en vehículos | Titular del sector |
 | H-12 | Reserva / Respaldo Técnico | Reemplazo inmediato por falla, refuerzo, o enlace interinstitucional en COE | Telecomunicaciones |
 
-### 4.8. Metodología bibanda y subcapas de retransmisión
+### 4.7. Metodología bibanda y subcapas de retransmisión
 
 1. **Canal principal VHF:** enlace por línea de vista, libre de interferencia por obstáculos (árboles, edificios de hormigón), para troncal y enlaces entre nodos.
 2. **Canal secundario UHF:** conectividad en espacios cerrados o por rebotes, donde VHF no alcanza.
 3. **Subcapa de retransmisión:** todo mensaje recibido por UHF en un nodo que no alcance punto a punto su destino será retransmitido por el operador del nodo en VHF hacia el siguiente nodo; en tránsito entre nodos, si VHF no fuera posible, se intentará UHF por proximidad.
 4. Los handies permanecerán en escucha del canal troncal e interactuarán con el sistema según su posición lo favorezca.
 
-### 4.9. Arquitectura en capas (redundancia funcional)
+### 4.8. Arquitectura en capas (redundancia funcional)
 
 | Capa | Tecnología | Rol | Fortalezas / límites |
 | --- | --- | --- | --- |
@@ -149,27 +139,27 @@ RACUNS se activa como medio principal de coordinación cuando el Nodo Central ve
 | 4 – Datos | Starlink móvil en camioneta | Internet de contingencia; réplica Alem↔Palihue; emisión de comunicados web | Satelital, independiente; requiere apuntamiento y energía |
 | 5 – Difusión masiva | Radio AM UNS + FM UTN-FRBB (convenio) | Comunicados a la comunidad cuando cae todo lo digital | Alcance masivo; unidireccional |
 
-### 4.10. Disciplina radial, prueba semanal y capacitación
+### 4.9. Disciplina radial, prueba semanal y capacitación
 
 1. **Protocolo de enlace:** identificación con el indicativo del puesto asignado en toda transmisión; mensajes breves, claros y estructurados; confirmación de recepción por repetición (colación).
 2. **Disciplina de canales:** prioridad absoluta de CH1 para mando y emergencia; el tráfico de trabajo, logístico o rutinario se cursará estrictamente por CH2/CH3 o por las memorias de grupo pregrabadas.
-3. **Prueba radial semanal:** día y hora definidos por la Dirección de Telecomunicaciones; cada Base y handy reportará ubicación, estado del equipo y nivel de batería. El resultado será asentado en el Libro de Prueba Radial (Anexo D) y cualquier falla deberá ser reportada a Telecomunicaciones dentro de las 24 horas para su inmediata subsanación.
+3. **Prueba radial semanal:** día y hora definidos por la Dirección de Telecomunicaciones; cada Base y handy reportará ubicación, estado del equipo y nivel de batería. El resultado será asentado en el Libro de Prueba Radial (Anexo A.2) y cualquier falla deberá ser reportada a Telecomunicaciones dentro de las 24 horas para su inmediata subsanación.
 4. **Capacitación para operadores no especializados:** la Dirección de Telecomunicaciones, en articulación con la Jefatura de Higiene y Seguridad (SHST), dictará módulos de instrucción práctica obligatoria destinados a todo el personal asignado a la flota de handies que no posea formación técnica previa en radiocomunicaciones. Contenido mínimo: protocolo básico de enlace, códigos de brevedad, disciplina de escucha (pensar antes de transmitir) y procedimientos específicos para reportar emergencias.
 
-### 4.11. Marco regulatorio
+### 4.10. Marco regulatorio
 
 Licencia ENACOM vigente para banda VHF (expediente CNC 11660/1998). El uso de UHF se realizará en frecuencia fuera de la reservada para uso de radioaficionados, sujeto a regularización y verificación ante ENACOM como tarea de mediano plazo. Telecomunicaciones mantendrá el expediente técnico y la documentación de la licencia actualizados y disponibles para auditoría.
 
-### 4.12. Redundancia energética por nodo
+### 4.11. Redundancia energética por nodo
 
 Red eléctrica (primaria) → UPS / banco de baterías 24–48 h (secundaria) → grupo electrógeno institucional o paneles solares (terciaria).
 
-### 4.13. Mantenimiento del sistema
+### 4.12. Mantenimiento del sistema
 
 1. Inspección mensual de antena, conexiones y bajada coaxial.
 2. Verificación semestral del banco de baterías y protecciones eléctricas.
 3. Actualización de firmware o parámetros del sistema de control.
-4. Prueba radial semanal (4.10).
+4. Prueba radial semanal (4.9).
 5. Unidad técnica designada: Laboratorio de Hidráulica del Departamento de Ingeniería, con apoyo de Telecomunicaciones.
 
 ## 5. TOPOLOGÍA DE LA RED
@@ -206,11 +196,11 @@ Se ejecutará una prueba de campo integral con radiobases y handies en los nodos
 4. Prueba comparativa VHF vs. UHF y validación de la subcapa de retransmisión entre nodos.
 5. Prueba de autonomía energética con corte simulado de red en al menos un nodo.
 6. Prueba de interoperabilidad CH4 con Defensa Civil, cuando la autoridad municipal esté disponible.
-7. Registro de resultados en la Planilla de Prueba de Campo (Anexo B) e informe de sombras radioeléctricas para ajuste de ingeniería.
+7. Registro de resultados en la Planilla de Prueba de Campo (Anexo A.1) e informe de sombras radioeléctricas para ajuste de ingeniería.
 
 ### 6.2. Pruebas periódicas complementarias
 
-1. Prueba radial semanal (4.10) con registro en Anexo D.
+1. Prueba radial semanal (4.9) con registro en Anexo A.2.
 2. Prueba trimestral de transmisión conjunta AM UNS – FM UTN-FRBB, coordinada con la Vocería (Documento C).
 3. Prueba semestral de conmutación energética de nodos críticos (ATS, UPS, generador móvil).
 4. Simulacro integral anual con activación completa de RACUNS y Nodo Central.
@@ -256,5 +246,3 @@ Se ejecutará una prueba de campo integral con radiobases y handies en los nodos
 | Repetidor VHF Alem | Inspección de antena, coaxial y gabinete | Mensual | LH / Telecomunicaciones |  |  |  |
 | Bases y handies | Prueba radial y estado de equipos | Semanal | Telecomunicaciones |  |  |  |
 | Megáfonos de mayordomías | Prueba de sirena y carga de batería | Trimestral | Mayordomías |  |  |  |
-
-*Fin del documento.*
