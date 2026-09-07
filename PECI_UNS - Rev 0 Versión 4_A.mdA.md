@@ -237,7 +237,7 @@ Directores Decanos de Departamento y Directores Administrativos, como jefes de l
 ## ANEXO A – DIAGRAMA DE FLUJO DE ALTO NIVEL
 
 ```
-┌───────────────────────────────────────────────────────────┐
+ ┌───────────────────────────────────────────────────────────┐
  │                    SMN - SAT (fuente única)               │
  │      Alertas 06/18 h · Temperaturas 19 h · ACP 24/7       │
  └─────────────────────────────┬─────────────────────────────┘
