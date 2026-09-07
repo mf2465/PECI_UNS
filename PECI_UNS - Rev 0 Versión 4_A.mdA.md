@@ -295,3 +295,4 @@ Directores Decanos de Departamento y Directores Administrativos, como jefes de l
 | Fecha | Hora | Alumno | Adulto que retira | DNI | Vínculo | Firma | Observaciones |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |  | | | | | | | |
+
