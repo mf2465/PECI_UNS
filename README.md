@@ -40,7 +40,7 @@ A partir de la Versión 4 consolidada, y como respuesta a la necesidad de **segr
 11. **Documento C – Manual de Comunicación Pública y Vocería:** [PECI_UNS - Rev 0 Versión 4_C.md](PECI_UNS%20-%20Rev%200%20Versión%204_C.md)
     - **Audiencia:** Dirección de Comunicación Institucional (Vocería), community managers, diseñadores, operadores de Radio AM UNS, responsables de web y Moodle.
     - **Contenido:** Principios de difusión, arquitectura de canales por capas, convenio AM–FM con UTN-FRBB, biblioteca de plantillas de mensajes (M1–M7), matriz de difusión por nivel, protocolo de comunicación de crisis y cartelería ISO 7010.
-    - **Referente principal:** Dirección de Comunicación Institucional (Prensa / Vocería)
+    - **Referente principal:** Dirección de Comunicación Institucional (Prensa / Vocería).
 
 > **Motivo de la segregación:** El documento consolidado V4 original, si bien permitió auditar el sistema completo sobre una mesa de trabajo integral, resultaba extenso y difícil de leer para cada uno de sus destinatarios reales. La división en tres piezas asegura que cada área revise únicamente el contenido que le compete, acelerando la validación final.
 
