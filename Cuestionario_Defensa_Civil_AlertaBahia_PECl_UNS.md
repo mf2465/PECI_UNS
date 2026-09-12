@@ -30,7 +30,7 @@ La presentación de Alerta Bahía llega a este comité en un momento oportuno, d
 
 ### P4. Continuidad operativa de la propia plataforma
 
-¿Sobre qué infraestructura se aloja Alerta Bahía (datacenter propio, nube comercial provincial o nacional)? ¿Cuál es su comportamiento previsto ante la caída simultánea de energía y telecomunicaciones? ¿La plataforma tiene definidos un RTO/RPO, existe réplica en sitio alterno, y hay una versión de solo texto accesible por canales de bajo ancho de banda (SMS, página estática espejo) que siga operando cuando las redes comerciales caen?
+¿Sobre qué infraestructura se aloja Alerta Bahía (datacenter propio, nube comercial provincial o nacional)? ¿Cuál es su comportamiento previsto ante la caída simultánea de energía y telecomunicaciones? ¿La plataforma tiene definidos un RTO/RPO, existe réplica en sitio alterno, y si hay una versión de solo texto accesible por canales de bajo ancho de banda (SMS, página estática espejo) que siga operando cuando las redes comerciales caen?
 
 ### P5. Canales de salida y alcance de la difusión municipal
 
