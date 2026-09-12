@@ -1,7 +1,9 @@
-ANEXO OPERATIVO 07-B – ANEXO TÉCNICO DE INFRAESTRUCTURA Y COMUNICACIONES (RACUNS)
-DOCUMENTO B – TÉCNICO
-Revisión 0 – Versión 2 (Consolidado Institucional 2026)
-Universidad Nacional del Sur – Bahía Blanca
+# ANEXO OPERATIVO 07-B – ANEXO TÉCNICO DE INFRAESTRUCTURA Y COMUNICACIONES (RACUNS)
+
+## DOCUMENTO B – TÉCNICO
+
+**Revisión 0 – Versión 2 (Consolidado Institucional 2026)**
+**Universidad Nacional del Sur – Bahía Blanca**
 
 ## Control de Versiones del Documento
 
