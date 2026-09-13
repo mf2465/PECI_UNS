@@ -476,4 +476,3 @@ Se ejecutará una prueba de campo integral con radiobases y handies en los nodos
 | Freezers Críticos (-80°C) | Verificación de conexión a UPS / prioridad en grupo electrógeno | Semestral | Mantenimiento + SHST |
 | Flota Institucional | Revisión de botiquines, linternas y protocolo de choferes en vehículos | Semestral | Subsecretaría de Infraestructura |
 | Evaluación Estructural | Inspección de cubiertas, mampostería y anclajes en patrimonio histórico | Anual (pre-temporada) | Dirección General de Construcciones |
-| Sistema | Tarea | Frecuencia | Responsable |
