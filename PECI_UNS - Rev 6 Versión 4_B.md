@@ -340,7 +340,7 @@ RACUNS se activa como medio principal de coordinación cuando el Nodo Central ve
 
 ### 5.15. Proyecciones del sistema
 
-- **Radioclubes locales:** en Bahía Blanca operan dos radioclubes; la vinculación mediante convenio de colaboración técnica se proyecta como tarea de **largo plazo**, orientada a enlaces HF de contingencia y soporte de operadores habilitados en emergencias de magnitud excepcional. A la fecha de esta versión no existe convenio iniciado.
+- **Radioclubes locales:** en Bahía Blanca operan dos radioclubes; la vinculación mediante convenio de colaboración técnica se proyecta como tarea de **mediano plazo**, orientada a enlaces HF de contingencia y soporte de operadores habilitados en emergencias de magnitud excepcional. A la fecha de esta versión no existe convenio iniciado.
 - **Digitalización:** evaluación de migración parcial o dualidad tecnológica hacia DMR o TETRA si se requirieran trunking, cifrado o gestión avanzada de canales.
 - **Expansión de nodos:** radiobases bibanda proyectadas en Colón 80, Escuelas Medias y Campus Palihue, sujetas a resultado de las pruebas de campo (8.1); evaluación de nodos Meshtastic adicionales sujeta a prueba del nodo único existente.
 - **Notificaciones masivas:** se registra el servicio Alerthor (tercero) y el proyecto de desarrollo de un sistema propio de similares características para evitar cautividad tecnológica (objetivo a mediano plazo, ver 4.6).
