@@ -429,9 +429,9 @@ Se ejecutará una prueba de campo integral con radiobases y handies en los nodos
 | Pruebas trimestrales AM/FM ejecutadas | 100 % |
 | Pruebas trimestrales de caída del repetidor ejecutadas | 100 % |
 | Pruebas trimestrales de despliegue Starlink S3 ejecutadas | 100 % |
-| **Simulacros trimestrales de conmutación manual S1 ejecutados** | 100 % |
-| **Pruebas trimestrales de emisión S2 y enlace alternativo FM ejecutadas** | 100 % |
-| **Nodo Meshtastic Palihue operativo en verificación semestral** | 100 % |
+| Simulacros trimestrales de conmutación manual S1 ejecutados | 100 % |
+| Pruebas trimestrales de emisión S2 y enlace alternativo FM ejecutadas | 100 % |
+| Nodo Meshtastic Palihue operativo en verificación semestral | 100 % |
 | Checklist de mantenimiento preventivo sin observaciones abiertas | 100 % |
 
 - Todo desvío se registrará y tratará conforme al ciclo **PDCA** del Documento A (Sección de Mejora Continua). El registro de comunicaciones críticas y las revisiones post-incidente se rigen por el Documento A.
@@ -468,15 +468,14 @@ Se ejecutará una prueba de campo integral con radiobases y handies en los nodos
 | Starlink S1 (respaldo fijo) | Simulacro de conmutación manual fibra→Starlink | Trimestral | Telecomunicaciones |  |  |  |
 | Starlink S2 (nodo Anexo Radio) | Prueba de emisión y enlace alternativo con FM | Trimestral | Vocería / Telecomunicaciones |  |  |  |
 | Starlink S3 (kit vehicular) | Despliegue y apuntamiento | Trimestral | Telecomunicaciones |  |  |  |
+| Red de Gas (Calderas / Comedor) | Prueba de corte de válvulas maestras y electroválvulas | Semestral | Dirección de Mantenimiento |
+| Ascensores (SJ670, Alem) | Verificación de llaves de rescate, intercomunicadores y UPS de nivelación | Trimestral | Dirección de Mantenimiento |
+| Ciberseguridad y Backups | Prueba de restauración de backups críticos y segregación de red de emergencia | Trimestral | Dirección de Gestión y Seguridad de la Información |
+| Freezers Críticos (-80°C) | Verificación de conexión a UPS / prioridad en grupo electrógeno | Semestral | Mantenimiento + SHST |
+| Flota Institucional | Revisión de botiquines, linternas y protocolo de choferes en vehículos | Semestral | Subsecretaría de Infraestructura |
+| Evaluación Estructural | Inspección de cubiertas, mampostería y anclajes en patrimonio histórico | Anual (pre-temporada) | Dirección General de Construcciones |
 | Sistema | Tarea | Frecuencia | Responsable |
 | :--- | :--- | :--- | :--- |
-| **Red de Gas (Calderas / Comedor)** | Prueba de corte de válvulas maestras y electroválvulas | Semestral | Dirección de Mantenimiento |
-| **Ascensores (SJ670, Alem)** | Verificación de llaves de rescate, intercomunicadores y UPS de nivelación | Trimestral | Dirección de Mantenimiento |
-| **Ciberseguridad y Backups** | Prueba de restauración de backups críticos y segregación de red de emergencia | Trimestral | Dirección de Gestión y Seguridad de la Información |
-| **Freezers Críticos (-80°C)** | Verificación de conexión a UPS / prioridad en grupo electrógeno | Semestral | Mantenimiento + SHST |
-| **Flota Institucional** | Revisión de botiquines, linternas y protocolo de choferes en vehículos | Semestral | Subsecretaría de Infraestructura |
-| **Evaluación Estructural** | Inspección de cubiertas, mampostería y anclajes en patrimonio histórico | Anual (pre-temporada) | Dirección General de Construcciones |
-
 
 | Nodo Meshtastic Palihue | Panel solar, baterías y mensajería | Semestral | Telecomunicaciones / LH |  |  |  |
 | Megáfonos de mayordomías | Prueba de sirena y carga de batería | Trimestral | Mayordomías |  |  |  |
