@@ -341,3 +341,89 @@ RACUNS se activa como medio principal de coordinación cuando el Nodo Central ve
   [ENLACE S1] ── servidores Alem ↔ respaldo Palihue ·
         conmutación MANUAL ante degradación de fibra (5.10)
   [NODO MESH PALIHUE] ── Capa 5 · único · autónomo solar (5.9)
+```
+---
+## 7. PRUEBAS DE CAMPO Y VALIDACIÓN TÉCNICA
+
+### 7.1. Plan de pruebas de campo
+
+Se ejecutará una prueba de campo integral con radiobases y handies en los nodos **Colón 80, Campus Palihue, Escuelas Preuniversitarias, Anexo Radio y BASE LH**, con la siguiente secuencia:
+
+1. Coordinación previa con mayordomías y responsables de predio; asignación de operadores por nodo.
+2. Verificación de energía, puesta a tierra y estado de antenas en cada nodo.
+3. Prueba de cobertura por puntos fijos por predio: plantas bajas, subsuelos, terrazas, aulas críticas, estacionamientos y sendas arboladas.
+4. Prueba comparativa VHF vs. UHF y validación de la subcapa de retransmisión entre nodos.
+5. Prueba de autonomía energética con corte simulado de red en al menos un nodo.
+6. Prueba de interoperabilidad CH4 con Defensa Civil, cuando la autoridad municipal esté disponible.
+7. Verificación del enlace VHF y del respaldo energético del Anexo Radio, y del rol de la BASE LH como respaldo del troncal.
+8. Verificación del nodo Meshtastic Palihue (mensajería y autonomía solar).
+9. Registro de resultados en la **Planilla de Prueba de Campo (Anexo A.1)** e informe de sombras radioeléctricas para ajuste de ingeniería.
+
+### 7.2. Pruebas periódicas complementarias
+
+| Prueba | Frecuencia | Responsable |
+| --- | --- | --- |
+| Prueba radial semanal (5.11) | Semanal | Telecomunicaciones |
+| Transmisión conjunta AM UNS – FM UTN-FRBB | Trimestral | Vocería + Telecomunicaciones |
+| Conmutación energética de nodos críticos (ATS, UPS, generador móvil) | Semestral | Telecomunicaciones + Infraestructura |
+| Procedimiento de caída del repetidor (5.8) | Trimestral | Telecomunicaciones |
+| Despliegue y apuntamiento Starlink S3 (5.10) | Trimestral | Telecomunicaciones |
+| **Conmutación MANUAL del enlace S1 fibra→Starlink (5.10)** | Trimestral | Telecomunicaciones |
+| **Emisión vía Starlink S2 y enlace alternativo con la FM (5.10)** | Trimestral | Vocería + Telecomunicaciones |
+| Verificación del nodo Meshtastic Palihue (5.14) | Semestral | Telecomunicaciones + LH |
+| Simulacro integral con activación completa de RACUNS y Nodo Central | Anual | Comité + Telecomunicaciones |
+
+---
+
+## 8. INDICADORES TÉCNICOS Y MEJORA CONTINUA
+
+| Indicador | Meta |
+| --- | --- |
+| Cumplimiento de prueba radial semanal | 100 % |
+| Fallas radiales reportadas subsanadas dentro de las 24 h | ≥ 95 % |
+| Cobertura sin sombras radioeléctricas en áreas críticas de cada predio | 100 % |
+| Autonomía energética de nodos ante corte de red | ≥ 24 h |
+| Pruebas trimestrales AM/FM ejecutadas | 100 % |
+| Pruebas trimestrales de caída del repetidor ejecutadas | 100 % |
+| Pruebas trimestrales de despliegue Starlink S3 ejecutadas | 100 % |
+| **Simulacros trimestrales de conmutación manual S1 ejecutados** | 100 % |
+| **Pruebas trimestrales de emisión S2 y enlace alternativo FM ejecutadas** | 100 % |
+| **Nodo Meshtastic Palihue operativo en verificación semestral** | 100 % |
+| Checklist de mantenimiento preventivo sin observaciones abiertas | 100 % |
+
+- Todo desvío se registrará y tratará conforme al ciclo **PDCA** del Documento A (Sección de Mejora Continua). El registro de comunicaciones críticas y las revisiones post-incidente se rigen por el Documento A.
+- Los resultados de pruebas y mantenimientos alimentarán la revisión anual del presente documento mediante control de versiones.
+- Las modificaciones de frecuencias, canales o emplazamientos requerirán aprobación de la Dirección de Telecomunicaciones y actualización del **Anexo Técnico de Radiocomunicaciones (restringido)**.
+
+---
+
+## ANEXO A – PLANILLAS TÉCNICAS DE REGISTRO
+
+### A.1. Planilla de Prueba de Campo (plantilla)
+
+| Ítem | Nodo / predio | Punto de prueba | Canal / modalidad (CH1 / CH2 / CH3 / UHF) | Resultado de señal (1–5) | Sombra radioeléctrica (S/N) | Batería | Observaciones |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |  |
+
+### A.2. Libro de Prueba Radial Semanal (plantilla)
+
+| Fecha | Hora | Estación (Base / handy ID) | Operador | Estado del equipo | Nivel de batería | Novedades / fallas | Reporte a Telecomunicaciones (S/N y hora) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |  |
+
+### A.3. Checklist de Mantenimiento Preventivo (plantilla)
+
+| Sistema | Tarea | Frecuencia | Responsable | Fecha | Resultado | Observaciones |
+| --- | --- | --- | --- | --- | --- | --- |
+| Pluviales y bombas de achique | Limpieza de sumideros; prueba de bombas | Semestral / pre-temporada | Infraestructura |  |  |  |
+| Cubiertas y desagües | Inspección y sellado | Anual / pre-temporada | Infraestructura |  |  |  |
+| Arbolado | Poda preventiva de ejemplares añejos | Semestral | Infraestructura |  |  |  |
+| Grupos electrógenos (ATS) | Prueba bajo carga | Trimestral | Telecomunicaciones / Infraestructura |  |  |  |
+| UPS y bancos de baterías | Verificación de autonomía y protecciones | Semestral | Telecomunicaciones |  |  |  |
+| Repetidor VHF Alem | Inspección de antena, coaxial y gabinete | Mensual | LH / Telecomunicaciones |  |  |  |
+| Bases y handies (incl. BASE LH y Anexo Radio) | Prueba radial y estado de equipos | Semanal | Telecomunicaciones |  |  |  |
+| Starlink S1 (respaldo fijo) | Simulacro de conmutación manual fibra→Starlink | Trimestral | Telecomunicaciones |  |  |  |
+| Starlink S2 (nodo Anexo Radio) | Prueba de emisión y enlace alternativo con FM | Trimestral | Vocería / Telecomunicaciones |  |  |  |
+| Starlink S3 (kit vehicular) | Despliegue y apuntamiento | Trimestral | Telecomunicaciones |  |  |  |
+| Nodo Meshtastic Palihue | Panel solar, baterías y mensajería | Semestral | Telecomunicaciones / LH |  |  |  |
+| Megáfonos de mayordomías | Prueba de sirena y carga de batería | Trimestral | Mayordomías |  |  |  |
