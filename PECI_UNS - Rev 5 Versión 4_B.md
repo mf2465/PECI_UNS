@@ -468,6 +468,8 @@ Se ejecutará una prueba de campo integral con radiobases y handies en los nodos
 | Starlink S1 (respaldo fijo) | Simulacro de conmutación manual fibra→Starlink | Trimestral | Telecomunicaciones |  |  |  |
 | Starlink S2 (nodo Anexo Radio) | Prueba de emisión y enlace alternativo con FM | Trimestral | Vocería / Telecomunicaciones |  |  |  |
 | Starlink S3 (kit vehicular) | Despliegue y apuntamiento | Trimestral | Telecomunicaciones |  |  |  |
+| Nodo Meshtastic Palihue | Panel solar, baterías y mensajería | Semestral | Telecomunicaciones / LH |  |  |  |
+| Megáfonos de mayordomías | Prueba de sirena y carga de batería | Trimestral | Mayordomías |  |  |  |
 | Red de Gas (Calderas / Comedor) | Prueba de corte de válvulas maestras y electroválvulas | Semestral | Dirección de Mantenimiento |
 | Ascensores (SJ670, Alem) | Verificación de llaves de rescate, intercomunicadores y UPS de nivelación | Trimestral | Dirección de Mantenimiento |
 | Ciberseguridad y Backups | Prueba de restauración de backups críticos y segregación de red de emergencia | Trimestral | Dirección de Gestión y Seguridad de la Información |
@@ -475,7 +477,3 @@ Se ejecutará una prueba de campo integral con radiobases y handies en los nodos
 | Flota Institucional | Revisión de botiquines, linternas y protocolo de choferes en vehículos | Semestral | Subsecretaría de Infraestructura |
 | Evaluación Estructural | Inspección de cubiertas, mampostería y anclajes en patrimonio histórico | Anual (pre-temporada) | Dirección General de Construcciones |
 | Sistema | Tarea | Frecuencia | Responsable |
-| :--- | :--- | :--- | :--- |
-
-| Nodo Meshtastic Palihue | Panel solar, baterías y mensajería | Semestral | Telecomunicaciones / LH |  |  |  |
-| Megáfonos de mayordomías | Prueba de sirena y carga de batería | Trimestral | Mayordomías |  |  |  |
