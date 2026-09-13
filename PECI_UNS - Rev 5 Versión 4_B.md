@@ -133,6 +133,39 @@ La resiliencia de las comunicaciones (RACUNS y medios primarios) debe estar sust
 2. **Residencias:** La **Subsecretaría de Infraestructura** garantizará que las Residencias de Bienestar Universitario cuenten con rutas de evacuación interna señalizadas, iluminación de emergencia operativa y stock de alimentos no perecederos, en articulación con la Secretaría de Bienestar Universitario.
 
 ---
+### 3.3. PROTOCOLOS DE INFRAESTRUCTURA CRÍTICA, MANTENIMIENTO Y SERVICIOS ESENCIALES
+
+La resiliencia de las comunicaciones (RACUNS y medios primarios) debe estar sustentada por la integridad de la infraestructura física, los servicios esenciales y la seguridad de la información. Esta sección unifica el mantenimiento preventivo y los protocolos de respuesta, asignándolos a las direcciones específicas de la UNS conforme a su estructura orgánica.
+
+#### 3.3.1. Matriz de Responsabilidades Técnicas por Dirección
+
+| Dirección / Servicio UNS | Riesgo Crítico Asociado | Directiva Técnica Principal |
+| :--- | :--- | :--- |
+| **Dirección de Mantenimiento** | Corte de gas, anegamientos, arbolado, flota vehicular, ascensores. | Ejecución de cortes preventivos, limpieza de sumideros, balizamiento de zonas de exclusión, protocolo de choferes y rescate en ascensores. |
+| **Dirección General de Construcciones Universitarias** | Daño estructural, colapso de cubiertas, patrimonio histórico. | Inspección de techos, protección de archivos, y emisión del "Certificado de Aptitud de Ocupación" post-evento. |
+| **Servicios de Seguridad e Higiene en el Trabajo (SHST)** | Riesgo químico/biológico, EPP, primeros auxilios, auditoría de laboratorios. | Supervisión de protocolos de laboratorios críticos, coordinación de brigadas y contención de residuos peligrosos. |
+| **Dirección de Gestión y Seguridad de la Información** | Ciberataques, pérdida de datos, vulnerabilidad de servidores. | Verificación de backups externos, segregación de redes de emergencia y ciberseguridad en modo contingencia. |
+| **Dirección General de Sistemas de Información** | Caída de servicios digitales, Moodle, web institucional. | Conmutación a servidores de respaldo y priorización de tráfico informático crítico. |
+| **Dirección General de Telecomunicaciones** | Caída de fibra óptica, redes de datos, RACUNS. | Conmutación manual a Starlink S1, soporte a Sistemas de Información y mantenimiento de RACUNS. |
+
+#### 3.3.2. Mantenimiento Preventivo de Rutina y Estacional
+Las tareas de preparación previa a la temporada de riesgos (primavera-verano) y de rutina anual son ineludibles y se registran en el **Checklist de Mantenimiento Preventivo (Anexo A.3)**:
+1. **Arbolado y Espacio Público:** Inspección y poda preventiva semestral en Campus Palihue y predios preuniversitarios. Balizamiento o cierre con cadenas de estacionamientos bajo arbolado de gran porte ante Alerta Naranja.
+2. **Pluviales y Cubiertas:** Limpieza periódica de canaletas y sumideros; inspección y sellado de cubiertas (especialmente en patrimonio histórico y subsuelos críticos).
+3. **Energía de Respaldo:** Pruebas bajo carga de grupos electrógenos (ATS) y motobombas de achique; verificación semestral de UPS, bancos de baterías y tableros de transferencia.
+
+#### 3.3.3. Protocolos de Actuación ante Alerta y Emergencia
+1. **Corte Preventivo de Gas:** Ante Alerta Roja, Aviso a Muy Corto Plazo (ACP) o sismo, la **Dirección de Mantenimiento** procederá al corte de las válvulas maestras de gas en calderas y cocinas (Comedor Universitario). La rehabilitación solo se ejecutará tras inspección técnica post-evento.
+2. **Reserva Estratégica de Agua:** Ante Alerta Naranja/Roja prolongada, la **Subsecretaría de Infraestructura** garantizará el stock de agua potable (mínimo 3 litros/persona/día) en los Nodos de Confinamiento, Escuelas Preuniversitarias y Residencias.
+3. **Rescate en Ascensores:** En Alerta Roja, Mantenimiento bajará los ascensores a planta baja y los desconectará. Si el corte es súbito y hay personas atrapadas, Mayordomía usará el intercomunicador para contener, y Mantenimiento ejecutará la maniobra de rescate manual o activará el SLA de emergencia con la empresa externa.
+4. **Flota Institucional en Tránsito:** Si un Alerta sorprende a vehículos institucionales en la vía pública, los choferes aplicarán el protocolo de "Detención en lugar seguro" (lejos de árboles y cables), confinamiento dentro de la unidad y reporte a Base Central por CH2 o celular.
+5. **Evaluación Estructural Post-Evento (Aptitud de Ocupación):** Tras un temporal severo o sismo, ningún edificio podrá ser reocupado hasta que la **Dirección General de Construcciones Universitarias** emita el "Certificado de Aptitud de Ocupación" o dicte la clausura preventiva, informe que se elevará al CDE.
+
+#### 3.3.4. Ciberseguridad, Laboratorios Críticos y Patrimonio
+1. **Respaldo y Segregación de Datos:** La **Dirección de Gestión y Seguridad de la Información** garantizará que los backups críticos estén replicados fuera del sitio. Durante el Estado de Comunicaciones Degradadas, la red Starlink S1 operará en una VLAN segregada, bloqueando el tráfico administrativo ordinario para evitar ciberataques oportunistas.
+2. **Cadena de Frío y Riesgo Químico:** Las Unidades Académicas, con asistencia de **Mantenimiento** (soporte eléctrico) y auditoría del **SHST**, mantendrán un inventario de freezers críticos (-80°C) conectados a UPS dedicadas o con prioridad de encendido en grupos electrógenos. El SHST supervisará el aseguramiento de reactivos ante riesgo de inundación.
+3. **Archivos y Bibliotecas:** Protocolo de "Elevación Preventiva" (tarimas) y provisión de cobertores de polietileno de emergencia en salas de archivos críticos y Biblioteca Central, con bombas de achique exclusivas para subsuelos patrimoniales.
+---
 
 ## 4. MEDIOS DE COMUNICACIÓN PRIMARIOS DEL PROCESO (COMERCIALES E INSTITUCIONALES)
 
