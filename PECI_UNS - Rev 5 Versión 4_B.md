@@ -87,7 +87,50 @@ Este documento es de uso obligatorio para: **Dirección General de Telecomunicac
 3. Pruebas bajo carga de grupos electrógenos (ATS) y motobombas de achique, con registro.
 4. Verificación semestral de UPS, bancos de baterías y tableros de transferencia.
 
-> El cumplimiento se registrará en el **Checklist de Mantenimiento Preventivo (Anexo A.3)**.
+### 3.4. PROTOCOLOS TÉCNICOS DE INFRAESTRUCTURA CRÍTICA, LOGÍSTICA Y SERVICIOS ESENCIALES
+
+La resiliencia de las comunicaciones (RACUNS y medios primarios) debe estar sustentada por la integridad de la infraestructura física, los servicios esenciales y la seguridad de la información. Esta sección asigna los procedimientos técnicos preventivos y de respuesta a las direcciones específicas de la UNS, conforme a su estructura orgánica.
+
+#### 3.4.1. Matriz de Responsabilidades Técnicas por Dirección
+
+| Dirección / Servicio UNS | Riesgo Crítico Asociado | Directiva Técnica de Infraestructura |
+| :--- | :--- | :--- |
+| **Dirección de Mantenimiento** | Corte de gas, anegamientos, arbolado, flota vehicular. | Ejecución de cortes preventivos, limpieza de sumideros, balizamiento de zonas de exclusión y protocolo de choferes. |
+| **Dirección General de Construcciones Universitarias** | Daño estructural, colapso de cubiertas, patrimonio histórico. | Inspección de techos, protección de archivos, y emisión del "Certificado de Aptitud de Ocupación" post-evento. |
+| **Servicios de Seguridad e Higiene en el Trabajo (SHST)** | Riesgo químico/biológico, atrapamientos, EPP, primeros auxilios. | Supervisión de protocolos de laboratorios, rescate en ascensores, y coordinación de brigadas. |
+| **Dirección de Gestión y Seguridad de la Información** | Ciberataques, pérdida de datos, vulnerabilidad de servidores. | Verificación de backups externos, segregación de redes de emergencia y ciberseguridad en modo contingencia. |
+| **Dirección General de Sistemas de Información** | Caída de servicios digitales, Moodle, web institucional. | Conmutación a servidores de respaldo y priorización de tráfico informático crítico. |
+| **Dirección General de Telecomunicaciones** | Caída de fibra óptica, redes de datos, RACUNS. | Conmutación manual a Starlink S1, soporte a Sistemas de Información y mantenimiento de RACUNS. |
+
+#### 3.4.2. Fluidos y Servicios Esenciales (Gas, Agua y Pluviales)
+1. **Corte Preventivo de Gas:** Ante Alerta Roja, Aviso a Muy Corto Plazo (ACP) por tormentas severas, o sismo, la **Dirección de Mantenimiento** procederá al corte de las válvulas maestras de gas en calderas (ej. San Juan 670, Complejo Alem) y cocinas (Comedor Universitario). La rehabilitación y purga de la red solo se ejecutará tras inspección técnica post-evento.
+2. **Reserva Estratégica de Agua:** Ante Alerta Naranja/Roja prolongada, la **Subsecretaría de Infraestructura y Servicios** garantizará el stock de agua potable (mínimo 3 litros/persona/día) en los Nodos de Confinamiento, Escuelas Preuniversitarias, Residencias y Comedor, en coordinación con la Secretaría de Bienestar Universitario.
+3. **Pluviales y Bombas de Achique:** La **Dirección de Mantenimiento** ejecutará la limpieza preventiva de canaletas y sumideros, y probará las motobombas en subsuelos críticos (San Juan 670, Biblioteca Central) ante todo Alerta Amarillo.
+
+#### 3.4.3. Rescate en Ascensores y Atrapamientos
+1. **Desconexión Preventiva:** En Alerta Roja, la **Dirección de Mantenimiento** bajará los ascensores a planta baja y los desconectará preventivamente.
+2. **Protocolo de Rescate:** Si el corte de energía es súbito y hay personas atrapadas, el personal de mayordomía utilizará el intercomunicador de cabina para contener a los ocupantes. La **Dirección de Mantenimiento** ejecutará la maniobra de rescate manual (usando llaves de triangulación y palancas de aflojamiento de freno) o activará el SLA de emergencia con la empresa de mantenimiento externo, priorizando edificios de gran altura (San Juan 670).
+
+#### 3.4.4. Ciberseguridad y Continuidad de Datos
+1. **Respaldo y Segregación:** La **Dirección de Gestión y Seguridad de la Información** garantizará que los backups críticos estén replicados fuera del sitio o en la nube de contingencia. Durante el Estado de Comunicaciones Degradadas, la red Starlink S1 operará en una VLAN segregada, exclusiva para servidores y RACUNS, bloqueando el tráfico administrativo ordinario para evitar ciberataques oportunistas.
+2. **Protección contra Descargas:** Ante Alerta por Tormentas con actividad eléctrica, Sistemas de Información y Telecomunicaciones verificarán la operatividad de los UPS y los tableros de supresión de picos en el Centro de Datos.
+
+#### 3.4.5. Laboratorios Críticos, Cadena de Frío y Riesgo Químico
+1. **Freezers y Cultivos:** Las Unidades Académicas, con asistencia técnica de la **Dirección de Mantenimiento** (soporte eléctrico) y auditoría del **SHST**, mantendrán un inventario de freezers críticos (-80°C) conectados a UPS dedicadas o con prioridad de encendido en grupos electrógenos.
+2. **Contención de Residuos:** El **SHST** supervisará el protocolo de aseguramiento de reactivos químicos y materiales biológicos ante riesgo de inundación en laboratorios de planta baja o subsuelos.
+
+#### 3.4.6. Espacio Público, Arbolado y Flota Institucional
+1. **Zonas de Exclusión Vehicular:** En Campus Palihue y Alem, la **Dirección de Mantenimiento** balizará o cerrará con cadenas los estacionamientos bajo arbolado de gran porte ante Alerta Naranja, mitigando el riesgo material y legal.
+2. **Flota en Tránsito:** Si un Alerta Rojo o ACP sorprende a vehículos institucionales (colectivos, móviles de mantenimiento) en la vía pública, los choferes (bajo órdenes de la **Subsecretaría de Infraestructura**) aplicarán el protocolo de "Detención en lugar seguro" (lejos de árboles y cables), confinamiento dentro de la unidad y reporte a Base Central por CH2 o celular.
+3. **Remoción Post-Evento:** Mantenimiento coordinará con la aseguradora institucional y el Municipio la remoción rápida de troncos caídos que bloqueen accesos de bomberos o ambulancias.
+
+#### 3.4.7. Evaluación Estructural Post-Evento (Aptitud de Ocupación)
+1. Tras un temporal severo, sismo o incendio, ningún edificio podrá ser reocupado hasta que la **Dirección General de Construcciones Universitarias** (con apoyo técnico del Laboratorio de Hidráulica / Ingeniería Civil si se requiere) realice la inspección visual y estructural.
+2. Construcciones emitirá el **"Certificado de Aptitud de Ocupación"** o dictaminará la clausura preventiva, informe que será elevado al CDE para que el Rectorado autorice la reanudación de actividades (Proceso P9).
+
+#### 3.4.8. Soporte Edilicio a Comedor y Residencias Universitarias
+1. **Comedor Universitario:** La infraestructura del Comedor será evaluada por **Construcciones y Mantenimiento** para determinar si, tras un evento, puede operar como "Centro de Acopio y Refugio Primario" para la comunidad UNS aislada, o si debe ser clausurado preventivamente por riesgo de gas/estructural.
+2. **Residencias:** La **Subsecretaría de Infraestructura** garantizará que las Residencias de Bienestar Universitario cuenten con rutas de evacuación interna señalizadas, iluminación de emergencia operativa y stock de alimentos no perecederos, en articulación con la Secretaría de Bienestar Universitario.
 
 ---
 
@@ -425,5 +468,15 @@ Se ejecutará una prueba de campo integral con radiobases y handies en los nodos
 | Starlink S1 (respaldo fijo) | Simulacro de conmutación manual fibra→Starlink | Trimestral | Telecomunicaciones |  |  |  |
 | Starlink S2 (nodo Anexo Radio) | Prueba de emisión y enlace alternativo con FM | Trimestral | Vocería / Telecomunicaciones |  |  |  |
 | Starlink S3 (kit vehicular) | Despliegue y apuntamiento | Trimestral | Telecomunicaciones |  |  |  |
+| Sistema | Tarea | Frecuencia | Responsable |
+| :--- | :--- | :--- | :--- |
+| **Red de Gas (Calderas / Comedor)** | Prueba de corte de válvulas maestras y electroválvulas | Semestral | Dirección de Mantenimiento |
+| **Ascensores (SJ670, Alem)** | Verificación de llaves de rescate, intercomunicadores y UPS de nivelación | Trimestral | Dirección de Mantenimiento |
+| **Ciberseguridad y Backups** | Prueba de restauración de backups críticos y segregación de red de emergencia | Trimestral | Dirección de Gestión y Seguridad de la Información |
+| **Freezers Críticos (-80°C)** | Verificación de conexión a UPS / prioridad en grupo electrógeno | Semestral | Mantenimiento + SHST |
+| **Flota Institucional** | Revisión de botiquines, linternas y protocolo de choferes en vehículos | Semestral | Subsecretaría de Infraestructura |
+| **Evaluación Estructural** | Inspección de cubiertas, mampostería y anclajes en patrimonio histórico | Anual (pre-temporada) | Dirección General de Construcciones |
+
+
 | Nodo Meshtastic Palihue | Panel solar, baterías y mensajería | Semestral | Telecomunicaciones / LH |  |  |  |
 | Megáfonos de mayordomías | Prueba de sirena y carga de batería | Trimestral | Mayordomías |  |  |  |
