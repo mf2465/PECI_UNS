@@ -88,91 +88,46 @@ Asimismo, posiciona a la UNS en cumplimiento directo con los principios de **Aut
 
 ---
 
-## ANEXO 2
-### Presupuestos
+## ANEXO 2 – PRESUPUESTOS
+
+Los presupuestos originales emitidos por Lagos Comunicaciones (Responsable Inscripto, CUIT 20-28566755-1) se archivan en formato PDF dentro de la carpeta `presupuestos_RACUNS/`. El presente documento no transcribe el detalle de cada proforma: se identifica número, fecha, condición y total, y se enlaza directamente al archivo original.
+
+> **Condiciones comunes de todas las proformas:** cliente UNIVERSIDAD NACIONAL DEL SUR (CUIT 30-54666878-5); condición IVA EXENTO; condición de venta transferencia bancaria; precios y stock vigentes al día de la fecha de emisión; documento no válido como factura.
 
 #### Proforma 00000295 - Lagos Comunicaciones
 **Fecha:** 18/09/2026  
 **Cliente:** UNIVERSIDAD NACIONAL DEL SUR  
-**Condición:** IVA EXENTO
-
-| Cantidad | Descripción | % Bonificación | Precio Unitario | Subtotal |
-|:---:|:---|:---:|:---:|:---:|
-| 3,00 | Base YEDRO MO4VUS Bi Banda 25 Watts | 10,00 | $ 350.000,00 | $ 945.000,00 |
-| 3,00 | Antena bi banda aluminio Walmar sr270 | 10,00 | $ 128.000,00 | $ 345.600,00 |
-| 8,00 | Conector PL-259 macho RG 213 | 10,00 | $ 7.000,00 | $ 50.400,00 |
-
-**Subtotal Gravado:** $ 1.182.476,35  
-**IVA CONTENIDO:** $ 158.523,65  
-**TOTAL:** $ 1.341.000,00
-
----
+**Condición:** IVA EXENTO  
+**Total:** $ 1.341.000,00  
+**Presupuesto original:** [presupuesto 1.pdf](presupuestos_RACUNS/1.pdf)
 
 #### Proforma 00000296 - Lagos Comunicaciones
 **Fecha:** 18/09/2026  
 **Cliente:** UNIVERSIDAD NACIONAL DEL SUR  
-**Condición:** IVA EXENTO
-
-| Cantidad | Descripción | % Bonificación | Precio Unitario | Subtotal |
-|:---:|:---|:---:|:---:|:---:|
-| 1,00 | Cable Coaxil Rg213U ROLLO POR 100 MTS | 10,00 | $ 900.000,00 | $ 810.000,00 |
-
-**Subtotal Gravado:** $ 669.421,49  
-**IVA CONTENIDO:** $ 140.578,51  
-**TOTAL:** $ 810.000,00
-
----
-
-#### Proforma 00000299 - Lagos Comunicaciones
-**Fecha:** 18/09/2026  
-**Cliente:** UNIVERSIDAD NACIONAL DEL SUR  
-**Condición:** IVA EXENTO
-
-| Cantidad | Descripción | % Bonificación | Precio Unitario | Subtotal |
-|:---:|:---|:---:|:---:|:---:|
-| 1,00 | Antena Colineal Fibra De Vidrio BI BANDA 3x 5/8 | 10,00 | $ 400.000,00 | $ 360.000,00 |
-
-**Subtotal Gravado:** $ 297.520,66  
-**IVA CONTENIDO:** $ 62.479,34  
-**TOTAL:** $ 360.000,00
-
----
+**Condición:** IVA EXENTO  
+**Total:** $ 810.000,00  
+**Presupuesto original:** [presupuesto 2.pdf](presupuestos_RACUNS/2.pdf)
 
 #### Proforma 00000297 - Lagos Comunicaciones
 **Fecha:** 18/09/2026  
 **Cliente:** UNIVERSIDAD NACIONAL DEL SUR  
-**Condición:** IVA EXENTO
+**Condición:** IVA EXENTO  
+**Total:** $ 432.000,00  
+**Presupuesto original:** [presupuesto 4.pdf](presupuestos_RACUNS/4.pdf)
 
-| Cantidad | Descripción | % Bonificación | Precio Unitario | Subtotal |
-|:---:|:---|:---:|:---:|:---:|
-| 1,00 | Base YEDRO MO4VUS Bi Banda 25 Watts | 10,00 | $ 350.000,00 | $ 315.000,00 |
-| 1,00 | Kit soporte magnetico 105mm + antena bi banda | 10,00 | $ 130.000,00 | $ 117.000,00 |
-
-**Subtotal Gravado:** $ 381.762,09  
-**IVA CONTENIDO:** $ 50.237,91  
-**TOTAL:** $ 432.000,00
-
----
-
-#### Proforma 00000298 - Lagos Comunicaciones (Resumen Consolidado)
+#### Proforma 00000299 - Lagos Comunicaciones
 **Fecha:** 18/09/2026  
 **Cliente:** UNIVERSIDAD NACIONAL DEL SUR  
-**Condición:** IVA EXENTO
+**Condición:** IVA EXENTO  
+**Total:** $ 360.000,00  
+**Presupuesto original:** [presupuesto 3.pdf](presupuestos_RACUNS/3.pdf)
 
-| Cantidad | Descripción | % Bonificación | Precio Unitario | Subtotal |
-|:---:|:---|:---:|:---:|:---:|
-| 4,00 | Base YEDRO MO4VUS Bi Banda 25 Watts | 10,00 | $ 350.000,00 | $ 1.260.000,00 |
-| 3,00 | Antena bi banda aluminio Walmar sr270 | 10,00 | $ 128.000,00 | $ 345.600,00 |
-| 10,00 | Conector PL-259 macho RG 213 | 10,00 | $ 7.000,00 | $ 63.000,00 |
-| 1,00 | Cable Coaxil Rg213U Rollo por 100 mts | 10,00 | $ 900.000,00 | $ 810.000,00 |
-| 1,00 | Kit soporte magnetico 105mm + antena bi banda | 10,00 | $ 130.000,00 | $ 117.000,00 |
-| 1,00 | Antena Colineal Fibra De Vidrio BI BANDA 3x 5/8 | 10,00 | $ 400.000,00 | $ 360.000,00 |
-
-**Subtotal Gravado:** $ 2.541.593,81  
-**IVA CONTENIDO:** $ 414.006,19  
-**TOTAL:** $ 2.955.600,00
-
----
+#### Proforma 00000298 - Lagos Comunicaciones (resumen consolidado de los ítems Lagos)
+**Fecha:** 18/09/2026  
+**Cliente:** UNIVERSIDAD NACIONAL DEL SUR  
+**Condición:** IVA EXENTO  
+**Total:** $ 2.955.600,00  
+**Presupuesto original:** [presupuesto 5.pdf](presupuestos_RACUNS/5.pdf) 
 
 **Datos para cancelación de facturas:**
 - **Banco:** Galicia
