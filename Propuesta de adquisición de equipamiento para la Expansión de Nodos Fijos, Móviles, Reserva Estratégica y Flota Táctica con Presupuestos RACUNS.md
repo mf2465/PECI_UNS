@@ -74,8 +74,17 @@ Asimismo, posiciona a la UNS en cumplimiento directo con los principios de **Aut
 ### Relevamiento fotográfico
 
 - Edificio Agronomía – Campus Palihue
+
+![Fig. 1 – Edificio Agronomía, Campus Palihue: emplazamiento previsto del Nodo Fijo](IMG/agrono_1.jpg) 
+![Fig. 2 – Edificio Agronomía, Campus Palihue: emplazamiento previsto del Nodo Fijo](IMG/agrono_2.jpg)
+
 - Escuelas Medias UNS – 11 de Abril 445
+  
+![Fig. 3 – Escuelas Medias UNS, 11 de Abril 445: emplazamiento previsto del Nodo Fijo](IMG/escuelas.jpg) 
+
 - Edificio Rectorado – Colón 80
+  
+![Fig. 4 – Edificio Rectorado, Colón 80: emplazamiento previsto del Nodo Fijo](IMG/Colon80.jpg) 
 
 ---
 
