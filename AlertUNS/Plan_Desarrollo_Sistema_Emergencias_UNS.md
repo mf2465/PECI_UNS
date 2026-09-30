@@ -1259,7 +1259,12 @@ CREATE INDEX idx_custodia_emergencia ON custodia_escolar(emergencia_id);
 
 ## ANEXO 4: Plantillas de Mensajes M1-M8 (Documento C - Anexo C)
 
-M1 – Preventivo (SMN Amarillo)
+### M1 – Preventivo (SMN Amarillo)
+
+**Categoría:** Emergencia climática / Emergencia esperable
+**Enfoque comunicacional:** Prevención y preparación
+**Medida:** Limitación de actividades al aire libre
+**Canales sugeridos:** Correo + Redes + Apps
 
 Debido a (X MOTIVO) se suspenden actividades al aire libre por condiciones 
 climáticas a partir de XXX y hasta XXX en todas las instalaciones de la 
@@ -1267,7 +1272,7 @@ Universidad. Las clases y actividades en espacios cerrados continúan
 normalmente. Sugerimos a la comunidad mantenerse informada por los canales 
 oficiales de la UNS.
 
-M2 – Suspensión (SMN Naranja/Rojo)
+### M2 – Suspensión (SMN Naranja/Rojo)
 
 Debido a (X MOTIVO) se encuentran suspendidas todas actividades presenciales 
 en (X SEDE/EDIFICIO) de la UNS. Esta medida incluye clases, consultas, 
@@ -1276,7 +1281,7 @@ aviso y se sugiere a los alumnos mantenerse en contacto con sus cátedras a
 través del sistema Moodle. La información oficial se publicará en los medios 
 institucionales.
 
-M3 – Evacuación
+### M3 – Evacuación
 
 A partir de este momento se suspenden todas las actividades presenciales en 
 [X SEDE/EDIFICIO]. Les pedimos retirarse de manera ordenada hacia el punto 
@@ -1284,7 +1289,7 @@ de reunión establecido. Mantengan la calma, sigan las indicaciones del
 personal y permanezcan atentos a la información oficial que se difundirá por 
 los canales institucionales.
 
-M4 – Confinamiento (SMN Rojo)
+### M4 – Confinamiento (SMN Rojo)
 
 Debido a (X MOTIVO) la Universidad se encuentra en modo de emergencia y se 
 ha resuelto el confinamiento del personal y la comunidad estudiantil: todos 
@@ -1292,20 +1297,20 @@ deben permanecer dentro de los edificios de la UNS y no salir al exterior
 hasta recibir nuevas instrucciones oficiales. Mantenga la calma y siga las 
 indicaciones del personal.
 
-M5 – Custodia escolar (Naranja)
+### M5 – Custodia escolar (Naranja)
 
 Se informa a los padres, madres y adultos responsables de los estudiantes de 
 (X ESTABLECIMIENTO) que los alumnos y alumnas se encuentran bajo custodia 
 segura en su escuela. El retiro solo se realizará con DNI del adulto 
 autorizado. Se informará cualquier cambio por los canales oficiales.
 
-M6 – Cese (Verde)
+### M6 – Cese (Verde)
 
 La UNS informa el cese de las medidas extraordinarias. Las actividades 
 académicas y administrativas se reanudan con normalidad en todos los turnos. 
 Gracias por seguir las instrucciones oficiales.
 
-M7 – Rumor
+### M7 – Rumor
 
 La Universidad Nacional del Sur confirma que la situación vigente es la 
 siguiente: [dato verificado]. Versiones que indiquen lo contrario no son 
@@ -1314,7 +1319,7 @@ mantenerse informada exclusivamente a través de nuestros canales oficiales,
 donde encontrarán datos claros, actualizados y confiables. Gracias por 
 acompañar la difusión responsable de la información.
 
-M8 – Parte prolongado
+### M8 – Parte prolongado
 
 Parte oficial UNS – Emergencia prolongada:
 Servicios disponibles: agua y alimentos en [sector].
@@ -1343,3 +1348,44 @@ Campos obligatorios a capturar en la app:
 |Operador que completa |	User	| Usuario de Recepción de Avisos |
 |Notificados (CDE)	| Multi |	Lista CDE + suplentes|
 |Hora / Medios utilizados |	Log	| Timestamp + canales|
+
+---
+
+## ANEXO 6: Checklist de Pruebas de Notificaciones Críticas
+
+** Pruebas Android
+
+- Alarma con app cerrada
+- Alarma con app en background
+- Alarma con pantalla bloqueada
+- Alarma con modo silencio activado
+- Alarma con modo No Molestar (DND)
+- Voz TTS reproduciendo mensaje
+- Vibración en patrón específico
+- Wake up de pantalla
+- Full screen intent
+Pruebas por fabricante:
+Samsung (One UI)
+Xiaomi (MIUI)
+Huawei (EMUI)
+Oppo (ColorOS)
+Motorola (Stock)
+Google Pixel (Stock)
+
+Pruebas iOS
+- Critical Alert con app cerrada
+- Critical Alert con pantalla bloqueada
+- Time Sensitive Notification
+- Sonido crítico personalizado
+- Voz TTS
+- Vibración específica
+- Wake up de pantalla
+
+Pruebas Generales
+- Notificación recibida en menos de 5 segundos
+- Confirmación de recepción registrada
+- Respuesta rápida desde notificación
+- Funcionamiento offline (cola local)
+- Sincronización al recuperar conexión
+- Pruebas con 100+ dispositivos simultáneos
+- Pruebas de redundancia (3 canales)
