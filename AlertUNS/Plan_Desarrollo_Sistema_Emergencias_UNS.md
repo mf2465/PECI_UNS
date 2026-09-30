@@ -956,6 +956,7 @@ Este proyecto es **totalmente viable** y se alinea perfectamente con los protoco
 
 ## ANEXO 3: Estructura de Base de Datos Sugerida (MySQL)
 
+
 ```sql
 -- ============================================
 -- TABLAS PRINCIPALES DEL SISTEMA UNS
@@ -1253,6 +1254,9 @@ CREATE INDEX idx_respuestas_emergencia ON respuestas_emergencia(emergencia_id);
 CREATE INDEX idx_mensajes_tipo ON mensajes(tipo);
 CREATE INDEX idx_custodia_emergencia ON custodia_escolar(emergencia_id);
 
+```
+---
+
 ## ANEXO 4: Plantillas de Mensajes M1-M8 (Documento C - Anexo C)
 
 M1 – Preventivo (SMN Amarillo)
@@ -1324,7 +1328,6 @@ Campos obligatorios a capturar en la app:
 
 | Campo | Tipo | Descripción |
 |-------|------|-------------|
-
 |N.º de ficha / Fecha y hora de recepción |	Auto |	Generado automáticamente |
 |Fuente|	Select |	web SMN / app SMN / Defensa Civil / manual |
 |Evento |	Select	 |Alerta / Advertencia / ACP |
