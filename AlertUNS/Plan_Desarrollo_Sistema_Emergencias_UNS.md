@@ -1,11 +1,11 @@
 # PLAN DE DESARROLLO: Sistema de Gestión de Emergencias UNS
-## App tipo BomberBOT adaptada a la Universidad Nacional del Sur
+## App AlertUNS - adaptada a la Universidad Nacional del Sur -
 
 **Elaborado por:** Comité de Dirección de Emergencia
 
 **Fecha:** 30 de septiembre de 2026
 
-**Basado en:** BomberBOT + Protocolos PECl-UNS (Documentos A, B, AT-01, AT-02)
+**Basado en:** app BomberBOT + Protocolos PECl-UNS (Documentos A, B, AT-01, AT-02)
 
 ---
 
