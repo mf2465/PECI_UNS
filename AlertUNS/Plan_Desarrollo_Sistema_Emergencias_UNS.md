@@ -1372,7 +1372,7 @@ Oppo (ColorOS)
 Motorola (Stock)
 Google Pixel (Stock)
 
-Pruebas iOS
+**Pruebas iOS**
 - Critical Alert con app cerrada
 - Critical Alert con pantalla bloqueada
 - Time Sensitive Notification
@@ -1381,7 +1381,7 @@ Pruebas iOS
 - Vibración específica
 - Wake up de pantalla
 
-Pruebas Generales
+**Pruebas Generales**
 - Notificación recibida en menos de 5 segundos
 - Confirmación de recepción registrada
 - Respuesta rápida desde notificación
