@@ -13,7 +13,7 @@
 
 ### 1.1. Características principales a implementar
 
-**Funcionalidades críticas (basadas en BomberBOT y protocolos UNS):**
+**Funcionalidades críticas (basadas en app BomberBOT y protocolos UNS):**
 
 | Módulo | Descripción | Prioridad |
 |--------|-------------|-----------|
