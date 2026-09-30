@@ -1353,7 +1353,7 @@ Campos obligatorios a capturar en la app:
 
 ## ANEXO 6: Checklist de Pruebas de Notificaciones Críticas
 
-** Pruebas Android
+**Pruebas Android**
 
 - Alarma con app cerrada
 - Alarma con app en background
