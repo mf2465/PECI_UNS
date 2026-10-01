@@ -743,7 +743,7 @@ El sistema debe implementar EXACTAMENTE los procedimientos definidos en:
 
 ---
 
-## . PROPUESTA DE MVP (Producto Mínimo Viable)
+## PROPUESTA DE MVP (Producto Mínimo Viable)
 
 Con las funcionalidades críticas:
 
