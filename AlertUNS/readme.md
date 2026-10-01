@@ -59,8 +59,8 @@ Análisis de «caja negra» sobre lo que el sitio declara. No se descompila, cop
 | Panel web, monitoreo online/último ping/versión | **Núcleo,** como «estado de preparación» del dispositivo |
 | Simulador de alertas | **Núcleo** como modo simulacro |
 | Mensajería interna urgente/normal | Fase 2 (contenido bloqueado en cascada, Doc C) |
-| Chequeos digitales offline (unidad → contenedor → ítem) | Fase 5 (checklists AT-01/AT-02 |
-| PPO (mapa de riesgo de la zona) | Fase 5 (vulnerabilidades por predio, AT-01 §3.1 |
+| Chequeos digitales offline (unidad → contenedor → ítem) | Fase 5 (checklists AT-01/AT-02) |
+| PPO (mapa de riesgo de la zona) | Fase 5 (vulnerabilidades por predio, AT-01 §3.1) |
 | IA para chequeos y calendarios | No recomendado: riesgo sin beneficio para el núcleo |
 | Tareas con rotación, guardias, encuestas, suscripción | No aplica |
 | Código de invitación de 6 dígitos | Se reemplaza por inicio de sesión institucional + padrón |
