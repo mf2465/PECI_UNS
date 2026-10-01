@@ -321,16 +321,16 @@ Cada dispositivo informa al iniciar la app y periódicamente: versión de app y 
 
 ## 8. Ingesta de alertas del SMN
 
-- **Estado:** no se confirmó un API o feed oficial documentado (p. ej. CAP) para los alertas del SAT [?]. El Doc B ya prevé fuentes redundantes: web oficial, app oficial del SMN con notificación por zona y correo [F, §6].
+- **Estado:** no se confirmó un API o feed oficial documentado (p. ej. CAP) para los alertas del SAT. El Doc B ya prevé fuentes redundantes: web oficial, app oficial del SMN con notificación por zona y correo [§6].
 - **Plan:**
   1. **Gestión formal** ante el SMN para un canal estructurado (idealmente CAP, estándar de OASIS). Largo plazo; empezar ya.
   2. **Ingesta técnica interina** sobre los endpoints públicos del SAT, **solo como asistencia**: genera borrador de Ficha y alarma al Nodo Central; no envía a la comunidad por sí sola (salvo modo B de D-04).
   3. Cada captura se guarda **cruda con hash** para auditoría.
-  4. **Frecuencia:** 60 s para ACP; 5 min para el resto [E].
+  4. **Frecuencia:** 60 s para ACP; 5 min para el resto.
   5. ***Dead-man switch:*** si la fuente no responde o devuelve datos inválidos por más de 10 min, alarma «fuente SMN sin datos» y consulta manual (el protocolo ya la prevé).
   6. Pruebas de contrato con muestras reales: si el formato cambia, el parser **falla visiblemente**.
-  7. Revisión de términos de uso del SMN [?].
-- **Modelo interno** compatible con CAP (evento, severidad, urgencia, certeza, área, vigencia) para interoperar con Defensa Civil y la plataforma municipal «Alerta Bahía» [?].
+  7. Revisión de términos de uso del SMN.
+- **Modelo interno** compatible con CAP (evento, severidad, urgencia, certeza, área, vigencia) para interoperar con Defensa Civil y la plataforma municipal «Alerta Bahía».
 
 ---
 
@@ -484,7 +484,7 @@ REST sobre HTTPS, JSON, versionada (`/v1`), documentada con OpenAPI. Autenticaci
 
 1. **Alta:** inicio de sesión institucional → aviso de privacidad y consentimiento → asistente de permisos (notificaciones, críticas, No Molestar, pantalla completa, batería con guía según marca) → prueba de alarma guiada.
 2. **Inicio:** estado del sistema, estado de preparación del dispositivo, última alerta, botón de prueba.
-3. **Pantalla de alarma:** a pantalla completa, alto contraste, pictograma ISO 7010 [F], texto corto en lenguaje claro [F], botones de respuesta grandes, botón «silenciar y confirmar».
+3. **Pantalla de alarma:** a pantalla completa, alto contraste, pictograma ISO 7010, texto corto en lenguaje claro, botones de respuesta grandes, botón «silenciar y confirmar».
 4. **Detalle de alerta:** nivel, zona, vigencia, instrucciones, versión sonora y visual, historial de actualizaciones (M6, M7, M8).
 5. **Mi rol:** suplente, predios y audiencias; reporte de estado (`SHELTERED`).
 6. **Ayuda:** guías por marca y contacto de soporte.
@@ -492,18 +492,18 @@ REST sobre HTTPS, JSON, versionada (`/v1`), documentada con OpenAPI. Autenticaci
 ### 11.2 Consola del Nodo Central
 
 1. **Cola de alertas** con borrador de Ficha y alarma sonora propia.
-2. **Ficha del Alerta:** campos del Anexo B del Doc A [F], con línea de tiempo de 72 h visible y bloqueo hasta leerla; umbrales y matriz precargados.
+2. **Ficha del Alerta:** campos del Anexo B del Doc A, con línea de tiempo de 72 h visible y bloqueo hasta leerla; umbrales y matriz precargados.
 3. **Decisión:** pasos de recomendación y aprobación con identidad, hora y, si corresponde, segunda aprobación.
-4. **Emisión:** plantilla M1–M8 con campos editables y contenido sustantivo bloqueado; los tres formatos (sonoro, visual de alto contraste, texto simple [F]); selección de audiencia y verificación de ≥3 canales independientes.
+4. **Emisión:** plantilla M1–M8 con campos editables y contenido sustantivo bloqueado; los tres formatos (sonoro, visual de alto contraste, texto simple); selección de audiencia y verificación de ≥3 canales independientes.
 5. **Tablero en vivo:** entregas por canal, confirmaciones, no confirmados con botón de escalar, estado de preparación por predio.
 6. **Cese y rectificación:** M6 y M7 con un clic; informe post-activación en borrador.
 7. **Rutina de guardia:** tareas 06/10/16/18/19/22 h con check y observaciones.
 8. **ECD:** panel de triangulación y libro de guardia digital.
-9. **Registro de difusión** por capa, incluyendo canales manuales (radio, megafonía, presencial) que el operador asienta [F, Doc C Anexo B].
+9. **Registro de difusión** por capa, incluyendo canales manuales (radio, megafonía, presencial) que el operador asienta [Doc C Anexo B].
 
 ### 11.3 Accesibilidad
 
-Tres formatos obligatorios por mensaje, lenguaje claro y pictogramas ISO 7010 [F]; consola conforme a WCAG 2.2 AA [E]; tamaños y contrastes revisados en dispositivos reales; subtítulos en videos de capacitación [F].
+Tres formatos obligatorios por mensaje, lenguaje claro y pictogramas ISO 7010; consola conforme a WCAG 2.2 AA; tamaños y contrastes revisados en dispositivos reales; subtítulos en videos de capacitación.
 
 ---
 
@@ -518,12 +518,12 @@ Tres formatos obligatorios por mensaje, lenguaje claro y pictogramas ISO 7010 [F
 | Alteración de registros | Auditoría encadenada; copia periódica del último hash fuera del sistema |
 | Filtración de padrón, DNI o datos de menores | Cifrado en tránsito y reposo; DNI cifrado por la aplicación; acceso por rol; registro de accesos |
 | Ingesta envenenada | Validación de esquema, límites de cordura, confirmación humana, *dead-man switch* |
-| Abuso de la app o tokens robados | Tokens de corta vida; verificación de integridad de app (Play Integrity / App Attest) [E]; límites de tasa |
+| Abuso de la app o tokens robados | Tokens de corta vida; verificación de integridad de app (Play Integrity / App Attest); límites de tasa |
 | Denegación de servicio | CDN/WAF; colas con prioridad (T0 primero) y cola dedicada al camino crítico |
-| Cautividad de proveedor | Doble camino iOS; dos proveedores SMS para T0; exportación periódica de padrón y registros [F, Doc B §7.6] |
+| Cautividad de proveedor | Doble camino iOS; dos proveedores SMS para T0; exportación periódica de padrón y registros [Doc B §7.6] |
 | Cadena de suministro | SBOM, escaneo de dependencias, revisión de librerías de notificaciones |
 
-### 12.2 Estándares de trabajo [E]
+### 12.2 Estándares de trabajo 
 
 OWASP ASVS (nivel 2) para el backend y OWASP MASVS para las apps · SAST/DAST en CI · **prueba de penetración externa antes de la compuerta G3** · corrección de críticos antes de producción · secretos solo en servidor.
 
@@ -533,10 +533,10 @@ OWASP ASVS (nivel 2) para el backend y OWASP MASVS para las apps · SAST/DAST en
 
 - Finalidad única: comunicación de emergencia.
 - Aviso y consentimiento al alta, con versión registrada.
-- Evaluar la inscripción de la base ante la autoridad de protección de datos [?].
+- Evaluar la inscripción de la base ante la autoridad de protección de datos.
 - Ubicación: no se captura de forma continua; solo si la persona la adjunta en `NEED_HELP`.
 - Menores y familias (escuelas): datos de adultos autorizados y alumnos con acceso restringido y cifrado, solo en Fase 5.
-- FCM y APNs procesan tokens de dispositivo fuera del país por diseño: documentar y evaluar con Legal [?].
+- FCM y APNs procesan tokens de dispositivo fuera del país por diseño: documentar y evaluar con Legal.
 - Plazos de retención por tabla a definir por SHST y Legal (D-09); simulacros con plazo menor.
 - Procedimiento de acceso, rectificación y supresión desde la consola.
 - Plan de respuesta a incidentes de seguridad con contactos definidos.
@@ -557,9 +557,9 @@ OWASP ASVS (nivel 2) para el backend y OWASP MASVS para las apps · SAST/DAST en
 | Laboratorio de dispositivos | Matriz de §13.2 | Antes de cada release |
 | **Canario** | Alerta de prueba automática a dispositivos fijos | Continuo |
 | **Campaña de preparación** | «Prueba de alarma» a T0/T1 y mensual a T2 | Mensual |
-| **Simulacros** | Mesa trimestral, difusión masiva trimestral, integral anual (Doc A §11 y Doc C §9 [F]) | Según calendario |
+| **Simulacros** | Mesa trimestral, difusión masiva trimestral, integral anual (Doc A §11 y Doc C §9) | Según calendario |
 
-La **prueba semanal de AlertUNS** se programa junto con la prueba radial semanal (AT-02 §7 [F]) y se registra en los mismos libros. Cuando AlertUNS entre en operación se agrega a la tabla de pruebas del Doc B §11 (hoy figura «Prueba Alerthor, semanal» [F]).
+La **prueba semanal de AlertUNS** se programa junto con la prueba radial semanal (AT-02 §7) y se registra en los mismos libros. Cuando AlertUNS entre en operación se agrega a la tabla de pruebas del Doc B §11 (hoy figura «Prueba Alerthor, semanal»).
 
 ### 13.2 Matriz de pruebas de alarma
 
@@ -571,7 +571,7 @@ La **prueba semanal de AlertUNS** se programa junto con la prueba radial semanal
 
 **Transversales.** Tokens inválidos o app desinstalada (manejo y aviso), escalamiento SMS/voz, auditoría encadenada verificable, regla de dos personas, *dead-man switch*, restauración de backup.
 
-### 13.3 Dispositivos de laboratorio [E]
+### 13.3 Dispositivos de laboratorio
 
 15–20 equipos: Android ≥8 (Samsung A y S, Xiaomi/Redmi, Motorola, Pixel, Oppo/Realme, uno de gama baja) y 3 iPhone (antiguo soportado, medio, reciente), cada uno en estado «limpio» y «hostil» (ahorro de batería, No Molestar/Focus, silencio, bloqueado, sin datos).
 
@@ -595,14 +595,14 @@ La **prueba semanal de AlertUNS** se programa junto con la prueba radial semanal
 - **Infraestructura como código** y *runbooks* para: caída de FCM/APNs, caída de SMS, falla de la ingesta SMN, conmutación Alem↔Palihue, restauración y rotación de claves.
 - **Backups:** diarios, cifrados, 30 días de retención, restauración mensual comprobada.
 - **Monitoreo:** latencia de colas por canal, errores de APNs/FCM, tokens inválidos, preparación por predio y rol, versiones instaladas, estado del canario; alertas por un canal **externo al propio sistema**.
-- **Guardia técnica** durante Naranja/Rojo y simulacros; congelamiento de despliegues con alerta Naranja/Roja activa o prevista [E].
-- **Gestión de cambios del protocolo:** cada nueva revisión de los anexos genera una nueva versión de catálogos con tabla de cambios (Doc A §12 [F]).
+- **Guardia técnica** durante Naranja/Rojo y simulacros; congelamiento de despliegues con alerta Naranja/Roja activa o prevista.
+- **Gestión de cambios del protocolo:** cada nueva revisión de los anexos genera una nueva versión de catálogos con tabla de cambios (Doc A §12).
 
 ---
 
 ## 15. Plan de trabajo
 
-**Supuestos [E]:** equipo de ~4,5–5 FTE; inicio el lunes 12/10/2026; sprints de 2 semanas; receso estival en enero–febrero con colchón (calendario académico a confirmar [?]). Con menos de 4 FTE la duración crece proporcionalmente. Si el hosting actual no es apto, sumar 1–2 semanas a la Fase 0.
+**Supuestos:** equipo de ~4,5–5 FTE; inicio el lunes 12/10/2026; sprints de 2 semanas; receso estival en enero–febrero con colchón (calendario académico a confirmar). Con menos de 4 FTE la duración crece proporcionalmente. Si el hosting actual no es apto, sumar 1–2 semanas a la Fase 0.
 
 ### 15.1 Fases y compuertas
 
@@ -645,11 +645,11 @@ La **prueba semanal de AlertUNS** se programa junto con la prueba radial semanal
 ### 15.4 Tareas de la semana 1
 
 - [ ] Designar dueño de producto y dueño técnico (D-01).
-- [ ] Iniciar el alta de Apple Developer y Google Play como **organización UNS**; consultar exención de cuota de Apple para instituciones educativas [?].
+- [ ] Iniciar el alta de Apple Developer y Google Play como **organización UNS**; consultar exención de cuota de Apple para instituciones educativas.
 - [ ] Redactar y enviar la solicitud de Critical Alerts.
 - [ ] Inventario de dispositivos para el laboratorio y lista de ~30 personas T0/T1 para PoC y piloto.
 - [ ] Auditoría de hosting (§16.2).
-- [ ] Consulta formal al SMN y reunión con Defensa Civil sobre interoperabilidad [?].
+- [ ] Consulta formal al SMN y reunión con Defensa Civil sobre interoperabilidad.
 
 ---
 
@@ -679,11 +679,11 @@ La **prueba semanal de AlertUNS** se programa junto con la prueba radial semanal
 | ¿Se puede instalar Redis y un supervisor de procesos? | Sí |
 | ¿Hay salida HTTPS a FCM/APNs y a proveedores SMS/voz? | Sí |
 | ¿Segundo sitio (Palihue) con réplica? | Deseable desde el MVP |
-| ¿Punto fuera de Bahía Blanca? | Despachador mínimo [E] |
+| ¿Punto fuera de Bahía Blanca? | Despachador mínimo |
 | ¿IP fija, WAF/CDN, límites de ancho de banda? | Definir |
 | ¿Quién opera el servidor y con qué guardia? | Definir |
 
-**Dimensionamiento inicial [E]:** 4 vCPU, 8 GB de RAM y 100 GB SSD para producción, con un *staging* equivalente, a ajustar con la prueba de carga y el tamaño real del padrón [?].
+**Dimensionamiento inicial [E]:** 4 vCPU, 8 GB de RAM y 100 GB SSD para producción, con un *staging* equivalente, a ajustar con la prueba de carga y el tamaño real del padrón.
 
 ### 16.3 Cuentas, licencias y contratos
 
@@ -695,11 +695,11 @@ Apple Developer (organización UNS) · Google Play Console (organización UNS) �
 
 ### 16.5 Material de comunicación
 
-Guías de configuración por marca, videos cortos con subtítulos, pictogramas ISO 7010, textos en lenguaje claro y audios pregrabados por nivel y tipo de mensaje [F].
+Guías de configuración por marca, videos cortos con subtítulos, pictogramas ISO 7010, textos en lenguaje claro y audios pregrabados por nivel y tipo de mensaje.
 
 ---
 
-## 17. Esfuerzo estimado [E, ±30 %]
+## 17. Esfuerzo estimado 
 
 | Flujo de trabajo | Horas |
 |---|---|
@@ -734,7 +734,7 @@ Guías de configuración por marca, videos cortos con subtítulos, pictogramas I
 | R-08 | Fatiga de alarma | Media | Alto | Niveles T0–T3, sonidos por nivel, reglas de frecuencia |
 | R-09 | Incidente de datos personales | Baja | Alto | Cifrado, minimización, pentest, plan de respuesta |
 | R-10 | Dependencia de una persona | Media | Alto | Cuentas de la UNS, documentación, *runbooks*, dos responsables por función |
-| R-11 | No hay evento real durante el piloto | Media | Medio | Criterio de G3 basado en simulacro (admitido por el Doc B [F]) |
+| R-11 | No hay evento real durante el piloto | Media | Medio | Criterio de G3 basado en simulacro (admitido por el Doc B) |
 | R-12 | Inconsistencias entre documentos del protocolo que el sistema codificaría | Media | Medio | Resolver las observaciones del Anexo A antes de congelar catálogos |
 | R-13 | Riesgo legal por el análisis de BomberBOT | Baja | Medio | Método de caja negra, desarrollo independiente, revisión legal |
 
@@ -761,7 +761,7 @@ Guías de configuración por marca, videos cortos con subtítulos, pictogramas I
 
 ## 20. Verificaciones externas y pendientes
 
-**Verificado [V]:**
+**Verificado:**
 - Apple: el entitlement *Critical Alerts* permite sonido con el equipo bloqueado, en silencio o con No Molestar/Focus, y se solicita por formulario. https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.usernotifications.critical-alerts
 - Foros de Apple: solicitudes del entitlement sin respuesta por semanas. https://developer.apple.com/forums/thread/106042
 - Google Play: declaración de servicios en primer plano y de pantalla completa en Android 14; desde enero de 2025 solo apps de llamadas o alarmas lo tienen habilitado por defecto. https://support.google.com/googleplay/android-developer/answer/13392821
@@ -791,7 +791,7 @@ Resolver antes de congelar catálogos (R-12).
 
 ## Anexo B — Plantillas de mensaje (contenido sustantivo bloqueado)
 
-Fuente: Doc C, Anexo C [F]. Los campos editables son solo los entre paréntesis o corchetes.
+Fuente: Doc C, Anexo C. Los campos editables son solo los entre paréntesis o corchetes.
 
 | Código | Uso | Canales sugeridos |
 |---|---|---|
@@ -804,7 +804,7 @@ Fuente: Doc C, Anexo C [F]. Los campos editables son solo los entre paréntesis 
 | **M7** Rumor | Aclaración oficial con dato verificado | Redes oficiales, web |
 | **M8** Parte prolongado | Servicios, retiro escolar y próxima actualización (por defecto 60 min) | Megafonía de predios, redes, web, radio |
 
-Cada plantilla se almacena con **tres formatos** (texto simple, versión sonora, versión visual de alto contraste [F]) y se versiona con tabla de cambios.
+Cada plantilla se almacena con **tres formatos** (texto simple, versión sonora, versión visual de alto contraste) y se versiona con tabla de cambios.
 
 ---
 
@@ -822,5 +822,4 @@ Cada plantilla se almacena con **tres formatos** (texto simple, versión sonora,
 
 ---
 
-*Todo lo marcado [E] y [?] debe validarse antes de comprometer fechas o presupuesto.*
 
