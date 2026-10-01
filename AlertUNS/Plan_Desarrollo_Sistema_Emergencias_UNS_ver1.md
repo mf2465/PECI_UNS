@@ -729,17 +729,15 @@ El sistema debe implementar EXACTAMENTE los procedimientos definidos en:
 
 ## 7. CRONOGRAMA GENERAL
 
-| Fase | Duración | Fechas Estimadas |
-|------|----------|------------------|
-| **Fase 1:** Planificación y Diseño | 6 semanas | Octubre - Noviembre 2026 |
-| **Fase 2:** Backend Laravel | 10 semanas | Diciembre 2026 - Febrero 2027 |
-| **Fase 3:** App Móvil | 12 semanas | Enero - Marzo 2027 |
-| **Fase 4:** Panel Web | 8 semanas | Febrero - Abril 2027 |
-| **Fase 5:** Pruebas | 8 semanas | Abril - Mayo 2027 |
-| **Fase 6:** Despliegue | 6 semanas | Junio - Julio 2027 |
-| **Fase 7:** Soporte continuo | Ongoing | Agosto 2027 en adelante |
-
-**Fecha estimada de lanzamiento:** **Julio/Agosto 2027** (antes de la próxima temporada primavera-verano)
+| Fase | Duración |
+|------|----------|
+| **Fase 1:** Planificación y Diseño | 6 semanas | 
+| **Fase 2:** Backend Laravel | 10 semanas | 
+| **Fase 3:** App Móvil | 12 semanas | 
+| **Fase 4:** Panel Web | 8 semanas |
+| **Fase 5:** Pruebas | 8 semanas |
+| **Fase 6:** Despliegue | 6 semanas |
+| **Fase 7:** Soporte continuo | Ongoing |
 
 ---
 
