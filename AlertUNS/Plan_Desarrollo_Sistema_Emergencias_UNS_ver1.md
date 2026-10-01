@@ -560,7 +560,7 @@
 
 ### 4.2. Recursos Tecnológicos
 
-#### Infraestructura (ya dispones de hosting y BD)
+#### Infraestructura (hosting y BD)
 - [ ] **Servidor de producción** (mínimo 4 vCPUs, 8GB RAM, 100GB SSD)
 - [ ] **Servidor de staging** (similar a producción)
 - [ ] **Base de datos MySQL** (ya disponible)
