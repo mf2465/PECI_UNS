@@ -107,7 +107,7 @@ Nodo Central lee la línea de tiempo y completa la Ficha → CDE recomienda → 
 ### 5.2 Máquina de estados de una alerta
 
 ```text
-SMN / manual / sensor
+SMN / manual 
       │
       ▼
  DETECTED  → alarma al Nodo Central; se crea borrador de Ficha
@@ -133,7 +133,7 @@ SMN / manual / sensor
 
 Se decide en **D-04**. Hasta entonces rige el modo A.
 
-### 5.4 Reglas del protocolo que el motor implementa [F]
+### 5.4 Reglas del protocolo que el motor implementa
 
 1. **Ventanas de decisión:** Turno Mañana 22:00 del día anterior · Tarde 10:00 · Noche 16:00 (Doc A §6.1).
 2. **Regla de oro:** vencida la hora de corte con el fenómeno en desarrollo, la decisión cambia de «suspensión» a «confinamiento en sede».
@@ -188,14 +188,14 @@ La declaración del ECD es una **facultad del Operador de Guardia** (Regla de lo
 
 ```text
  CLIENTES                         NÚCLEO (activo en Alem, espejo en Palihue)                PROVEEDORES DE CANAL
-┌───────────────┐            ┌───────────────────────────────────────────┐           ┌───────────────────┐
+┌───────────────┐            ┌────────────────────────────────────────────┐           ┌───────────────────┐
 │ App Android   │──HTTPS───► │ API (Laravel) · RBAC · SSO · MFA           │           │ APNs (iOS directo)│
 │ App iOS       │──HTTPS───► │ Motor de estados de alerta                 │ ────────► │ FCM (Android/iOS) │
 │ Consola web   │──HTTPS+WS─►│ Dispatcher (colas Redis, workers/canal)    │           │ Gateway SMS       │
 └───────────────┘            │ Escalador (timers) · Auditoría (hash)      │           │ Voz automatizada  │
                              │ MySQL 8 + réplica · Redis · Objetos        │           │ Correo · Telegram │
                              │ Ingestor SMN (60 s ACP / 5 min resto)      │           └───────────────────┘
-                             └──────────────┬────────────────────────────┘
+                             └──────────────┬─────────────────────────────┘
                                             │ réplica + enlace de contingencia (Starlink S1, Doc B §8.9)
                                             ▼
                     ESPEJO EN PALIHUE  +  DESPACHADOR MÍNIMO FUERA DE BAHÍA BLANCA 
