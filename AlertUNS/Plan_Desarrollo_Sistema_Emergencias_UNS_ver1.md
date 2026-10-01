@@ -855,7 +855,6 @@ Con las funcionalidades críticas:
 
 ## ANEXO 3: Estructura de Base de Datos Sugerida (MySQL)
 
-
 ```sql
 -- ============================================
 -- TABLAS PRINCIPALES DEL SISTEMA UNS
