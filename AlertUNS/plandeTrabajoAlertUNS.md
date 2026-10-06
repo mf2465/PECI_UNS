@@ -3,8 +3,11 @@
 ## Sistema institucional de alerta y confirmación para la activación del PECI-UNS
 
 **Plataformas:** Android · iPhone/iOS · Web
+
 **Organización:** Universidad Nacional del Sur (UNS)
+
 **Proyecto:** AlertUNS
+
 **Objetivo:** disponer de un sistema institucional propio para emitir, distribuir, confirmar, escalar y auditar comunicaciones de emergencia asociadas al PECI-UNS.
 
 ---
