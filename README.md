@@ -123,3 +123,12 @@ Con el consolidado técnico vigente y el expediente de adquisición en curso, el
 > **Nota:** la pieza **PE – Procedimientos Específicos** (PE-01 continuidad informática y ciberseguridad; PE-02 laboratorios y sustancias químicas; PE-03 archivos y patrimonio; PE-04 flota institucional en tránsito; PE-05 otros sistemas críticos, con ficha única común) se mantiene en estado de borrador y se incorporará a esta línea temporal en una próxima actualización.
 
 ---
+### Sistema de Notificación de Emergencias – AlertUNS
+
+Como respuesta a la necesidad de contar con el **«sistema propio»** de notificación masiva previsto en el Anexo Operativo 07-B (§7.6, entrada 18), se elaboró el documento de definiciones que solicita su desarrollo a un equipo técnico:
+
+21. **Solicitud de Desarrollo – Sistema AlertUNS (Versión 1.0, borrador para revisión, octubre 2026):** [SolicitudDesarrolloAlertUNSoctubre2026.md](SolicitudDesarrolloAlertUNSoctubre2026.md) – Especificación técnica de la tarea para el equipo de desarrollo de AlertUNS (Android, iPhone y web), con alarma crítica, confirmación de recepción, escalamiento y auditoría para la activación del PECl-UNS.
+    - **Audiencia:** Equipo de desarrollo, Telecomunicaciones, SHST, DCI y CDE.
+    - **Contenido:** Alcance y principios (software libre, propiedad institucional, el humano decide); contradicciones detectadas entre documentos; catálogo funcional con prioridades; cadena de decisión y Ficha del Alerta; diseño de notificación crítica en Android e iOS; integración asistida con el SMN; apoyo al ECD; arquitectura de referencia; seguridad y privacidad; estrategia de pruebas; fases de trabajo **sin plazos** (F0 a F11) con compuertas de salida (G0 a G4); riesgos y decisiones pendientes.
+    - **Estado:** borrador en revisión. La Fase 0 (viabilidad y prueba de concepto de la alarma) es la primera entrega solicitada; el desarrollo del MVP queda condicionado a su compuerta G0.
+    - **Vinculación:** implementa, sin modificarlos, los flujos y reglas de los Anexos 07-A, 07-B y 07-C; su entrada en operación depende de un simulacro integral y de un ciclo en paralelo con Alerthor, según el Anexo 07-B §7.6.
