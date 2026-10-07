@@ -120,7 +120,7 @@ Orden de prioridades de ingeniería (de mayor a menor), que rige toda decisión 
 
 ---
 
-## 2. DOCUMENTACIÓN DE REFERENCIA Y CONTRADICCIONES
+## 2. DOCUMENTACIÓN DE REFERENCIA
 
 ### 2.1. Documentos entregados al equipo
 
