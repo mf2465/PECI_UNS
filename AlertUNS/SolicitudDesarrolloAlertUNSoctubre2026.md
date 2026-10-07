@@ -14,7 +14,7 @@
 
 **Fecha de emisión:** 6 de octubre de 2026
 
-**Basado en:** Anexos Operativos 07-A, 07-B, 07-C · AT-01 · AT-02 · referencia funcional pública de app BomberBOT
+**Basado en:** Anexos Operativos 07-A, 07-B, 07-C · AT-01 · AT-02 · referencia funcional pública de app BomberBOT (https://bomberbot.com.ar)
 
 ---
 
