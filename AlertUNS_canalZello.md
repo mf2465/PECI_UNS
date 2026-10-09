@@ -1,6 +1,6 @@
-# Canal AlertUNS en Zello
+# Canal AlertUNS (Sistema de Alerta Institucional) en app Zello
 
-# <p align="center"> <img src="img/logo_AlertUNS.jpg" alt="Logo AlertUNS" width="120"/><br>AlertUNS: Sistema de Alerta Institucional</p>
+# <p align="center"> <img src="IMG/logo_AlertUNS.jpg" alt="Logo AlertUNS" width="120"></p>
 
 Zello es una alternativa excelente para **AlertUNS** por su gratuidad, rapidez de implementación y porque no requiere contratos corporativos ni servidores externos. Al ser un canal público dentro de la red general de Zello, opera mediante cuentas de usuario comunes de la aplicación.
 
@@ -50,4 +50,5 @@ Durante una situación de emergencia, la frecuencia debe mantenerse ordenada med
 ## 5. Difusión y Acceso Rápido
 
 * **Enlace de Invitación y QR:** El canal genera un vínculo directo y un código QR apto para compartir rápidamente por WhatsApp, Telegram o correo institucional.
-* **Acceso Directo:** Los usuarios hacen clic en el enlace desde sus dispositivos móviles para abrir de manera directa la aplicación de Zello y solicitar su ingreso a **AlertUNS**.
+# <p align="center"> <img src="IMG/qr_canalAlertUNS.png" alt="QR canal AlertUNS" width="120"></p>
+* **Acceso Directo:** Los usuarios hacen clic en el enlace desde sus dispositivos móviles para abrir de manera directa la aplicación de Zello y solicitar su ingreso a **AlertUNS** (https://on.zello.com/bvc479).
