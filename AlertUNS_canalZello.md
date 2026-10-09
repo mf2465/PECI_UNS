@@ -1,6 +1,6 @@
-# Canal AlertUNS (Sistema de Alerta Institucional) en app Zello
+# Canal AlertUNS (Sistema de Alerta Institucional) en app [Zello](https://zello.com/es/)
 
-# <p align="center"> <img src="IMG/logo_AlertUNS.jpg" alt="Logo AlertUNS" width="120"></p>
+# <p align="center"> <img src="IMG/logo_AlertUNS.jpg" alt="Logo AlertUNS" width="240"></p>
 
 Zello es una alternativa excelente para **AlertUNS** por su gratuidad, rapidez de implementación y porque no requiere contratos corporativos ni servidores externos. Al ser un canal público dentro de la red general de Zello, opera mediante cuentas de usuario comunes de la aplicación.
 
