@@ -57,8 +57,8 @@ Durante una situación de emergencia, la frecuencia debe mantenerse ordenada med
 
 ## 📺 Tutorial en Video: Cómo Usar Zello
 
-Si deseas ver una guía visual paso a paso sobre cómo registrarse, configurar cuentas y utilizar [Zello](https://zello.com/es/) desde el celular, puedes consultar el siguiente video tutorial oficial:
+Si deseas ver una guía visual paso a paso sobre cómo registrarse, configurar cuentas y utilizar [Zello](https://zello.com/es/) desde el celular, puedes consultar el siguiente video tutorial:
 
-[![Ver tutorial de Zello en YouTube](https://img.youtube.com/vi/CyAQ4J-SLek/0.jpg)](https://www.youtube.com/watch?v=CyAQ4J-SLek)
+[![Ver demostración en YouTube](https://img.youtube.com/vi/4rnunMz3qw0/0.jpg)](https://www.youtube.com/watch?v=4rnunMz3qw0&t=55s)
 
-*(Haz clic sobre la imagen para reproducir el video en YouTube)*
+*(Haz clic sobre la imagen para reproducir el video a partir del minuto 00:55)*
