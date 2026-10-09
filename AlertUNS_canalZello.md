@@ -50,5 +50,15 @@ Durante una situación de emergencia, la frecuencia debe mantenerse ordenada med
 ## 5. Difusión y Acceso Rápido
 
 * **Enlace de Invitación y QR:** El canal genera un vínculo directo y un código QR apto para compartir rápidamente por WhatsApp, Telegram o correo institucional.
-# <p align="center"> <img src="IMG/qr_canalAlertUNS.png" alt="QR canal AlertUNS" width="120"></p>
+# <p align="center"> <img src="IMG/qr_canalAlertUNS.png" alt="QR canal AlertUNS" width="120"><p>
 * **Acceso Directo:** Los usuarios hacen clic en el enlace desde sus dispositivos móviles para abrir de manera directa la aplicación de Zello y solicitar su ingreso a **AlertUNS** (https://on.zello.com/bvc479).
+
+---
+
+## 📺 Tutorial en Video: Cómo Usar Zello
+
+Si deseas ver una guía visual paso a paso sobre cómo registrarse, configurar cuentas y utilizar [Zello](https://zello.com/es/) desde el celular, puedes consultar el siguiente video tutorial oficial:
+
+[![Ver tutorial de Zello en YouTube](https://img.youtube.com/vi/CyAQ4J-SLek/0.jpg)](https://www.youtube.com/watch?v=CyAQ4J-SLek)
+
+*(Haz clic sobre la imagen para reproducir el video en YouTube)*
