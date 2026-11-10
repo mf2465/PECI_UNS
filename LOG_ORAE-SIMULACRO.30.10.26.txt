@@ -1,0 +1,144 @@
+[09:49:19] SISTEMA ORAE v15.9 INICIADO (Motor Geoespacial Híbrido: Concurrencia HTTP + Selenium + RayCasting Activos).
+[09:49:20] 🔄 Disparando Motores de Análisis (GeoXML + API SMN 171 Áreas + Selenium)...
+[09:49:20] 🕷️ [Selenium] Iniciando raspado web de matriz 72hs...
+[09:49:20] 🔑 [SMN] Renovando credencial JWT de la API oficial vía navegador...
+[09:49:20] 📡 [RSS] Canal 'ACP' escaneado OK: 🌎 Alertas en 1 provincia(s).
+[09:49:20] 📡 [RSS] Canal 'Temperaturas Extremas' escaneado OK: ✅ Sin impacto relevante.
+[09:49:20] 📡 [RSS] Canal 'General 24hs' escaneado OK: ✅ Sin impacto relevante.
+[09:50:06] 🔑 [SMN] Token JWT renovado con éxito (Sesión activa).
+[09:50:08] 📡 [API SMN] 🌎 26 áreas bajo alerta en el país (Área 760: Normal).
+[09:51:03] 🕷️ [Selenium] Área 760 (Centro): ✅ NORMAL
+[09:51:49] 🕷️ [Selenium] Área 779 (Norte): ✅ NORMAL
+[09:51:49] 🌍 MAPA NACIONAL (SMN): 27 áreas bajo alerta en el país (Área 760 Normal).
+[09:53:36] ⚠️ Modo Manual activado. Se suspenden escaneos automáticos de XML/Selenium.
+[09:57:37] ℹ Parte Informativo enviado.
+[09:57:45] Operador manual elevó la alerta. Enviando a Telegram...
+[09:58:22] ⚠️ [MEMORIA OPERATIVA] Alerta Amarilla registrada activa para seguimiento de transiciones.
+[09:58:22] ✅ DECISIÓN DEL RECTORADO EJECUTADA.
+[09:58:22] 📢 Parte Oficial de Difusión transmitido con éxito a Telegram.
+[09:58:29] 📡 Canal UHF local para [Mantenimiento Eléctrico] asignado a: CH 1 (comunicación interna)
+[09:58:29] 📻 VHF CH0 para [Mantenimiento Eléctrico]: Operativa ✅
+[09:58:29] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mantenimiento Eléctrico
+[09:58:33] 📡 Canal UHF local para [Mantenimiento General] asignado a: CH 1 (comunicación interna)
+[09:58:33] 📻 VHF CH0 para [Mantenimiento General]: Operativa ✅
+[09:58:33] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mantenimiento General
+[09:58:49] 📡 Canal UHF local para [Telecomunicaciones] asignado a: CH 1 (comunicación interna)
+[09:58:49] 📻 VHF CH0 para [Telecomunicaciones]: Operativa ✅
+[09:58:49] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Telecomunicaciones
+[09:58:52] 📡 Canal UHF local para [Hidráulica] asignado a: CH 1 (comunicación interna)
+[09:58:52] 📻 VHF CH0 para [Hidráulica]: Operativa ✅
+[09:58:52] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Hidráulica
+[09:58:54] 📱 Marcelo Tedesco (Comunicación Institucional) consultó el escrutinio en Telegram.
+[09:58:55] 📡 Canal UHF local para [SHST] asignado a: CH 1 (comunicación interna)
+[09:58:55] 📻 VHF CH0 para [SHST]: Operativa ✅
+[09:58:55] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: SHST
+[09:58:57] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mayordomía Alem
+[09:59:06] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mayordomía Palihue
+[09:59:09] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mayordomía 12 de Octubre / San Juan
+[09:59:11] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Dirección de Escuelas Preuniv.
+[09:59:13] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Comité de Dirección (CDE)
+[09:59:13] ✅ Todas las burbujas han confirmado ACK. Temporizador detenido.
+[10:09:06] 📱 Solicitud en Telegram de [Juan M. Sánchez (Vicerrector)]: Reporte de estado de burbujas.
+[10:09:06] ✅ Reporte de burbujas enviado al grupo CDE.
+[10:15:18] 📱 Solicitud en Telegram de [Miguel Flores (Laboratorio Hidráulica)]: Reporte de estado de burbujas.
+[10:15:18] ✅ Reporte de burbujas enviado al grupo CDE.
+[10:31:49] 🟠 [TRANSICIÓN NARANJA SITUACIÓN 2] Como existía Alerta Amarilla previa, se SALTA la Ola 1 por redundancia operativa y se activa OLA 2 DIRECTA (Suspensión total).
+[10:31:49] Operador manual elevó la alerta. Enviando a Telegram...
+[10:32:14] 🗳️ AUDITORÍA: Juan M. Sánchez (Vicerrector) votó SÍ. [SÍ: 1 | NO: 0 | Faltan: 9]
+[10:32:26] 🗳️ AUDITORÍA: Marcelo Tedesco (Comunicación Institucional) votó SÍ. [SÍ: 2 | NO: 0 | Faltan: 8]
+[10:33:38] 📱 Miguel Flores (Laboratorio Hidráulica) consultó el escrutinio en Telegram.
+[10:34:30] 🗳️ AUDITORÍA: Guillermo Dominella (Jefe SHST) votó SÍ. [SÍ: 3 | NO: 0 | Faltan: 7]
+[10:34:34] 📱 Guillermo Dominella (Jefe SHST) consultó el escrutinio en Telegram.
+[10:35:58] 📱 Guillermo Dominella (Jefe SHST) consultó el escrutinio en Telegram.
+[10:36:26] 📱 Guillermo Dominella (Jefe SHST) consultó el escrutinio en Telegram.
+[10:37:02] 📱 Juan M. Sánchez (Vicerrector) consultó el escrutinio en Telegram.
+[10:37:06] 📱 Marcelo Tedesco (Comunicación Institucional) consultó el escrutinio en Telegram.
+[10:37:18] 📱 Juan M. Sánchez (Vicerrector) consultó el escrutinio en Telegram.
+[10:37:23] 📱 Juan M. Sánchez (Vicerrector) consultó el escrutinio en Telegram.
+[10:37:23] 📱 Juan M. Sánchez (Vicerrector) consultó el escrutinio en Telegram.
+[10:40:18] 📱 Marcelo Tedesco (Comunicación Institucional) consultó el escrutinio en Telegram.
+[10:41:22] 📱 Guillermo Dominella (Jefe SHST) consultó el escrutinio en Telegram.
+[10:41:49] ⏳ ALERTA TIMEOUT: Temporizador cumplido. Intentando notificar a Telegram...
+[10:41:49] ✅ Mensaje de Timeout y botones enviados con éxito.
+[10:42:38] ⏳ Pablo Ávalos (Laboratorio Hidráulica) extendió la votación 10 minutos más.
+[10:42:39] ⏳ Juan M. Sánchez (Vicerrector) extendió la votación 10 minutos más.
+[10:42:54] 🗳️ AUDITORÍA: Pablo Ávalos (Laboratorio Hidráulica) votó SÍ. [SÍ: 4 | NO: 0 | Faltan: 6]
+[10:43:18] 📱 Marcelo Tedesco (Comunicación Institucional) consultó el escrutinio en Telegram.
+[10:43:38] 📱 Juan M. Sánchez (Vicerrector) consultó el escrutinio en Telegram.
+[10:45:46] 📱 Juan M. Sánchez (Vicerrector) consultó el escrutinio en Telegram.
+[10:47:22] 🗳️ AUDITORÍA: Daniel Vega (Rector) votó SÍ. [SÍ: 5 | NO: 0 | Faltan: 5]
+[10:52:34] 📱 Juan M. Sánchez (Vicerrector) consultó el escrutinio en Telegram.
+[10:52:38] ⏳ ALERTA TIMEOUT: Temporizador cumplido. Intentando notificar a Telegram...
+[10:52:38] ✅ Mensaje de Timeout y botones enviados con éxito.
+[10:52:46] ⏳ Juan M. Sánchez (Vicerrector) extendió la votación 10 minutos más.
+[10:53:18] 🗳️ AUDITORÍA: Miguel Flores (Laboratorio Hidráulica) votó SÍ. [SÍ: 6 | NO: 0 | Faltan: 4]
+[11:01:01] 👑 AUDITORÍA: El Rectorado (Juan M. Sánchez (Vicerrector)) APROBÓ la recomendación. Transmitiendo a burbujas...
+[11:01:02] ✅ DECISIÓN DEL RECTORADO EJECUTADA.
+[11:01:02] 📢 Parte Oficial de Difusión transmitido con éxito a Telegram.
+[11:04:31] 📡 Canal UHF local para [Hidráulica] asignado a: CH 1 (comunicación interna)
+[11:04:31] 📻 VHF CH0 para [Hidráulica]: Operativa ✅
+[11:04:31] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Hidráulica
+[11:04:38] 📡 Canal UHF local para [SHST] asignado a: CH 1 (comunicación interna)
+[11:04:38] 📻 VHF CH0 para [SHST]: Operativa ✅
+[11:04:38] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: SHST
+[11:05:52] 📡 Canal UHF local para [Mantenimiento General] asignado a: CH 1 (comunicación interna)
+[11:05:52] 📻 VHF CH0 para [Mantenimiento General]: Operativa ✅
+[11:05:52] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mantenimiento General
+[11:06:49] 💬 Telegram [Pablo Ávalos (Laboratorio Hidráulica)]: "/ach"
+[11:07:45] 📱 Solicitud en Telegram de [Pablo Ávalos (Laboratorio Hidráulica)]: Reporte de estado de burbujas.
+[11:07:46] 📻 VHF CH0 para [Mayordomía Alem]: Operativa ✅
+[11:07:46] ✅ Reporte de burbujas enviado al grupo CDE.
+[11:07:47] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mayordomía Alem
+[11:08:00] ⚠️ [MEDIO SECUNDARIO ACTIVADO] [Telecomunicaciones] no respondió por radio. Se activa: Personal / Otro (Secundario) (a la espera de radio operativa).
+[11:08:16] 📡 Canal UHF local para [Telecomunicaciones] asignado a: CH 1 (comunicación interna)
+[11:08:16] 📻 VHF CH0 para [Telecomunicaciones]: Operativa ✅
+[11:08:16] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Telecomunicaciones
+[11:09:27] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mayordomía 12 de Octubre / San Juan
+[11:09:39] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Comité de Dirección (CDE)
+[11:10:08] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Dirección de Escuelas Preuniv.
+[11:10:18] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mayordomía Palihue
+[11:11:28] 📡 Canal UHF local para [Mantenimiento Eléctrico] asignado a: CH 1 (comunicación interna)
+[11:11:28] 📻 VHF CH0 para [Mantenimiento Eléctrico]: Operativa ✅
+[11:11:28] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mantenimiento Eléctrico
+[11:11:28] ✅ Todas las burbujas han confirmado ACK. Temporizador detenido.
+[11:11:46] 📱 Solicitud en Telegram de [Juan M. Sánchez (Vicerrector)]: Reporte de estado de burbujas.
+[11:11:46] ✅ Reporte de burbujas enviado al grupo CDE.
+[11:23:10] 🗳️ AUDITORÍA: Pablo Ávalos (Laboratorio Hidráulica) votó SÍ. [SÍ: 1 | NO: 0 | Faltan: 9]
+[11:23:14] 🗳️ AUDITORÍA: Guillermo Dominella (Jefe SHST) votó SÍ. [SÍ: 2 | NO: 0 | Faltan: 8]
+[11:23:18] 🗳️ AUDITORÍA: Juan M. Sánchez (Vicerrector) votó SÍ. [SÍ: 3 | NO: 0 | Faltan: 7]
+[11:23:22] 📱 Guillermo Dominella (Jefe SHST) consultó el escrutinio en Telegram.
+[11:23:23] ⚠️ RECHAZADO: Usuario ajeno al CDE (ID Desconocido (6556949392)) intentó votar.
+[11:23:26] 🗳️ AUDITORÍA: Miguel Flores (Laboratorio Hidráulica) votó SÍ. [SÍ: 4 | NO: 0 | Faltan: 6]
+[11:23:34] 🗳️ AUDITORÍA: Marcelo Tedesco (Comunicación Institucional) votó SÍ. [SÍ: 5 | NO: 0 | Faltan: 5]
+[11:25:14] 📱 Juan M. Sánchez (Vicerrector) consultó el escrutinio en Telegram.
+[11:25:50] 📱 Juan M. Sánchez (Vicerrector) consultó el escrutinio en Telegram.
+[11:26:22] 📱 Walter Cravero (Secretario Técnico) consultó el escrutinio en Telegram.
+[11:26:30] 🗳️ AUDITORÍA: Walter Cravero (Secretario Técnico) votó SÍ. [SÍ: 6 | NO: 0 | Faltan: 4]
+[11:27:50] 📱 Solicitud en Telegram de [Pablo Ávalos (Laboratorio Hidráulica)]: Reporte de estado de burbujas.
+[11:27:50] ✅ Reporte de burbujas enviado al grupo CDE.
+[11:28:06] 👑 AUDITORÍA: El Rectorado (Juan M. Sánchez (Vicerrector)) APROBÓ la recomendación. Transmitiendo a burbujas...
+[11:28:06] Cese de alerta ejecutado por el Rectorado. Temporizador iniciado.
+[11:28:06] 📢 Parte Oficial de Difusión transmitido con éxito a Telegram.
+[11:28:51] 📡 Canal UHF local para [SHST] asignado a: CH 1 (comunicación interna)
+[11:28:51] 📻 VHF CH0 para [SHST]: Operativa ✅
+[11:28:51] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: SHST
+[11:28:55] 📡 Canal UHF local para [Hidráulica] asignado a: CH 1 (comunicación interna)
+[11:28:55] 📻 VHF CH0 para [Hidráulica]: Operativa ✅
+[11:28:55] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Hidráulica
+[11:28:58] 📡 Canal UHF local para [Mantenimiento Eléctrico] asignado a: CH 1 (comunicación interna)
+[11:28:58] 📻 VHF CH0 para [Mantenimiento Eléctrico]: Operativa ✅
+[11:28:58] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mantenimiento Eléctrico
+[11:29:32] 📡 Canal UHF local para [Mantenimiento General] asignado a: CH 1 (comunicación interna)
+[11:29:32] 📻 VHF CH0 para [Mantenimiento General]: Operativa ✅
+[11:29:32] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mantenimiento General
+[11:29:41] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mayordomía Alem
+[11:29:44] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Dirección de Escuelas Preuniv.
+[11:29:46] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Comité de Dirección (CDE)
+[11:31:04] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mayordomía Palihue
+[11:31:06] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Mayordomía 12 de Octubre / San Juan
+[11:32:20] 📡 Canal UHF local para [Telecomunicaciones] asignado a: CH 1 (comunicación interna)
+[11:32:20] 📻 VHF CH0 para [Telecomunicaciones]: Operativa ✅
+[11:32:20] ☑️ Acuse de recibo (ACK) confirmado en consola para la burbuja: Telecomunicaciones
+[11:32:20] ✅ Todas las burbujas han confirmado ACK. Temporizador detenido.
+[11:32:20] 🔄 Cese finalizado. Restableciendo sistema a condición de Guardia en 4 segundos...
+[11:32:24] 🟢 SISTEMA ORAE RESTABLECIDO. Monitoreo normal activo.

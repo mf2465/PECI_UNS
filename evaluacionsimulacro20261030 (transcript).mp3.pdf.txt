@@ -1,0 +1,434 @@
+[00:00]
+encontramos con eh temas de comunicación de conexión. de conexión, perdón. Eh, ¿querés comentar vos, Juan? No, una un problema con la conexión de la sala de a internet de la máquina que habíamos instalado eh y tuvimos que mudar el horario acá en la oficina del SHSCT.
+
+[00:25]
+Previamente hay que mencionar que el hubo problemas con el uso de Telegram el día anterior para la conformación del grupo y los aviso. Bien. Eh, Telegram estaba establecido como la comunicación principal este entre los miembros del comité de emergencia. Eh, era la primer capa de comunicación.
+
+[00:51]
+Eh, si bien en los ensayos ya habíamos tenido algún alguna algún una particularidad, algún problemita, pensamos que la el problema era localizado, lo cual después eh cuando hicimos el ejercicio lo lo volvimos a ratificar, digamos, ¿no? Y aparentemente Telegram en ese momento no lo estaba andando, estaba funcionando bien.
+
+[01:18]
+Entonces, bueno, un un punto a a analizar es si realmente con la vía baja confiabilidad que tiene Telegram eh la vamos a sostener o no, lo más probable que tengamos que eh que mudar ese tipo de de de comunicaciones en la otra eh a otro evento, ¿no? A otra otro escenario.
+
+[01:41]
+Eh, la la comunicación de Telegram la forzamos de alguna manera este porque bueno, en el momento en que se empezaba a a llegar la hora del del evento, no nos podíamos comunicar entre el el la sala de de crisis de acá de Alem que habíamos establecido eh y eh las autoridades que estaban en Colón.
+
+[02:17]
+Eso fue un error de la sala, no del Telegram. Es una un error eh sí, un error, yo no sé si atribuírselo a un error eh a un problema de de llegada o comunicación o a que en el momento en que se lanzó el ejercicio no todos estaban disponibles, pero lo cierto es que lanzamos el ejercicio y no teníamos comunicación.
+
+[02:45]
+Estábamos esperando, esperando y tuvimos que hacer como tres renovaciones de votación de Telegram para poder este eh activar Las autoridades no estaban disponibles en ese momento. Este, y bueno, tuvimos que forzar eh la la el mecanismo.
+
+[03:11]
+el mecanismo para que pudiésemos desarrollar el ejercicio. Pero fue digo, fue un error operativo, eso no fue un error del sistema de de Telegran Nova Prime, fue un error operativo nuestro. Sí, ¿querés ampliar? No, no, eso, que que claro que Que Telegran funcionó bien. En esa en esa instancia, había tenido errores al el día anterior. Sí. Sí, sí, la la votación salió eh no En un escenario degradado.
+
+[03:41]
+Claro. Sí. ¿Por qué no hablan un poco más menos difícil? O sea, escenario degradado, que que no lo entiendo, o sea, ¿de quién fue la culpa? que que estaba muy inestable y de Telegram ayer anduvo durante durante un mes anduvo perfecto desde el día ayer empezó a reportar sin estabilidad en mi teléfono no conectaba, no conectaba A Pablo le pasó lo mismo. Funcionaba Walter tampoco con datos sí, con red no.
+
+[04:12]
+Eh, pensamos primero que era problema de las redes de la universidad. Pensamos después que eran de algo de los teléfonos propios, eh que por ahí era algo relacionado al bot o lo que sea. Se eligió Telegram porque es el más fácil de integrar a los sistemas más informáticos.
+
+[04:31]
+Es mucho más por WhatsApp es mucho más más largo el proceso de integrarlo, porque WhatsApp tiene más herramientas que el sistema detecta si sos humano o no sos humano. Entonces, Telegram ya lo tiene como integrado ese sistema y no tiene tantos Nosotros si quisiéramos avanzar sobre este tipo de medios como WhatsApp tendríamos que tener una versión paga.
+
+[04:58]
+Ese es un un Y y lo ideal o el la lo que uno aspiraría es tener un sistema propio y no depender de Entonces un tercero quedar cautivo a eso y no tener tampoco la manza de los datos. Porque los datos también por política de la UN, tienen que estar dentro de la UN. En este caso, los datos y demás están en servidores de afuera. Okay.
+
+[05:25]
+Bueno, como resumiendo, el día anterior tuvimos problema con Telegram precisamente. Hoy tuvimos problema con la conexión de Lorae, de la oficina de Lorae. Dos eventos, dos dos diseñadores diferentes. Si Si complementados era mucho peor.
+
+[05:42]
+Si hubiese Hemos tenido una aplicación propia, nos sacamos Telegram de encima y si el sistema hubiese estado alojado en un servidor propio, no hubiésemos tenido en principio un problema mayor de de conectividad, porque podíamos haber mudado el horario acá inmediatamente y lo hacíamos correr de cualquier lugar de esta PC poner. Entonces tuvimos que venir con mi PC, desestimar el PC que habíamos armado para el horario y venir con mi PC y hacer armar acá.
+
+[06:08]
+Sí, se forzó la situación para Se forzó que podamos hacer el ejercicio. ¿no? Este, de todas maneras la la la situación este Perdone. Las personas han accedido Eh, Daniel ese que admití.
+
+[06:33]
+Eh, la las personas este que tenían que tomar las decisiones este bueno en su momento no estaban y y digamos se sola la situación para poder lanzar el ejercicio.
+
+[06:53]
+Múdense. Ahí está. Hola. Está de vuelta. Buenas. ¿Cómo va? Buenas. Bueno, ahí Hola, Fer. Bueno, este Bueno, recién este estábamos comentando Eh, los problemas que habíamos tenido al arranque, tanto de conectividad en el horario como los problemas eh propios de de Telegram de Anda, ¿no?
+
+[07:23]
+Eh, y que en el momento de de tomar este las decisiones, bueno, no no estábamos este todos en en en línea y bueno, se forzaron las situaciones para para poder este lanzar el ejercicio.
+
+[07:39]
+Eh, el ejercicio se comunicó por por por Telegram a al comité, el comité votó y se le pasó esa información al Lorae, el Lorae eh bueno, pasó la comunicación a a la mayordomía de Alem y a partir de ahí Las burbujas. A todas las burbujas.
+
+[08:07]
+Y a Sí, pero en principio la mayordomía de Alem este Sí, la Pidiendo, claro. Pidiendo que bueno, se diera inicio al ejercicio. Si el vedor por ahí que estuvo en planta baja quiere comentar alguna novedad. Eh, no, funcionó bien la parte de biblioteca, la sala de de lectura también y química funcionaron correctamente. Bien.
+
+[08:37]
+No hubo ninguna dificultad. El mensaje llegó por alertor. Al inicio le llegó. El mensaje le llegó por alto. Por alto. Y después ellos este salieron con el megáfono a distribuir la información por todo el Sí, recorrieron Sí, recorrieron piso por piso. Sí, sector por sector. En algunos se escuchó mejor, en otros flotando. Bien. Y en cada sector bajaron las persianas, cerraron las ventanas. En todos los lugares estuvieron En la mayoría, hay detalles.
+
+[09:05]
+Bien, bueno, lo podemos poner en en en blanco sobre negro, así ya vamos tomando nota de los sectores en los cuales planta baja estuvo ordenado, lo que sí, obviamente con los alumnos hubo que atajar a mucha gente que quería salir del edificio, así que se los derivó para los laterales por BC.
+
+[09:33]
+Sí, la la la situación dice que la planta baja funcionó bien eh eh Algunos alumnos quisieron abandonar el edificio, se los verificó por el costado, por el cuerpo B y por el cuerpo C, pero que en principio este en la mayoría de los sectores, bueno, tuvieron receptividad, bajaron las persianas, este no sé si en los en el resto de los pisos pasó lo mismo.
+
+[10:02]
+Primero y segundo En el primer piso, sí, bajaron todas las persianas. Es el la las persianas del hall central, donde están los libros acopiados, no no funciona para bajar o para cerrar. Después el departamento de ingeniería de computación abrió las ventanas antes de dar finalizado por finalizado el ejercicio.
+
+[10:25]
+La comunicación del mayordomo, digamos, fue como que pasó, entró, siguió y en algunos sectores no se dieron cuenta de que era un un simulacro Fue Fue demasiado demasiado rápido o Demasiado rápido rápido la circulación. Sí. Digamos por la ansiedad misma del simulacro. Claro. ¿Sí algo más que me esté olvidando? No, eso, eh en los departamentos como que piden si pueden entrar con el megáfono mejor porque no les llegan, no escuchan.
+
+[10:53]
+Pero me lo dijeron comparando también con simulacro de evacuación, que la alarma está en el hall. Ellos ahí sí se escucha bárbaro, pero adentro de las oficinas casi no se escucha eso. Claro, y eso que tiene el el megáfono tiene muy buen volumen, ¿no? Sí. Este Bueno, hay que hacer hincapié entonces que entren bien a las dependencias el mayordomo este como para para hacer la la comunicación.
+
+[11:16]
+Porque el mensaje está eh en forma cíclica, termina y vuelve a repetir lo mismo, así que no debería haber problema en en Bien, ah, perdón, Fer, ¿vos querías comentar algo?
+
+[11:38]
+volumen Había dos alumnos que dijeron que las chicas que estaban ahí que eh estaban en la universidad, a a sus profesores donde también estaban en la planta baja, ¿okay?
+
+[12:03]
+Pero había unos alumnos que estaban sentados ahí en el segundo piso y dijeron que cuando el verdor pasó en el segundo piso, el volumen del megáfono era ensordecedor y no se entendía nada. Contrariamente a lo que acababa de contar que en las oficinas internas no se escuchaba. ¿Eh?
+
+[12:23]
+Obviamente es complicado lo que Bueno, el audio se lo podemos se lo puedo reenviar este pero la verdad que sí es cierto el el el volumen es ensordecedor si uno está pegado al al megáfono, ¿no?
+
+[12:49]
+Eh, acá dentro lo hemos activado un par de veces y y y digamos es es este realmente muy alto el volumen. Eh, por lo tanto, yo creo que la clave es pasar más despacio y entrar más adentro de los de los lugares, ¿no? En aquellos lugares donde no se no se alcanzan a a escuchar. Con eso calculo que vamos a andar mejor.
+
+[13:19]
+Eh, en el resto de los pisos, ¿cómo anduvimos? Segundo Yo tuve en el segundo y tercer piso piso y en el segundo piso lo que es telecomunicaciones eh acataron la orden enseguida, eh lo que es matemática también y en el tercer piso cuando subí eh noté que en construcciones seguían trabajando con las persianas levantadas pegadas a los ventanales que están sobre Alem.
+
+[13:44]
+Eh, entonces se les comunicó eh si sabían que estábamos en un simulacro, yo ya había visto que habían pasado con el megáfono. Eh, me dijeron que sí, pero bueno, que estaban Entonces, le comenté que estaría bueno que se sumaran porque eso es un ejercicio que lo tienen que hacer todos y que bueno, que favorece después a la mecánica que para que cada uno después lo lo lo pueda practicar y ante un evento ya lo tenga interiorizado.
+
+[14:11]
+Eh, y recién ahí, bueno, de bajar unas persianas y se ve con final. Pero lo que es con el mensaje también eh el mensaje se escuchaba, se escuchaba bien, pero se escucha para el que le quiere prestar atención. Por ahí el que había chicos sentados en el segundo piso que no le prestaron atención y nada, seguían en la suya. Estaban en un lugar seguro, pero era más que nada por por por una cuestión de que no no le prestaron atención al mensaje.
+
+[14:39]
+Por ahí no sé si se puede reforzar que la misma persona que lleva el megáfono diga, "Chicos, esto es un simulacro." y ahí que para que le presten atención al mensaje. Eh, es una Claro, sugerencia a hacer este un refuerzo con los mayoristas La voz del mayordomo. Chicos, estamos en un simulacro. Gente, estamos en un simulacro y que ahí presten atención al mensaje. ¿Cómo ¿Cómo estuvo la sala de lectura? Le dimos un preaviso por las dudas y se mantuvieron bien.
+
+[15:08]
+Se cerraron las ventanas, las persianas. Okay. El El vigilador controlaba el acceso, ¿todo Sí, bien? sí, sí, sí. Todo Okay. El departamento de de matemáticas, gente, el el de la parte de administración Sí, no me hizo. Eh, bien. Sí, sí, eh bajaron las persianas y se confinaron enseguida que recibieron el mensaje. Y aguardaron eh esperando eh que él cese.
+
+[15:40]
+Buenísimo, buenísimo.
+
+[15:49]
+Eh, con con las dos eh las las dos este comunicaciones que se hicieron del ORAE con los servicios eh yo lo que noté es que eh nosotros le pedimos que eh Eh, la comunicación sea por BHF porque cuando la hacíamos por BHF había mucha interferencia. El mayordomo de Alem. En el mayordomo de Alem con los servicios.
+
+[16:18]
+Este, eso por ahí este Por ahí es falta de práctica, que apretaba el de abajo y no el de arriba. Claro. Por ahí, sí. Bueno, se puede hacer hincapié en que todas las comunicaciones con el horario sean de los servicios con el horario sean BHF. Sí, por ahí quedamos en que vamos a hacer una pequeña inducción en en el uso. La comunicación entre que tenía la mayoría mía Jorge conmigo, yo no lo escuchaba ahora de HF, está confirmado eso.
+
+[16:45]
+A veces Sí, grabe HF Sí, porque lo ves en el display. Ah, te da seguridad de HF. Se escuchaba mal, esa con la HF andaba bien. Acá, por lo menos. Sí, BF siempre al 100%. Sí. UF HF en algunos usuarios en particular a un seis. Y Okay. ellos se entendía pero no estaba eh totalmente claro.
+
+[17:11]
+Eh, si vos no estuvieses en el contexto del el coso te costaría entenderlo. Entiendo. Un tema que creo creo que estuvo bueno fue antes del ejercicio hacer la prueba de de Ah, sí. Eso ya lo podríamos institucionalizar.
+
+[17:30]
+La idea es hacer este periódicamente o una vez por mes o o una vez por semana mantener día que tenemos canchero una vez por semana, este probar, no sé, el lunes a la mañana o un día establecido a un horario establecido Sí, que se vayan reportando. Claro. Sí. Eh Sí, sí, eso está está previsto. Bien.
+
+[17:53]
+Eh Bueno, no sé si este la la la otra de los los aspectos también a a mejorar era que eh eh se diga quién eh quién opera y quién y y que confirme el recibido. Pero el recibido venía, pero por ahí este no venía quién opera este o hacia quién iba el mensaje.
+
+[18:23]
+Determinar bien la comunicación, el emisor y el receptor. Cuando establece el reconocimiento, ahí mandar el mensaje. Bien. Y a veces mensajes principales Sí.
+
+[18:41]
+el sistema de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación de comunicación Sí, no, en en realidad nosotros lo charlamos en la reunión, perdón, no la de todos, que Yo tenía otra reunión y me un cachito más tarde.
+
+[19:19]
+Eh, nosotros lo charbamos en la reunión con los cinco o seis que estábamos ahí. Eh, no era una situación de comunicación degradada, en realidad, porque teníamos WhatsApp abierto y estábamos todos escribiéndonos por WhatsApp. Entonces, en un momento planteamos el coche. Si No, de 10 que somos, solamente cuatro respondimos.
+
+[19:42]
+Eh, manejémonos por WhatsApp porque estamos todos escribiendo ahí, pero Claro Claro Digo por ahí el el look o el digo el diagrama de flujo, sino algo el diagrama de de flujo de cómo sería el la la capa de comunicación la capa de comunicación decir bueno por por el por el uso de la por la herramienta que genera el pop del orai tiene que estar en Telegram, pero en el caso de que Telegram no funcione y tengamos todos eh WhatsApp, vamos a WhatsApp.
+
+[20:14]
+Claro. Un tema que que que creo que es importante es que en en algún caso el tele el el el tema de Telegram está muy bueno porque nos va quedando todo el blog de de comunicaciones. Este, pero eh también nos demoró por ahí en tomar algunas decisiones. Este, cosa que nosotros habíamos resuelto en forma virtual en en la reunión de Zoom.
+
+[20:41]
+Este, por ejemplo, el el levantar la la la situación de de alerta meteorológica este o la decisión de confinamiento la teníamos, pero había que esperar este un determinado tiempo para este hacerlo formalmente y que quede en Telegram. Eh, por ahí tendríamos que analizar eso, a ver cómo lo lo podemos analizar.
+
+[21:07]
+A mí me parece que eh la la sala de crisis virtual donde este la decisión la consensuamos este en Zoom, me parece que funciona bien. Este, en tanto no tengamos ningún problema de red, ningún problema este de sumo, ¿no? Este, pero me parece que eso funcionó y y Sí.
+
+[21:30]
+y fue muy muy ágil Sí, el desajuste fue por eh de hecho porque no teníamos el dato de que había que esperar esos 5 minutos de que el sistema está configurado para que vos tenés que esperar necesariamente 5 minutos eh para dar la confirmación eh del sistema de la eh.
+
+[21:50]
+Y yo ya tenía la publicación lista, entonces la posibilidad era que alguno de los eh operadores eh viendo que todavía no está en la alerta levantado y yo ya publiqué en las redes sí o el contentamiento levantado y yo ya publiqué en las redes sí, pero conociendo que hay este esa desleal entre el entre el sistema y y que se pueda subir ahí, lo que nosotros tenemos que apuntar es que la comunicación masiva, digamos, que la comunicación pública, a medios, a redes, a internet o a los canales que sea, sea siempre después de toda la ronda de confirmaciones de todas las burbujas, de de todos los operadores, que fue lo que hicimos y también hicimos al revés.
+
+[22:40]
+Sí, la confirmación de los Eso nosotros terminamos de confirmar, como yo no tengo señal acá en el en el rectorado, tengo que salir a la veleda para hablar, terminamos de confirmar por Zoom y y para confirmarlo. La mía la de Fernando de Fernando Cava las pasó las pasó ayer como las pasó Pablo, no recuerdo. Sí. El tema de la confirmación de la verdad de los 5 minutos en tanto y cuando el rector, la máxima autoridad no decida, él puede aprobar o desaprobar en cualquier momento. Claro.
+
+[23:10]
+Eh, yo tengo como yo había asumido el rol de de vicerrector, tenía que esperar esos 5 minutos para que a mí me habilitara a tomar la decisión por el bot.
+
+[23:20]
+Pero si sale tiene que salir una vez que porque es más lógico que primero se enteren los los responsables de acá Burbujo y los operadores que andan del reino digamos que se enteren y que está mirando la red por Instagram.
+
+[23:47]
+Son son son 5 minutos de diferencia no cambia comunicación Bien.
+
+[24:00]
+Eh, bueno, en principio este creo que que para mí la conclusión eh inicial es que eh muchas oportunidades de mejora este para para esta para este primer ejercicio este eh que no tienen un un costo elevado, este sí hay muchas cosas que podemos ir trabajando y que en realidad nos van a mejorar mucho que es este un un sistema este un sistema propio, ¿no?
+
+[24:37]
+Sistema para comunicación y mensajería propio, me parece que eh que nos va a ayudar a a digamos de alguna manera a a sortear estos estas dificultades del martes que viene algo que es un desajuste en la forma en que el en que el bot tira las comunicaciones al grupo de Telegram.
+
+[25:14]
+Eh, que en el caso en el caso nuestro que tenemos que hacer la comunicación caso pública o incluso en el caso del rector, que es el que tiene la la acción de oro a la hora de votar de decir ese supuesto no se suspende, la información no está clara, que es las recomendaciones de suspensión que que salen automáticamente eh tienen que salir, para mí deberían salir eh con un plazo de inicio y un plazo de finalización o al menos con un Bien.
+
+[25:47]
+El mensaje es recomendación operativa ahora de matriz UNS, suspender obligatoriamente actividades al aire libre, deportes, trabajos en la naturaleza y salidas de campo.
+
+[25:56]
+Y yo ahí agregaría entre las o a partir de las o de este tal turno porque si no ayer ya teníamos la el aviso de suspensión y en realidad no sabíamos si si la suspensión era automática, si estábamos suspendiendo para hoy en la mañana, si si se suspendía a partir del ejercicio, entonces eso es por ahí hay que hay que ajustarlo.
+
+[26:22]
+Eh, sí pasó después cuando el mensaje de suspensión sale, el mensaje de las 11:01 eh me parece que las las suspensiones o confinamiento, por eso ellos tienen que tener una distancia de definición de horarios y de sectores. El mensaje de la 12:01 dice, "Establece la suspensión del turno tarde." El turno tarde es eh interpretativo y en realidad era de las 11:01 y era un ejercicio de confinamiento inmediato.
+
+[26:52]
+Yo no sé si el turno tarde empieza a las 12, si empieza a las 14, el que tiene clase a las 15, la parte que para él el turno clase empieza a las 12 de tarde, empieza a las 15 o las 16. Después yo me tendría que sentar con Juan por ahí en algún momento y precisar que eso salga eh más Más refinado.
+
+[27:12]
+Claro, claro, en en plazo, aunque no tengo un plazo es ese porque la verdad probablemente no conocemos cuando se va a apagar el incendio o cuando se va a confinar el elemento tóxico que hemos puesto en un laboratorio o a pasar el restante elemento tóxico, sí que tengo un plazo de inicio que yo lo pondría en no las más que el turno, porque el turno es eh la interpretación del concepto turno es incremental. Sí.
+
+[27:41]
+Y esto también le favorece al rector decir, "Mira, estoy suspendiendo desde ahora, desde mañana a la mañana, desde ese momento." Sí. Sí, o por lo menos un horario que diga, "Nuevo aviso a partir de tal Sí, hasta nuevo aviso." Oye, no no nosotros no necesitamos con la facilidad de comunicación que tenemos no no no necesitamos darle un aviso de apertura y cierre. Lo importante es el aviso que es la medida preventiva. Lo importante es el aviso de de inicio.
+
+[28:11]
+Lo siguiente cuando se avise que pasó la Claro, pero eso ya es un problema Sí que lo podemos resolver después. Sí Que no podemos anticipar y que lo podemos resolver después. Cuando estábamos terminando recién yo le decía, "Yo necesito mandar el aviso del cese." Entonces, estamos todos de acuerdo porque cese las medidas y y todos. Sí. Y ahí fue ahí fue qué pasó. ¿Por qué el problema de los cinco puntos. Sí, todos los mensajes se pueden refinar o adaptar, poner una franja horaria automática o no. Sí.
+
+[28:46]
+eh ¿Por qué? Porque otra cosa que detectamos es que eh hay situaciones que pueden ser simultáneas. Nosotros estamos El ejercicio lo prevemos como una situación de confinamiento, pero en realidad salvo un evento inmediato, como decíamos 100, escape de cloro, un confinamiento por cuestiones meteorológicas, puede venir, al menos con una medida previa de suspensión de actividades, ¿no?
+
+[29:14]
+Entonces, por ahí ajustar eso también porque puede ocurrir que en algunos casos nosotros estemos tomando o medidas que son simultáneas o medidas que son progresivas. La medida de confinamiento es simultánea a una medida de el que está no viene y el que está dentro se queda. Eh, y es progresiva con una medida de sus tensiones cuando tiene intranquilidades.
+
+[29:40]
+Entonces, esos mensajes que por eso los que eh con los que tenemos que ir votando eh los tenemos que afrontados, por decir. Bien, sí, sí. Sí, un un tema que a mí me me parece que que tenemos que asegurar es el tema de la decisión gatillo, ¿no?
+
+[30:00]
+Que es este la la la autorización de de rectorado este porque bueno, hoy eh pasó que eh Daniel eventualmente estaba este en una reunión y después este tenía una actividad este impostable y y digamos tuvimos que que simular ese esa esa autorización.
+
+[30:25]
+Este, pero tendríamos que ajustar eso de forma tal de que si él no puede automáticamente este Andrea pueda este autorizarle. Andrea, Walter, Andrea no llegó, Andrea no llegó porque porque no llegamos a configurar la tele en la realidad. Claro.
+
+[30:44]
+Eh, si está de viaje podría ser digamos que estaba conectada, pero el tema es que no llegamos a a que me pasara la idea para poder este terminar de configurarla dentro del Telegram, supongo que. Y la semana que viene lo hacemos, pero sí, podría haber una cadena de vamos de de de opciones. Sí, o o que no sé si ahora está renovada. De en averiguarlo.
+
+[31:11]
+Pero es eh ¿Cómo están delegadas las firmas en la universidad. ¿Sí? Eh, primero es el rector, luego es el vicerrector, si ambos están ausentes y hay que tomar una decisión eh esa persona de la universidad superior definió que sea el consejero más antiguo. más viejo de la lista oficialista. Claro. Sí, que no más viejo en edad. Aclaro viejo en edad. viejo en edad. viejo en edad.
+
+[31:40]
+En un momento de la pueblo Manin Angeli, eh ahora no sé porque no está en el consejo así que no sé quién, se supongo que será Graciela. Eh, probablemente sea Graciela Brilluela. Creo, pero bueno, después tiene que confirmarlo. Hay alguien que tiene la eh eh digamos el camino que sigue si fa digamos si faltan ambos rector y vicerrector.
+
+[32:01]
+Walter, y no se puede no no Claro, porque por ahí Claro, por por ahí este por ahí a a lo mejor este a a a contacto por otro medio, él puede delegar este el el el la autorización y bueno, se canaliza eso. También hay que buscarlo, ¿no? Uf.
+
+[32:31]
+Me parece que en este caso porque son las explicaciones pero no puede ser un consejero que son un funcionario legislativo y que no está acá en el tema de de de de de de de de de de de de académico secretario privado No es usual que no estén ambos, pero tampoco es imposible.
+
+[33:23]
+Han sucedido porque alguien tiene una reunión y otro tiene más. Ahí en esta vez de viaje tiene otro compromiso que no son con los 80, en este caso Daniel que estaba en el acto de de la escuela, ¿no?
+
+[33:38]
+Eh, también entendemos que si la Si es una amenaza meteorológica que actualmente son graduales progresivas, seguramente Daniel hubiera estado al lado, probablemente la cancha no hubiera existido. Claro. Eh, pero bueno, eh tengamos en cuenta la posibilidad de que eso suceda hasta acá.
+
+[34:02]
+Fernando quería decir, por eso No, una una Me parece interesante que yo creo que como Marcelo lo lo que pongas tiene que hablar de alguna vez, pero hasta ahora siempre se viene escuchando de de difundir, de dejar que usted haga esto, que el otro haga aquello.
+
+[34:20]
+Eh, se está pensando, digamos, en en difundir que la gente se suscriba o o que revise las redes o o o sea, hay todas las autoridades de la de la universidad y el público general los nuevos centros seguramente se va a enterar, pero ya alumnado ya sí llegan a tanta gente.
+
+[34:45]
+Lo, eh, lo que ocurre habitualmente con la comunicación es que la la función de la comunicación es disminuir el nivel de incertidumbre de la gente. ¿Sí? Desde saber si mañana va a llover o si hay que salir con un paraguas hasta el WhatsApp que recibí de tu hija cuando sale a bailar, ¿no?
+
+[35:05]
+La función primordial de la información que es disminuir un nivel de Desde dónde los viejos nos decían dónde había que ir a casar los nobs hasta Cuando hay situaciones de estrés, la demanda de comunicación crece notablemente, pero crece espontáneamente porque el público que educa, claro, eh los días 7, 8, 9, 10, 11, 12, 13, 14 de marzo de 2025, a nosotros nos explotaban las redes, nos explotaban, porque la gente está todo el tiempo tratando de consumir información para saber qué qué porno hacer en el mundo, ¿no?
+
+[35:50]
+Y esto fíjate que probablemente si ustedes hacen memoria les debe haber pasado, capaz que nunca escuchan radio, pero el 7 de marzo lo primero que hicieron fue prender la radio y dejar la radio todo el tiempo prendida y cuando Y compramos compramos pilas para poner pilas, pilas, tenés que comprar.
+
+[36:06]
+Yo ya te dije, "pila, vela y broche." Eh, y y cuando recuperaste conectividad en el celular estabas todo el tiempo mirando tanto las actualizaciones de los diarios y las redes eh en situaciones críticas en contextos de riesgo eh la demanda de comunicación en un crece, es así, que a nosotros saber cómo llegar al público, no nos preocupa, pues porque además hay una multiplicidad de de de canales para llegar a lo medio bastante robusto, así que a lo a lo Sí, a los estudiantes, a los docentes, a los docentes bastante Nosotros en el ejercicio de hoy trabajamos básicamente con las redes, con el rectorado y con eh y con los medios y demás, pues digamos un técnico del chico de de un dos Les mandé los comunicados y ellos me respondían al especialista que es el singular creo podría ser.
+
+[37:03]
+Eh, y ellos me respondían el Eh, así que en ese sentido el agente se sienta Marcelo, no no obstante esto podríamos aprovechar este a a preparar o algún algún este alguna recomendación corta ahora con el tema de de de la latencia del niño.
+
+[37:21]
+Este, recomendaciones mínimas de qué hacer este tanto dentro o fuera de la universidad ya, este, como para digamos el resguardo de la de la gente eh que no busque eh abandonar un lugar este en busca en búsqueda de otras cosas. Bueno, algunas recomendaciones mínimas este que por ahí pueden Sí, pues con decir en el sentido de las que que saca el Servicio Meteorológico cuando hay alguna alerta. Claro.
+
+[37:51]
+No se fules por abajo del árbol y no te pongas abajo de macetas o carteles Exactamente No salgas a la caja Confinate, claro, exactamente. Sí, sí, se puede. Sí, es bastante sencillo. Bien. Bueno, y el último tema que yo tenía es este, bueno, evaluar eh una alternativa a a Telegram.
+
+[38:12]
+Este, a ver si por ahí el el la el sistema que nosotros pensamos a lo mejor es algo mucho más grande, pero que en una primera etapa puede eh puede ser algo que reemplaza a Telegram, porque a mí me parece que la confiabilidad de Telegram es muy baja, digamos, como para hacer este el primer sistema, ¿no? Y todos los habíamos pasado a Telegram porque supuestamente era más estable. Claro.
+
+[38:42]
+Sí. Hay una Ahí Ahí yo creo Perdón, ¿cómo está? Dos propuestas. Me están hablando aquí como esperando una una llamada telefónica, pero le dejo dos dos caminos posibles eh para esto, según yo lo veo.
+
+[38:56]
+Eh Uno es eh hacer un desarrollo que no que no tenga tele, que pues hoy en día no necesita ganar Telegram para poder recibir una notificación, digamos que el tipo de notificación que te aparece este con en un celular.
+
+[39:14]
+Eh, se puede hacer una una notificación desde una aplicación web que es una una aplicación web especial que se llama Progressive Web Application, este que es algo intermedio entre una aplicación nativa de un teléfono y una página web, digamos, ¿no? Eso se puede intentar, se puede intentar desfragmentar eso.
+
+[39:33]
+Eh, eso lo podés alojar dentro de la universidad, pues lo podrías alojar fuera de la universidad para más seguridad, si querés, para que justamente cuando tenés un problema acá o se te cubre eh en ese sentido que se corta la luz en los servidores, etcétera, lo podés desalojar en en Google y y realmente y que realmente. La otra posibilidad, en realidad ya la tenemos implementada de la consultoría técnico, eh, que es intentar hacer un bot con eh WhatsApp.
+
+[40:03]
+Eh, la gente del servicio de sanidad eh le pidió a Pablo Perata que desarrollaran un bot y tenía que ser de WhatsApp, que es lo que usan los estudiantes, ¿no? Y hoy lo usan los estudiantes para este enviar algún tipo de documentación que necesiten enviar a la sanidad y recibir hay una aplicación, yo creo que funciona con Telegram, eh, perdón, con Telegram, no, de WhatsApp. O sea, que es imposible hacer un voto WhatsApp, es bastante más complicado y hay que pagar.
+
+[40:32]
+Esa es la diferencia con el anterior, ¿no? No es una fortuna, son unos unos centavos de dólar por mes, tampoco como es mucho. Si es más dificultoso la programación, el mantenimiento, etcétera, etcétera, no no es algo tan eh no es fácil como lo de Telegram.
+
+[40:51]
+Yo lo que Si vamos por esa opción, yo lo que diría es sigamos experimentando con Telegram hasta que tengamos bien tienen claro qué es lo que queremos, qué es lo que necesitamos y veamos si eso se puede implementar en WhatsApp, esa es una alternativa.
+
+[41:04]
+La segunda alternativa sería eh esta que digo yo de básicamente integrarlo en el mismo sistema del Lorae, un sistema este eh que funcione, digamos, junto con el Lorae, eh una aplicación que la tendríamos que instalar en los celulares, pero bueno, somos los mismos que tenemos que instalar el sistema de los internautas y poco más. Eh, y que podríamos tenerla con otro tipo de funcionalidades, ¿verdad? Sí.
+
+[41:31]
+Y por mi hija obviamente tiene una carrera social, así que es lo que tiene el law, todas esas cuestiones. Creo que son los dos caminos, podemos este estudiar alguno de ellos, si quieren, no digo el martes, porque ya es poco tiempo, me parece que no estaba Pablo sale de licencia, pero después podemos tener una reunión con Pablo Perata, invitándolo a alguna de las reuniones del comité de emergencia y y este y que nos cuente lo que hicieron ellos con con WhatsApp.
+
+[41:57]
+Sí, el lo de tele era me había salido como para ensayos igual que este hora, era como un ensayo para que veamos nosotros los requerimientos que íbamos a necesitar. Yo si mi opinión sería ir a una una aplicación propia y lo sacamos en este caso WhatsApp que es de un tercero por si también puede fallar. Sí.
+
+[42:19]
+Y el sistema el sistema que vos nos comentaste de los gallegos tiene que estar implementado al nivel de las empresas de telecomunicación.
+
+[42:33]
+Se me contaba que cuando estuve en España y hubo una alerta que no naranja, después rojo en en en Valencia y estábamos ahí y este eh todos los celulares este recibieron la alerta al mismo tiempo independientemente de la de la compañía que fuera de de de la persona.
+
+[42:57]
+Yo que estaba con un roaming de datos que ni siquiera estaba conectado a la a la red de telefonía en español, también me sonó.
+
+[43:03]
+O sea, pero ese sistema es un sistema que nacional de alertas eh y que está el estado a nivel de la propia No, no dejarlo tocar en algún momento, pero más aquí he entendido que estaba tratando de liberarlo, pero eso sería algo que no manejaría con nosotros sin problema.
+
+[43:30]
+Walter, pero había otra otra de un motor de mensajería que habías comentado de unos franceses y había un Sí. desarrollo que también sería para experimentar.
+
+[43:49]
+Sí, sí, sí.
+
+[43:50]
+No Sí, muchas veces pasa esto que no tenemos el tiempo suficiente para eh simplemente fue una lectura y y potencial análisis de de de comenzar algún desarrollo, pero se necesitan mayores conocimientos a tiene los franceses, que habría que instalarlo y probarlo, lo que hace poder mandar, obviamente tiene toda la mantiene el lock de todos los mensajes que se dan con la ventaja de que incluso mantiene el lock de los mensajes que se dan por el sistema de VHF o UHF.
+
+[44:26]
+Es decir, tiene Se puede hacer el bridge, digamos, entre el sistema de radio y el sistema de celular, mensajería de texto y mantiene todos los audios, graba los audios, etcétera. O sea, que uno eventualmente el día de mañana puede hacer una historia completa de qué es lo que sucedió, si algo falló, etcétera. Digamos como para mejorar, ¿no?
+
+[44:45]
+Eh, eso lo tiene Hay un sistema que es es digamos de gobierno se fue ahí, repito, que lo desarrollaron las este los franceses para los este bueno, las situaciones de emergencia en Francia lo usan este lo usan nacional así a nivel nacional, pero es un sistema que uno sí ese lo podría ampar a trabajar a a juerza local, digamos, ¿no? Eh, lo podríamos mirar también.
+
+[45:10]
+Y después está, ahí en el repositorio eh, hay, hay un eh, un bosquejo o los requerimientos del desarrollo de una aplicación propia que integraría, eh, ahí en el repositorio, si no lo subo de vuelta que es el alert un Exacto, esa es otra posibilidad, tener una aplicación propia que podría ser, a ver, una aplicación propia o puede estar en el equipo que digo yo, que es una web, Sí.
+
+[45:39]
+una progresión web o incluso se podría tener una aplicación nativa de de celular, digamos, ¿no? Este, no es tan fácil si la gente usa algunos usan iPhone y otros usan Android hay que hacerlo dos. Pero si no, eh uno lo puede hacer. A ver, uno está acostumbrado a que las aplicaciones las bajas de Google, las bajas de de de iTunes, de de de de de de Apple, de Apple Store, pero uno puede tener una aplicación que se instala en su celular, digamos, no hay problema.
+
+[46:05]
+Entonces, siendo más más una práctica recomendable si uno ve que anda para no hacer aplicaciones de cualquiera, digamos. Pero si uno desarrolla una aplicación propia, eso se puede hacer en la extensión de las aplicaciones que se llama APK o algo del estilo y y y y una puede verificar en la aplicación señal por un por un VPN no es posible una aplicación relativamente fácil.
+
+[46:28]
+Incluso relativamente fácil para dar una de estas aplicaciones web a una aplicación nativa celular que tiene un montón de ventaja porque justamente no para mí que la aplicación activo del celular y darle mensajes, etcétera, poner una tarifa, puede eh tirarte un audio, puede hacer varias cosas que con una aplicación web Se se podría presentar ahí al departamento de computación basado en este repositorio si pueden tirar una mano.
+
+[47:06]
+Se podría se podría se podría este ofrecer como una como una como una necesidad y eventualmente eh interesada a los docentes y ver si pueden hacer una se puede hacer una Primero quisiera una un análisis de factibilidad con sus recursos. Si es posible, no, y después encarar si si es viable. También se puede.
+
+[47:31]
+El el En mi experiencia el único problema que tiene eso es es el mantenimiento posterior, digamos, cuando no Si vos lo das para que se desarrolle en una, por ejemplo, en una PPS o en una trabajo final de carrera, que es una de las posibilidades que ellos manejan siempre. El problema que hace después que se haga de 5 años cuando se hace una reclamada es que se desarrolla la aplicación. La aplicación de hacer Aplicaciones de celulares, sobretodo, hay que actualizarlas cuando Android dice, cuando Google dice, cuando Apple dice y si no lo actualizan te lo mandan.
+
+[48:02]
+Eh, que funciona para el Android 15, pero después cuando sale el 16 te debo dar parte. Ese mantenimiento de las aplicaciones que no lo tiene en las páginas web.
+
+[48:14]
+Eso es lo complicado cuando haces el desarrollo otra vez en alguna cuestión académica, pero se puede intentar, eh. Se puede hacer y entonces, mientras haya opción Actualice la alarma de la vida.
+
+[48:37]
+No te la pones en marcha y no anda, ese tipo de cosas que pueden pasar. Si eso no te pasa con Telegram, no te no te debería pasar con Telegram ni con WhatsApp, normalmente se puede pasar permanentemente. No, linda el ejercicio pues si no Pero bueno.
+
+[48:52]
+La opción de hacer el bote de WhatsApp, insisto, es una posibilidad en costo es es una cosa que no no inciden la decisión, digamos que no tenemos costo para esto de de sanidad y yo pago la y yo pago eso y me viene hace $1, 20, entonces son cosas que que que usa más tarde. O sea que ese costo se te cobra por tráfico de más, o sea que sería muy igual. Bueno.
+
+[49:21]
+Sí requiere autorización Bueno, está planteado, por lo menos este está planteado y hay que estudiarlo, sí, porque los dos grandes problemas este para mí del ejercicio independientemente de de de lo que se mencionó al principio para para poner para ponerlo en marcha eh para mí son el gatillo de de la decisión del rector que terminan plan B.
+
+[49:53]
+Este, y y bueno, y y mejorar la confiabilidad digamos del del Telegram este que con con alguna aplicación Yo creo que mientras tanto lo podemos seguir utilizando para terminar lo que queremos hacer.
+
+[50:08]
+Eh, respecto a Alertor, ¿cómo fue el la Bien, lo que no tiene Alertor es una ahí como Para para ver si si se sigue validando, si continúa o Lo que tiene alerta lo que notamos que, bueno, Es para este ejercicio. Sí, no tiene una cosa de recibo. Yo no sé si por alerta el que el que recibió el mensaje lo recibió. Sí, eh digamos, alerta fue una de las cosas que anduvo bien, o sea, que no hubo problema.
+
+[50:36]
+El problema es que lo usamos solo para, o sea, está complicado para las mayordomías. Es decir, como pensamos utilizarlo solamente desde el horario a mayordomías, porque era ese canal previsto, no lo pensamos implementarlo en en el resto. Dentro de el comité o o demás. Y se mandó, se mandó y llegó, o sea, y te permite ir viendo y ver dónde están las personas. ¿Al tor tiene el sistema de votación también? Sí. ¿De votación?
+
+[51:04]
+Lo que pasa que, a ver, dato objetivo uno de los pocos que funcionaba bien junto con WhatsApp, porque no hubo problema, a diferencia de de mi tontería, no más, no hubo problema en realidad. El tema es que tampoco podemos decir, "Sí, vamos adelante con esto.", siendo objetivo. Podemos decir, "Sí, sí, vamos con esto.", porque la realidad es que tuvimos solamente envío y confirmación de dos personas pero porque estaba acotado a eso. O sea No recibimos con No recibimos la confirmación de que él recibió el mensaje. Sí, las dos personas me contestaron, sí, las pusieron en Tilbury Verde. Ah, okay.
+
+[51:34]
+Que eran Hermanda, pero estaba en otro edificio por una situación puntual hoy, si es la mayor las personas que tienen la mayoría habitualmente en Alem en ese turno de trabajo, pero hoy por temas especiales estaban en el edificio, ya confirmo igual.
+
+[51:46]
+Eh, porque sabían que si iban a tener un un aviso por alerto y después misma Claudia que también estaba conectada Podemos la semana que viene coordinamos con anticipación, este, hacer una reunión en con el ORAI y el comité de emergencia, por ejemplo, para poder practicar este la opción de Alertor del uso del Alertor para el comité de emergencia.
+
+[52:24]
+Sí, lo único, o sea, la única dificultad que yo vi justamente con el tema de Alertor es que Pero bueno, pasó por lo que comentó al principio Juan, esto de que tuvimos un problema con la computadora por ahí con lo que iba a ser originalmente los oficina del horario, entonces pusieron la compu de Juan. Entonces eso complicó un poco el tema de las conexiones con las pantallas y además tal vez no hubiese pasado estar instalada la oficina como estaba previsto.
+
+[52:45]
+Eh, y eso complicó un poco el tema de dar el alta, digamos desde la perspectiva desde el horario eran como muchos sistemas a los muchos medios de comunicación a los cuales había que estar atento a la vez. Había que estar con la radio, había que estar con el sistema, había que estar con la alertor y es como que eso era como sumaba alertor otra complicada más, a la cual había que estar atenta, otro medio más de comunicación y eso por ahí digamos podía complicar un poco. Eh, pero sí se puede hacer una una práctica.
+
+[53:15]
+Okay. Podemos Este, me tengo que ir eh le dejé un mensaje, felicitaciones a todos los que participaron. Eh, como digo ahí, primer paso es el más importante, ya lo dimos para empezar y bueno, después de oportunidad de mejora seguramente vamos a encontrar todo el tiempo. Eh, buen fin de semana. Y bueno, acá me queda todavía Daniel desconectado, si tiene que Bueno. Bueno, perfecto. Chao, chao, chao. Chao, gracias.
+
+[53:45]
+Chao, Marcelo. Este, ya lo lo podemos este eh no no queda mucho más para para para conversar eh más que bueno, eh lo lo que acabamos de decir, ¿no?
+
+[54:02]
+Ver la posibilidad de la semana que viene hacer alguna alguna reunión y probar ensayar este el alertor con el comité de emergencia, a ver si este podemos restringir ese ese espectro de alternativas que tiene el horade y las centramos solamente en dos. En horade estoy bien.
+
+[54:28]
+Este Yo destaco que a pesar de todos los inconvenientes que hubo, se pudo salir adelante. Eso es algo positivo, no nos quedamos trabados y avanzamos por caminos alternativos, pero llegamos al objetivo. Sí, sí.
+
+[54:44]
+Eh, que la radio, por ejemplo, fue fue una herramienta que sorteó un montón de de dificultades. Eh, refinar un poco el tema de con un par de tareas citaciones. Sí.
+
+[55:06]
+Eso es, eh A a mí me gustaría Eso quedó muy Tal vez me gustaría hacer algún ensayo este de de las radios cuando hay comunicaciones degradadas, cómo este lo vamos a manejar, ¿no? Este Sí, siempre establecer prioridades. Bueno, pero es un tema de técnico, digamos, de ponerse de acuerdo. Pero la radio siempre apretando un botón. Sí.
+
+[55:34]
+Sí, sí, pero todo el mundo la conoce, la ensayamos y bueno, llegado el caso que lo tengamos que usar, lo podemos Y después el tema de la conectividad, ya tener eh una Starlink a disposición porque si teníamos que salir del apuro eh enchufar la Starlink y salir. Bien.
+
+[56:01]
+Sí, eso es lo de las Starlink, este, a mí particularmente me parece importante eh hoy, por ejemplo, si nosotros hubiésemos tenido una antena en la combi nuestra, llevábamos la combi ahí al lado de estacionado al lado del grupo electrógeno y No le andaba la dirección Se arrancaba. Se arrancaba. Se arrancaba.
+
+[56:30]
+Este, pero bueno, ya hubiésemos parado ahí al lado de San Juan 670 y hubiésemos no podido salir del paso Y si la situación hubiese sido en no sé, en algún lugar del campo o algo de eso te estacionás ahí al lado, tenés la base operativa. Claro, yo yo lo estoy pensando más que nada como como un una alternativa de de tener conectividad en el COE, que es el comité operativo de la emergencia.
+
+[56:58]
+Es decir, este nosotros vamos a manejar un comité de emergencia que es el el el estratégico y vamos a tener un comité operativo en en campo, digamos.
+
+[57:11]
+Y entonces ese comité operativo en campo tenemos que asegurar las comunicaciones que dijo Tito, me parece que también este es como que concentrar, pero pero este no tener tantas bandidas. Eso hay que ser como planear planear Sí. aprovechar usar uno o dos a los sumos y Porque por ahí le está dando prestando atención a uno y te están comunicando por otro lado, no le prestas atención a este.
+
+[57:38]
+Pero eso para cumplir, porque eso está en los requerimientos de todo el sistema completo, ¿no? Se va se va a lograr cuando desarrollemos una cosa propia, porque si vos querés lograr para que vaya registrando y a la vez del alerter no hay API entre alerter y el alerter. No. Entonces bueno, lo va a a lograr cuando desarrolle el propio, sin la culpa.
+
+[57:56]
+Sí, porque en en en rigor este el a a el alerter es una aplicación privada, digamos, y digamos hoy lo hicimos para un un cuerpo de un complejo, pero podemos tener este toda la la la los los edificios de la universidad más Tenemos 20 mayordomías sin sin este sin pensar en toda la gente que está en el comité de crisis eh más los del COE más este la la la los servicios este yo creo que vamos a andar en 70 80 personas por abajo la pata sin sin este sin tratar de exagerar.
+
+[58:50]
+70 80 personas seguro y eso es una licencia ya paga, ya no. Eh, así que bueno, también es un costo alto, me parece que lo del primer año con el costo del del primer mes ya podemos eh de cara a alguien que te desarrolle. Claro, ya podemos por lo menos pagar la primera parte de del desarrollo. Hm. O sea, bueno.
+
+[59:17]
+Es un Bueno, depende, este nada, vamos a a nosotros vamos a tratar de de armar el bosquejo del del ejercicio del informe.
+
+[59:33]
+Le juntaremos fotos este que captamos allá y lo vamos a circular para bueno, para que cada uno aporte haga el aporte y una vez que tengamos el negativo, este, lo pondremos lo circularemos a las autoridades. Así que por el momento nada, gracias. Va a haber este ¿Ya hay fecha del próximo?
+
+[01:00:01]
+No, todavía no, la semana que viene me gustaría hacer ese esa prueba con el actor para confirmar eso, a ver si es posible. Este, pero eh no, no tenemos fecha todavía de un de un segundo ejercicio, me preocupo si eh las escuelas. Por lo menos este ensayar desde allá este todo lo lo los mecanismos que que que pudiésemos tener cualquiera de las dos, ¿no?
+
+[01:00:31]
+O sea, este así que bueno, me parece que el objetivo deberíamos ponerlo ahí.
+
+[01:00:42]
+Bueno, nada, muchas gracias a todos.
