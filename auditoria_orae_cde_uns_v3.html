@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auditoría Cruzada Post-Incidente — CDE / ORAE (UNS)</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --card-alt: #334155;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --gold: #f59e0b;
+      --teal: #14b8a6;
+      --orange: #f97316;
+      --green: #22c55e;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 48px;
+    }
+    header {
+      background: linear-gradient(135deg, #090d16 0%, #1e293b 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+    .header-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 700;
+      background: rgba(249, 115, 22, 0.16); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.4);
+    }
+    h1 { font-size: 1.25rem; font-weight: 700; color: #fff; }
+    .subtitle { font-size: 0.84rem; color: var(--muted); margin-top: 2px; }
+
+    /* Pure CSS Tabs + JS support */
+    .tab-radio { display: none; }
+    .tabs {
+      display: flex; gap: 8px; overflow-x: auto; padding-top: 14px;
+      scrollbar-width: none;
+    }
+    .tab-label {
+      background: rgba(255,255,255,0.05); color: var(--muted);
+      border: 1px solid var(--border); padding: 9px 15px; border-radius: 8px;
+      cursor: pointer; font-size: 0.84rem; font-weight: 600; white-space: nowrap;
+      transition: all 0.15s; user-select: none; display: inline-block;
+    }
+    .tab-label:hover { background: rgba(255,255,255,0.12); color: #fff; }
+    #nav-qa:checked ~ header .tabs label[for="nav-qa"],
+    #nav-niveles:checked ~ header .tabs label[for="nav-niveles"],
+    #nav-partes:checked ~ header .tabs label[for="nav-partes"],
+    #nav-cronologia:checked ~ header .tabs label[for="nav-cronologia"] {
+      background: var(--accent); color: #0f172a; border-color: var(--accent);
+    }
+    .panel { display: none; margin-top: 20px; }
+    #nav-qa:checked ~ .container #tab-qa,
+    #nav-niveles:checked ~ .container #tab-niveles,
+    #nav-partes:checked ~ .container #tab-partes,
+    #nav-cronologia:checked ~ .container #tab-cronologia {
+      display: block;
+    }
+
+    /* Role Hierarchy Cards */
+    .hierarchy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .tier-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 15px;
+    }
+    .tier-1 { border-top: 4px solid var(--gold); }
+    .tier-2 { border-top: 4px solid var(--teal); }
+    .tier-3 { border-top: 4px solid var(--accent); }
+    .tier-title {
+      font-size: 0.78rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.05em; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+    }
+    .tier-1 .tier-title { color: #fbbf24; }
+    .tier-2 .tier-title { color: #2dd4bf; }
+    .tier-3 .tier-title { color: #38bdf8; }
+    .actor-list { list-style: none; font-size: 0.83rem; color: #e2e8f0; }
+    .actor-list li { margin-bottom: 6px; padding-bottom: 5px; border-bottom: 1px dashed rgba(255,255,255,0.07); }
+    .actor-list li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .actor-name { font-weight: 700; color: #fff; }
+    .actor-role { color: var(--muted); font-size: 0.79rem; }
+
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px; margin-bottom: 16px;
+    }
+    .card h2 { font-size: 1.05rem; margin-bottom: 10px; color: #fff; }
+    .card h3 { font-size: 0.95rem; margin: 12px 0 6px 0; color: var(--accent); }
+    .search-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    input[type="text"] {
+      flex: 1; min-width: 240px;
+      background: #0f172a; color: #fff; border: 1px solid var(--border);
+      border-radius: 8px; padding: 11px 14px; font-size: 0.92rem;
+    }
+    .btn {
+      background: var(--accent); color: #0f172a; border: none;
+      padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 0.88rem;
+      cursor: pointer; transition: opacity 0.15s; white-space: nowrap;
+    }
+    .btn:hover { opacity: 0.9; }
+    .btn-outline {
+      background: transparent; color: #cbd5e1; border: 1px solid var(--border);
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px 0; }
+    .chip {
+      background: rgba(56, 189, 248, 0.12); color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.3); padding: 7px 13px;
+      border-radius: 999px; font-size: 0.79rem; cursor: pointer; font-weight: 600;
+    }
+    .chip:hover { background: rgba(56, 189, 248, 0.25); }
+    .chip-gold { background: rgba(245, 158, 11, 0.14); color: #fcd34d; border-color: rgba(245, 158, 11, 0.35); }
+    .chip-teal { background: rgba(20, 184, 166, 0.14); color: #5eead4; border-color: rgba(20, 184, 166, 0.35); }
+
+    .qa-item {
+      background: #0f172a; border: 1px solid var(--border);
+      border-left: 4px solid var(--accent); border-radius: 8px;
+      padding: 15px; margin-bottom: 12px;
+    }
+    .qa-meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; align-items: center; }
+    .role-pill {
+      background: rgba(56, 189, 248, 0.15); color: #7dd3fc;
+      padding: 2px 8px; border-radius: 4px; font-size: 0.73rem;
+    }
+    .cat-tag {
+      background: rgba(255,255,255,0.06); color: #cbd5e1;
+      padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 600;
+    }
+    .qa-q { font-weight: 700; color: #fff; margin-bottom: 8px; font-size: 0.96rem; }
+    .qa-a { font-size: 0.88rem; color: #e2e8f0; white-space: pre-line; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    th, td { border: 1px solid var(--border); padding: 9px 10px; text-align: left; vertical-align: top; }
+    th { background: #0f172a; color: var(--accent); font-weight: 600; }
+    tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+    .tag {
+      display: inline-block; padding: 2px 7px; border-radius: 4px;
+      font-size: 0.71rem; font-weight: 700; margin-right: 4px; margin-bottom: 2px;
+    }
+    .tag-ws { background: rgba(34, 197, 94, 0.2); color: #86efac; }
+    .tag-tg { background: rgba(56, 189, 248, 0.2); color: #7dd3fc; }
+    .tag-orae { background: rgba(249, 115, 22, 0.2); color: #fdba74; }
+    .tag-dci { background: rgba(234, 179, 8, 0.2); color: #fde047; }
+    pre {
+      background: #090d16; color: #cbd5e1; padding: 14px; border-radius: 8px;
+      overflow-x: auto; font-size: 0.8rem; border: 1px solid var(--border);
+      white-space: pre-wrap; max-height: 540px; overflow-y: auto;
+    }
+    .table-wrap { overflow-x: auto; }
+  </style>
+</head>
+<body>
+
+<input type="radio" name="main-nav" id="nav-qa" class="tab-radio" checked />
+<input type="radio" name="main-nav" id="nav-niveles" class="tab-radio" />
+<input type="radio" name="main-nav" id="nav-partes" class="tab-radio" />
+<input type="radio" name="main-nav" id="nav-cronologia" class="tab-radio" />
+
+<header>
+  <div class="container">
+    <div class="header-top">
+      <div>
+        <h1>Auditoría Cruzada Post-Incidente — CDE / ORAE v15.9 (UNS)</h1>
+        <div class="subtitle">Operativo Alerta Naranja 12 y 13 de Noviembre de 2026 | Cruce integral: WhatsApp Completo + Telegram + Bitácora ORAE + Evaluación DCI</div>
+      </div>
+      <span class="badge">● Debriefing Post-Incidente (Protocolo 72 hs)</span>
+    </div>
+    <div class="tabs">
+      <label for="nav-qa" class="tab-label">1. Buscador y Consultas Contrastadas</label>
+      <label for="nav-niveles" class="tab-label">2. Interacción por Niveles (Autoridades / SHST / Operación)</label>
+      <label for="nav-partes" class="tab-label">3. Trazabilidad Partes (12 en Telegram vs. WS)</label>
+      <label for="nav-cronologia" class="tab-label">4. Línea de Tiempo e Hiperdocumento</label>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ESTRUCTURA DE INTERVENCIÓN EN LAS 3 CAPAS SOLICITADAS -->
+  <div class="hierarchy-grid" style="margin-top: 18px;">
+    <div class="tier-card tier-1">
+      <div class="tier-title">👑 1. Autoridades (Toma de Decisiones)</div>
+      <ul class="actor-list">
+        <li>
+          <span class="actor-name">Daniel A. Vega</span> — <span class="actor-role">Rector UNS (CDE)</span><br/>
+          <span class="actor-role">Orden ejecutiva de suspensión, aprobación oficial en ORAE y control de secuencia.</span>
+        </li>
+        <li>
+          <span class="actor-name">Walter Cravero</span> — <span class="actor-role">Secretario Técnico (CDE)</span><br/>
+          <span class="actor-role">Definición de criterios por turno/nivel, enlace con Rectorado/UTN, seguimiento de viaje BByF y escucha VHF.</span>
+        </li>
+        <li>
+          <span class="actor-name">Andrea Castellano</span> — <span class="actor-role">Vicerrectora UNS</span><br/>
+          <span class="actor-role">Enlace institucional con Municipio (MBB) y consenso de suspensión con Rectorado.</span>
+        </li>
+        <li>
+          <span class="actor-name">Subse Gonzalo</span> — <span class="actor-role">Subsecretaría de Infraestructura</span><br/>
+          <span class="actor-role">Seguimiento del operativo en el canal de coordinación y validación en Telegram.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="tier-card tier-2">
+      <div class="tier-title">🛡️ 2. Nexo Técnico-Ejecutivo (Articulación)</div>
+      <ul class="actor-list">
+        <li>
+          <span class="actor-name">Guillermo Dominella</span> — <span class="actor-role">Jefe del SHST (CDE)</span><br/>
+          <span class="actor-role">Articulación directa entre la toma de decisiones de las Autoridades y el equipo operativo. Monitoreo de pronósticos, relevamiento telefónico de Campus Palihue (con vigilancia SJ 670), lineamientos de protocolo de confinamiento, tablero de viajes en tránsito, estructura del Informe Post-Incidente y cierre del alerta (19:16 hs).</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="tier-card tier-3">
+      <div class="tier-title">⚙️ 3. Sugerencia y Operación Directa</div>
+      <ul class="actor-list">
+        <li>
+          <span class="actor-name">Juan M. Sánchez</span> — <span class="actor-role">Operador en Guardia ORAE (PCJUAN)</span><br/>
+          <span class="actor-role">Operación y ajuste en caliente de ORAE v15.9, carga de los 12 Partes Informativos y prueba de línea 4595222.</span>
+        </li>
+        <li>
+          <span class="actor-name">Miguel Flores y Pablo Abalo</span> — <span class="actor-role">Operadores Radio VHF / Lab. Hidráulica (CDE)</span><br/>
+          <span class="actor-role">Rondas VHF con mayordomías, desalojo nocturno sala Alem, control agua/cloacas, movimiento de equipos Química y enlace Radio Club DX.</span>
+        </li>
+        <li>
+          <span class="actor-name">Marcelo Tedesco</span> — <span class="actor-role">Comunicación Institucional - DCI (CDE)</span><br/>
+          <span class="actor-role">Difusión oficial a medios/redes, control de salas de lectura y auditoría de resoluciones (SGA/ADUNS/Moodle).</span>
+        </li>
+        <li>
+          <span class="actor-name">Fernando Caba</span> — <span class="actor-role">Telecomunicaciones (CDE)</span><br/>
+          <span class="actor-role">Configuración línea directa 4595222 al int. 2222 y desborde automático al 2009.</span>
+        </li>
+        <li>
+          <span class="actor-name">Mayordomías y Vigilancia</span> — <span class="actor-role">Alem, BByF (SJ 670), Palihue y Esc. Medias</span><br/>
+          <span class="actor-role">Respuesta permanente en rondas VHF y telefónicas durante el paro nodocente.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TAB 1: BUSCADOR Y CONSULTAS -->
+  <div id="tab-qa" class="panel">
+    <div class="card">
+      <h2>Buscador Cruzado del Operativo (WhatsApp + Telegram + Log ORAE + Evaluación DCI)</h2>
+      <p style="font-size:0.84rem; color:var(--muted); margin-bottom:10px;">
+        Escribí cualquier tema, horario o participante (ej. <code>Vega</code>, <code>Cravero</code>, <code>Dominella</code>, <code>Las Grutas</code>, <code>Cintia</code>, <code>Palihue</code>, <code>4595222</code>, <code>ADUNS</code>, <code>22:02</code>, <code>VHF</code>) o tocá uno de los ejes de abajo:
+      </p>
+      <div class="search-bar">
+        <input type="text" id="questionInput" placeholder="Buscar en las decisiones de autoridades, intervenciones del SHST, operación de radio/ORAE o chat de WhatsApp..." onkeydown="if(event.key==='Enter') handleAsk()" />
+        <button type="button" class="btn" onclick="handleAsk()">Buscar / Contrastar</button>
+        <button type="button" class="btn btn-outline" onclick="resetFeed()">Ver las 6 síntesis principales</button>
+      </div>
+
+      <div class="chips">
+        <button type="button" class="chip chip-gold" onclick="quickAsk(0)">👑 Decisiones y autocrítica de Autoridades (Vega / Cravero)</button>
+        <button type="button" class="chip chip-teal" onclick="quickAsk(1)">🛡️ Rol bisagra del Jefe SHST (Guillermo Dominella)</button>
+        <button type="button" class="chip chip-gold" onclick="quickAsk(2)">🚌 Contingente BByF desde Las Grutas y Argerich</button>
+        <button type="button" class="chip" onclick="quickAsk(3)">📻 Operación Radio VHF, Agua/Cloacas y Sala Alem (Flores / Abalo)</button>
+        <button type="button" class="chip" onclick="quickAsk(4)">💻 Operación ORAE, Votaciones y Partes (Juan M. Sánchez)</button>
+        <button type="button" class="chip" onclick="quickAsk(5)">📢 Comunicación DCI (Tedesco) y Central 4595222 (Caba)</button>
+      </div>
+    </div>
+
+    <div id="qaFeed">
+<div class="qa-item" data-cat="AUTORIDADES Y NEXO SHST">
+      <div class="qa-meta">
+        <span><strong class="role-pill">Decisión Ejecutiva + Nexo SHST</strong> &nbsp;👥 <strong>Daniel A. Vega (Rector), Walter Cravero (Sec. Técnico) y Guillermo Dominella (Jefe SHST)</strong></span>
+        <span class="cat-tag">AUTORIDADES Y NEXO SHST</span>
+      </div>
+      <div class="qa-q">1. ¿Cómo interactuaron las Autoridades y el Jefe de SHST en la toma de decisiones y qué autocríticas plantearon?</div>
+      <div class="qa-a">• SECUENCIA DEL JUEVES 12/11 (Noche): A las 18:57 hs Guillermo Dominella marcó que la definición debía comunicarse a las 22:00 hs y Walter Cravero (18:59 hs) propuso esperar el parte municipal o definir a las 21:00 hs para pasarle la posta al Rector Daniel Vega. Publicado el parte municipal (21:38 hs), Cravero articuló con Daniel Vega y Andrea Castellano (21:54 hs) la suspensión de EPUNS todo el viernes y nivel universitario hasta las 12:00 hs.
+• AUTOCRÍTICA DE SECUENCIA (Rector y Jefe SHST): A las 22:09 hs salió la Disposición de SGA antes de que el CDE votara en Telegram. Daniel Vega advirtió a las 22:12:05 hs: &#x27;Tenemos que trabajar en la secuencia. No debería haber salido antes de la votación&#x27;, coincidiendo con Guillermo Dominella (&#x27;Cuando la decisión está tomada la votación no tiene sentido&#x27;).
+• EJECUCIÓN DEL VIERNES 13/11 (Ventana 10:00 hs): Cumpliendo el protocolo, el CDE votó en ORAE entre las 09:53 y las 10:00 hs, y Daniel Vega ejecutó el botón de aprobación (&#x27;acción de oro&#x27;) a las 10:01:06 hs.
+• OBSERVACIONES DE WALTER CRAVERO: 1) Necesidad de plantillas de Resoluciones prefabricadas para salir en 5 minutos (el viernes demoró 47 min entre la aprobación en ORAE a las 10:01 y la Disp. SGA 248 a las 10:48 hs); 2) Formalizar ante Decanos y CEMS que el comité está en monitoreo continuo para contener presiones; 3) Simplificar las votaciones en Telegram (&#x27;voté como 6 veces&#x27;); 4) Incorporar a la Vicerrectora al canal y establecer consulta previa con UTN FRBB y Municipio.</div>
+    </div>
+<div class="qa-item" data-cat="NEXO SHST (ARTICULACIÓN)">
+      <div class="qa-meta">
+        <span><strong class="role-pill">Nexo Autoridades ↔ Operación</strong> &nbsp;👥 <strong>Guillermo Dominella (Jefe SHST)</strong></span>
+        <span class="cat-tag">NEXO SHST (ARTICULACIÓN)</span>
+      </div>
+      <div class="qa-q">2. ¿Qué rol cumplió el Jefe del SHST (Guillermo Dominella) como puente entre las Autoridades y el equipo operativo?</div>
+      <div class="qa-a">• ARTICULACIÓN DE VENTANAS Y PERSONAL: Confirmó con Bittar (jueves 20:33 hs) la ausencia de mayordomos por el paro nodocente e impulsó mantener radios encendidas y atención a Telegram.
+• RELEVAMIENTO DEL CAMPUS PALIHUE (Viernes 11:11 hs): Ante la falta de radio VHF en Palihue advertida por Miguel Flores y Walter Cravero, gestionó por teléfono con el vigilador de San Juan 670 el estado del Campus (guardias en Eléctrica, Agronomía y otra dependencia, posesión de llaves de acceso y refuerzo a las 14:00 hs en Aula 1), quedando asentado en el Parte Informativo #4.
+• PROTOCOLOS DE CONFINAMIENTO Y CONTROL DE VIAJES (Viernes 18:21 a 18:31 hs): Planteó qué protocolo aplicar si hubiera habido personal confinado dentro de los edificios (proponiendo que el ORAE físico de San Juan 670 centralice novedades por teléfono y luego radio) y respaldó registrar en un tablero de control los viajes de estudio y el contacto con el puesto de Argerich.
+• ENFOQUE DEL INFORME POST-INCIDENTE Y CIERRE (Viernes 19:13 a 19:16 hs): Propuso que la introducción del informe deje claro que el evento pudo ser muy grave y que Bahía Blanca evitó el impacto directo por el desvío explicable meteorológicamente (adjuntando evidencia de Punta Alta y la región), e informó formalmente el cese del Alerta Amarilla a las 19:16:07 hs.</div>
+    </div>
+<div class="qa-item" data-cat="VIAJES DE ESTUDIO Y EXTERNOS">
+      <div class="qa-meta">
+        <span><strong class="role-pill">Autoridades + Nexo SHST</strong> &nbsp;👥 <strong>Walter Cravero (Sec. Técnico) y Guillermo Dominella (Jefe SHST)</strong></span>
+        <span class="cat-tag">VIAJES DE ESTUDIO Y EXTERNOS</span>
+      </div>
+      <div class="qa-q">3. ¿Qué ocurrió con el contingente de estudiantes de BByF que volvía de Las Grutas y el predio de Argerich?</div>
+      <div class="qa-a">• CONTINGENTE BByF EN RUTA: El viernes a las 18:29:55 hs Walter Cravero advirtió que había estudiantes de BByF regresando desde Las Grutas que atravesaban una zona climáticamente complicada y solicitaban información, señalando la necesidad de contar con un registro previo de viajes de estudio activos ante alertas meteorológicas.
+• TABLERO Y ARGERICH: A las 18:30:50 hs Guillermo Dominella propuso incorporar esos viajes a un tablero de control y advirtió que el frente se desplazaba hacia Argerich sin tener contacto con el personal de ese predio.
+• CONFIRMACIÓN DE ARRIBO SEGURO (18:55:09 hs): En el tramo final del chat completo, Walter Cravero reportó a las 18:55:09 hs: &#x27;Cintia me confirmó que los estudiantes de BByF llegaron bien a Bahía, sin novedad&#x27;.</div>
+    </div>
+<div class="qa-item" data-cat="OPERACIÓN DIRECTA — RADIO VHF">
+      <div class="qa-meta">
+        <span><strong class="role-pill">Sugerencia y Operación Directa</strong> &nbsp;👥 <strong>Miguel Flores y Pablo Abalo (Operadores de Radio VHF / Lab. Hidráulica)</strong></span>
+        <span class="cat-tag">OPERACIÓN DIRECTA — RADIO VHF</span>
+      </div>
+      <div class="qa-q">4. ¿Cómo operó la red de radio VHF, el control de edificios/servicios y el enlace con radioaficionados?</div>
+      <div class="qa-a">• PRUEBAS PREVIAS Y RONDAS VHF: El jueves a las 12:46 hs Miguel Flores y Pablo Abalo (junto a Patricia BByF y Juan M. Sánchez) validaron handies en Escuelas Medias. Durante la emergencia ejecutaron todas las rondas VHF con las mayordomías de Complejo Alem y BByF (jueves 15:56, 22:19, 22:52 y 23:02; viernes 08:03, 10:54, 13:07 y 17:30 hs).
+• INTERVENCIÓN NOCTURNA EN SALA DE LECTURA ALEM (Jueves 22:46 a 23:04 hs): Tras el aviso de ACP N° 4009 (enviado por Pablo Abalo a las 22:42 hs), Miguel detectó que Mayordomía Alem tenía el handy apagado (22:55 hs); llamó al interno telefónico, logró que encendieran la radio a las 23:02 hs y que retiraran a los 2 últimos estudiantes de la sala de lectura (comunicación copiada 5/9 por Walter Cravero desde su domicilio).
+• INFRAESTRUCTURA Y MOVIMIENTO DE EQUIPOS: Miguel relevó el estado operativo de reservorios de agua y cloacas en Alem (viernes 08:12 y 14:10 hs). Pablo Abalo coordinó con autorización de Walter Cravero (08:33 / 08:44 hs) el movimiento de equipos de Química con hidrogrúa aprovechando la ventana meteorológica favorable, finalizando a las 11:10 hs (Parte #3).
+• ENLACE CON RADIOCLUBES Y CIERRE: Mantuvieron escucha en frecuencias del Radio Club DX Bahía Blanca (146.520 MHz, repetidora 146.820 MHz y UHF Cerro de la Carpa), reportaron el inicio de lluvias a las 18:46 hs y aportaron a las 19:23 hs el repositorio GitHub (PECI_UNS) con la estructura de auditoría.</div>
+    </div>
+<div class="qa-item" data-cat="OPERACIÓN DIRECTA — SISTEMA ORAE">
+      <div class="qa-meta">
+        <span><strong class="role-pill">Operación del Sistema</strong> &nbsp;👥 <strong>Juan M. Sánchez (Operador en Guardia ORAE - PCJUAN)</strong></span>
+        <span class="cat-tag">OPERACIÓN DIRECTA — SISTEMA ORAE</span>
+      </div>
+      <div class="qa-q">5. ¿Qué ajustes en vivo realizó el Operador ORAE y cómo se explica el comportamiento de las votaciones y burbujas?</div>
+      <div class="qa-a">• CONTINGENCIA DE HARDWARE Y FIX DE ACP (Jueves 15:39 a 16:28 hs): Ante la caída de la PC de Biología, levantó el servicio desde su equipo (PCJUAN), detectó y corrigió en vivo el bug lógico que interpretaba los Avisos a Corto Plazo (ACP) como Alerta Roja, e implementó a las 20:25 hs los vencimientos ajustados a las ventanas gatillo (06, 10, 16 y 22 hs), el plazo de 20 min para ACP y los comandos /situacion y /recomendacion.
+• CAUSA DEL RECHAZO DE VOTOS A LAS 22:02 HS: El botón &#x27;Reanudar&#x27; extendió el reloj de la encuesta de las 20:29 hs sin limpiar los votos previos (impidiendo que Cravero y Dominella cambiaran su NO a SÍ hasta que entró el ACP por radar a las 22:28:42 hs).
+• TRANSICIÓN A MODO AUTOMÁTICO Y PARTES #1 AL #12 (Viernes 15:10 a 15:42 hs): Al conmutar de Modo Manual a Automático (15:10:34 hs), el sistema disparó el recordatorio de 6 hs y reseteó los ACK de las 10 burbujas. Para restituir el estado ya aprobado a la mañana, el Operador ORAE forzó Ola 1 (15:17:58) y Ola 2 (15:25:46, tras los 5 min de seguro del Rector) usando credenciales de prueba y asentó las aclaraciones en los Partes Informativos #8 y #10.</div>
+    </div>
+<div class="qa-item" data-cat="OPERACIÓN DIRECTA — COMUNICACIÓN Y TELECOM">
+      <div class="qa-meta">
+        <span><strong class="role-pill">Sugerencia y Operación Directa</strong> &nbsp;👥 <strong>Marcelo Tedesco (Comunicación Institucional) y Fernando Caba (Telecomunicaciones)</strong></span>
+        <span class="cat-tag">OPERACIÓN DIRECTA — COMUNICACIÓN Y TELECOM</span>
+      </div>
+      <div class="qa-q">6. ¿Qué aportes críticos realizaron Comunicación Institucional (DCI) y Telecomunicaciones durante el operativo?</div>
+      <div class="qa-a">• TELECOMUNICACIONES (Fernando Caba): 1) El viernes a las 11:51 hs configuró el número directo externo 4595222 hacia el interno 2222 de la oficina ORAE en San Juan 670 (validado a las 11:57 hs por Juan M. Sánchez en el Parte #6); 2) A las 12:31 hs programó el desborde automático al interno 2009 ante llamadas simultáneas; 3) Detectó a las 10:02 hs el cierre automático de la encuesta tras la aprobación del Rector y a las 15:13 hs la falta de alta de su ID en el padrón del bot; 4) Reportó la llegada de la lluvia a Parque Norte a las 18:41:11 hs.
+• COMUNICACIÓN INSTITUCIONAL (Marcelo Tedesco): 1) Propuso estandarizar mensajes de Telegram y sumar carga manual guiada de incidentes (jueves 13:06 hs); 2) Alertó el horario de cierre de la sala de lectura de Alem (hasta las 00:00 hs); 3) Publicó los partes oficiales y entregó el documento de evaluación marcando: filtración previa de la disposición a ADUNS, omisión de DCI en el Art. 3°, falta de cláusula de continuidad pedagógica por Moodle, y necesidad de especificar tareas remotas nodocentes, Sanidad, Comedor e interaulas.</div>
+    </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: INTERACCIÓN POR NIVELES -->
+  <div id="tab-niveles" class="panel">
+    <div class="card" style="border-left: 4px solid var(--gold);">
+      <h2>1. Nivel Decisorio — Autoridades (Daniel A. Vega y Walter Cravero)</h2>
+      <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;">
+        Las autoridades concentraron la definición política e institucional de las suspensiones, la articulación con el Rectorado/Vicerrectorado y otras instituciones (UTN / Municipio), y el análisis crítico de los tiempos administrativos.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Autoridad</th>
+              <th>Intervenciones, Decisiones y Consultas Clave en el Operativo</th>
+              <th>Planteos para Mejora del Protocolo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Daniel A. Vega</strong><br/><span class="actor-role">Rector UNS</span></td>
+              <td>
+                • <strong>Jueves 12/11 (20:33 a 22:07 hs):</strong> Monitoreó en vivo el escrutinio en Telegram (consultó <code>/escrutinio</code> a las 22:07:33 hs) y acordó con Vicerrectorado (21:54 hs) suspender EPUNS toda la jornada del viernes y nivel universitario hasta las 12:00 hs.<br/>
+                • <strong>Jueves 12/11 (21:56 a 22:21 hs):</strong> Envió la orden a Comunicación, acompañó con audio e imagen en el grupo de WhatsApp y validó el operativo nocturno de radio.<br/>
+                • <strong>Viernes 13/11 (10:00 a 10:01 hs):</strong> Consultó el escrutinio en Telegram (10:00:23 y 10:00:58 hs) y ejecutó la <strong>Aprobación Oficial del Rectorado</strong> a las <strong>10:01:06 hs</strong> tras los 4 votos afirmativos del CDE.
+              </td>
+              <td>
+                • <strong>Respeto estricto de la secuencia (22:12:05 hs):</strong> Marcó expresamente: <em>"Tenemos que trabajar en la secuencia. No debería haber salido antes de la votación"</em> (en referencia a la disposición de SGA emitida a las 22:09 hs).
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Walter Cravero</strong><br/><span class="actor-role">Secretario Técnico (CDE)</span></td>
+              <td>
+                • <strong>Jueves 12/11 (18:41 a 21:54 hs):</strong> Advirtió que el viernes no sería simulacro sino Alerta Naranja real (con clases pese al paro nodocente), propuso esperar al Municipio hasta las 21:00 hs y transmitió a las 21:54 hs la propuesta consensuada con Daniel Vega y Andrea Castellano.<br/>
+                • <strong>Jueves 12/11 (22:00 a 23:04 hs):</strong> Propuso votar en Telegram para dejar registro (22:00 hs), definió que los edificios no debían abrirse a la mañana (22:07 hs), reanudó el reloj en Telegram (22:02 hs), votó SÍ en el ACP de las 22:36 hs y monitoreó en radio VHF desde su domicilio (copió 5/9 a Miguel Flores a las 23:04 hs).<br/>
+                • <strong>Viernes 13/11 (07:39 a 10:03 hs):</strong> Abrió el reporte matutino, consultó por handies en Palihue (08:30 hs), autorizó el movimiento de equipos con hidrogrúa de Pablo Abalo (08:44 hs), aclaró la autarquía jurídica de SOSUNS (09:31 hs), propuso mantener la suspensión hasta las 18:00 hs (09:35 hs) y votó SÍ en Ola 1 y Ola 2.<br/>
+                • <strong>Viernes 13/11 (18:29 y 18:55 hs):</strong> Relevó el regreso de los estudiantes de BByF desde Las Grutas y confirmó a las <strong>18:55:09 hs</strong> con Cintia que llegaron bien a Bahía Blanca.
+              </td>
+              <td>
+                • <strong>Modelos de Resolución prefabricados (18:06 hs):</strong> Para firmar y publicar en 5 minutos.<br/>
+                • <strong>Agilidad en Telegram (18:07 y 18:18 hs):</strong> Simplificar el mecanismo de votación (intentó votar 5 veces porque el botón Reanudar no limpiaba su voto previo).<br/>
+                • <strong>Comunicación interna y externa (18:09 a 18:20 hs):</strong> Avisar a Decanos/CEMS que el CDE está monitoreando, incorporar a la Vicerrectora al canal de Telegram y coordinar con el Municipio y UTN FRBB <em>antes</em> de publicar decisiones.<br/>
+                • <strong>Viajes de estudio (18:29 hs):</strong> Contar con registro previo de contingentes en ruta.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" style="border-left: 4px solid var(--teal);">
+      <h2>2. Rol Bisagra / Nexo Técnico-Institucional — Jefe del SHST (Guillermo Dominella)</h2>
+      <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;">
+        Sin ser autoridad ejecutiva de Rectorado, el Jefe del SHST operó como articulador central entre las autoridades decisorias y el equipo técnico-operativo, traduciendo los reportes meteorológicos y de campo en ventanas de decisión y protocolos.
+      </p>
+      <ul style="padding-left:20px; font-size:0.86rem; color:#e2e8f0;">
+        <li style="margin-bottom:8px;"><strong>Seguimiento meteorológico y encuadre de ventanas (Jueves 15:46 a 21:46 hs):</strong> Siguió la evolución en Windy (desplazamiento desde Pedro Luro hacia Bahía Blanca), fijó el límite de las 22:00 hs para comunicar decisiones del día siguiente y propuso tras el parte municipal suspender actividades hasta el reporte de las 10:00 hs.</li>
+        <li style="margin-bottom:8px;"><strong>Articulación laboral y operativa (Jueves 18:43 y 20:33 hs):</strong> Impulsó aprovechar el paro para ensayar comunicaciones con radios encendidas y confirmó con Bittar que por el paro nodocente no habría mayordomos en los edificios.</li>
+        <li style="margin-bottom:8px;"><strong>Resolución del punto ciego en Campus Palihue (Viernes 11:01 a 11:11 hs):</strong> Ante la falta de radio VHF en Palihue, se comunicó telefónicamente con el vigilador de San Juan 670 y reportó el estado completo del Campus (guardias apostados en Eléctrica, Agronomía y otra dependencia, posesión de llaves de acceso y refuerzo a las 14:00 hs en el Aula 1), informe que fue transcripto en el <strong>Parte Informativo #4</strong>.</li>
+        <li style="margin-bottom:8px;"><strong>Criterios sobre votaciones, confinamiento y activos críticos (Viernes 18:08 a 18:31 hs):</strong> Señaló que no tiene sentido votar en Telegram cuando la disposición administrativa ya salió ni mantener encuestas abiertas con actividades ya suspendidas; planteó definir el protocolo de relevamiento de edificios con personal confinado (centralizado desde el ORAE físico de San Juan 670) y pidió incorporar un tablero de viajes de estudio y enlace con el predio de Argerich.</li>
+        <li style="margin-bottom:8px;"><strong>Lineamiento para el Informe de Emergencia y Cierre (Viernes 18:47 a 19:16 hs):</strong> Recordó el documento Word destacado para el ejercicio del viernes siguiente, propuso a las <strong>19:13:06 hs</strong> que la introducción del Informe Post-Incidente explique por qué el frente pudo ser muy severo y cómo el viento del este desvió el núcleo hacia el sur (adjuntando lo ocurrido en Punta Alta y la región para evitar subestimaciones futuras), y declaró a las <strong>19:16:07 hs</strong> el cese del Alerta Amarilla.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-left: 4px solid var(--accent);">
+      <h2>3. Nivel de Sugerencia, Asesoramiento y Operación Directa</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Integrante / Sector</th>
+              <th>Operación Directa Ejecutada</th>
+              <th>Sugerencias y Observaciones Aportadas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Juan M. Sánchez</strong><br/><span class="actor-role">Operador ORAE (PCJUAN)</span></td>
+              <td>
+                • Levantó el sistema en <code>PCJUAN</code> ante la caída del equipo de Biología (jueves 15:39 hs).<br/>
+                • Corrigió en caliente el bug de ACP/Alerta Roja y programó vencimientos por horario gatillo (06, 10, 16 y 22 hs), timer de 20 min para ACP y comandos <code>/situacion</code> y <code>/recomendacion</code>.<br/>
+                • Operó la apertura manual de las 09:53 hs, cargó los <strong>12 Partes Informativos</strong> en consola, probó desde celular la línea directa <code>4595222</code> con San Juan 670 (11:57 hs) y documentó el reseteo de burbujas al pasar a modo automático (15:11 a 15:42 hs).
+              </td>
+              <td>
+                • Advirtió que faltaba programar un inhibidor para que el sistema no abra una nueva votación cuando la jornada ya está suspendida y el alerta baja de Naranja a Amarillo (17:04 hs), además de registrar a Fernando Caba en el padrón del CDE.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Miguel Flores</strong><br/><span class="actor-role">Operador Radio VHF / Lab. Hidráulica</span></td>
+              <td>
+                • Realizó las pruebas de handies en Escuelas Medias, capacitó durante 40 min a Marcelo Tedesco y ejecutó todas las rondas VHF con mayordomías Alem y BByF.<br/>
+                • Detectó el handy apagado en Alem el jueves a las 22:55 hs, llamó al interno para que lo encendieran (23:02 hs) y coordinó el retiro de los últimos 2 alumnos de la sala de lectura.<br/>
+                • Relevó reservorio de agua y cloacas en Alem (08:12 y 14:10 hs) y mantuvo escucha en frecuencias de radioaficionados (146.520 / 146.820 / Cerro de la Carpa).
+              </td>
+              <td>
+                • Propuso destinar mínimo 3 handies por nodo (Mayordomía, Seguridad en puerta y Burbuja local), advirtió el vacío de coordinación con SOSUNS, reclamó el nulo reporte de las burbujas técnicas, destacó el compromiso del personal de vigilancia y aportó el prompt de auditoría en GitHub (<code>PECI_UNS</code> a las 19:23 hs).
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Pablo Abalo</strong><br/><span class="actor-role">Operador Radio VHF / Lab. Hidráulica</span></td>
+              <td>
+                • Participó en las pruebas de cobertura VHF en Escuelas Medias y mantuvo escucha permanente en la frecuencia operativa y de radioaficionados.<br/>
+                • Alertó el ingreso del ACP N° 4009 el jueves a las 22:41 hs y ejecutó el viernes entre las 08:44 y las 11:10 hs el traslado seguro de equipamiento de Química con hidrogrúa durante la ventana de buen tiempo (Parte #3).
+              </td>
+              <td>
+                • Aportó criterio de suspensión en escuelas preuniversitarias (jueves 21:44 hs) y validación de frecuencias libres de escucha VHF.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Marcelo Tedesco</strong><br/><span class="actor-role">Comunicación Institucional (DCI)</span></td>
+              <td>
+                • Configuró su handy VHF con asistencia de Miguel y mantuvo escucha activa.<br/>
+                • Alertó que la sala de lectura de Alem permanecía abierta hasta las 00:00 hs (jueves 22:48 / 22:50 hs).<br/>
+                • Publicó las disposiciones de suspensión en medios y redes sociales y redactó en vivo el documento de evaluación crítica del operativo.
+              </td>
+              <td>
+                • Propuso acortar los mensajes de Telegram, sumar un formulario guiado para carga manual de emergencias no meteorológicas, evitar filtraciones previas a gremios (ADUNS) e incluir en futuras resoluciones a DCI (Art. 3°), continuidad pedagógica en Moodle, régimen nodocente, Sanidad, Comedor e interaulas.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Fernando Caba</strong><br/><span class="actor-role">Telecomunicaciones</span></td>
+              <td>
+                • Configuró el viernes a las 11:51 hs el número directo externo <strong>4595222</strong> hacia el interno <strong>2222</strong> del ORAE (San Juan 670).<br/>
+                • Programó a las 12:31 hs el desborde automático del interno 2222 al <strong>2009</strong> (contiguo) en caso de llamadas simultáneas.<br/>
+                • Reportó el inicio de la lluvia en Parque Norte a las 18:41:11 hs y la demora de actualización en la App del SMN (17:24 hs).
+              </td>
+              <td>
+                • Relevó la distancia (20 m) y enlace Wi-Fi/cableado entre la oficina ORAE y cielo abierto para el trailer/Starlink, y evidenció el bloqueo de voto cuando el Rector aprueba antes del cierre del reloj.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: TRAZABILIDAD PARTES -->
+  <div id="tab-partes" class="panel">
+    <div class="card">
+      <h2>Reconstrucción Cruzada de los 12 Partes Informativos (Viernes 13/11/2026)</h2>
+      <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;">
+        La bitácora local del ORAE (<code>sesion_orae_2026-11-13_09-42-07_PCJUAN.txt</code>) registró el evento <code>ℹ Parte Informativo enviado.</code> sin almacenar el string del mensaje. Al cruzar los timestamps al segundo con <code>messages.html</code> (Telegram) y <code>chat_2.txt</code> (WhatsApp) se reconstruyen los 12 partes:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Origen en WhatsApp (chat_2.txt)</th>
+              <th>Log ORAE</th>
+              <th>Impacto en Telegram y Texto Reconstruido</th>
+              <th>Observación de Auditoría</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1</strong></td>
+              <td>09:50:13 (Juan M. Sánchez: consulta por envío manual previo a ventana 10 hs)</td>
+              <td>09:55:41</td>
+              <td><strong>09:55:43 (msg1387):</strong> "Naranja: El área será afectada por tormentas fuertes, algunas severas... precipitación acumulada entre 50 y 90 mm..."</td>
+              <td>Despachado desde consola PCJUAN para adjuntar el detalle técnico SMN a la apertura manual de las 09:53 hs.</td>
+            </tr>
+            <tr>
+              <td><strong>2</strong></td>
+              <td>10:54:22 a 10:56:37 (Miguel Flores: ronda VHF con Alem y BByF)</td>
+              <td>11:14:51</td>
+              <td><strong>11:14:53 (msg1392):</strong> "[10:54, 13/11/2026].Miguel modula por radio (VHF) respondieron solo las mayordomías Alem y BByF , sin novedades... próximo a las 13 hs se hace una nueva prueba..."</td>
+              <td>18 min de latencia mientras se acordaba en WhatsApp cargar los reportes manualmente en el ORAE.</td>
+            </tr>
+            <tr>
+              <td><strong>3</strong></td>
+              <td>11:10:53 (Miguel Flores: confirmación de Pablo Abalo sobre movimiento de equipos)</td>
+              <td>11:17:26</td>
+              <td><strong>11:17:28 (msg1393):</strong> "11:10 hs Miguel Flores : Pablo confirma que terminó el movimiento de equipos programado para esta ventana de tiempo favorable. Todo ok, sin novedades..."</td>
+              <td>6 min 35 seg de latencia entre el aviso en WhatsApp y su publicación en Telegram.</td>
+            </tr>
+            <tr>
+              <td><strong>4</strong></td>
+              <td>11:11:17 (Guillermo Dominella: envía audio de WhatsApp sobre Campus Palihue)</td>
+              <td>11:28:05</td>
+              <td><strong>11:28:06 (msg1394):</strong> "11:11 hs Guillermo Dominella , informa que estableció comunicación con vigilador en SanJuan 670... en el campus solamente están los vigiladores en eléctrica , agronomía y otra dependencia... A las 14 hs ingresara otro vigilador en aula 1..."</td>
+              <td><strong>Rescate documental clave:</strong> en el TXT de WhatsApp el audio aparece omitido; gracias a esta transcripción manual quedó asentado el relevamiento de Palihue.</td>
+            </tr>
+            <tr>
+              <td><strong>5</strong></td>
+              <td>11:51:22 a 11:51:44 (Fernando Caba: línea directa 4595222 al int. 2222)</td>
+              <td>12:00:11</td>
+              <td><strong>12:00:12 (msg1395):</strong> "[11:51, 13/11/2026] Fernando Caba: se configuró el 4595222 para hacer llamadas directas desde la red de telefonía pública al interno 2222..."</td>
+              <td>8 min 50 seg de latencia.</td>
+            </tr>
+            <tr>
+              <td><strong>6</strong></td>
+              <td>11:59:22 (Juan: "Funciona ok") y 12:01:21 (Miguel: "Registralo en log ORAE")</td>
+              <td>12:04:04</td>
+              <td><strong>12:04:05 (msg1396):</strong> "11;57 hs Juan M. Sanchez ; Desde puesto ORAE domiciliario , compruebo la linea directa (4595222) del interno 2222 del ORAE biologia (SAN JUAN 670 ) desde red celular . Reporto que funciona correctamente..."</td>
+              <td>Validado en Telegram con reacción de Subse Infraestructura.</td>
+            </tr>
+            <tr>
+              <td><strong>7</strong></td>
+              <td>13:10:49 a 13:11:23 (Miguel Flores: prueba VHF 13:07 hs con Pablo y Alem)</td>
+              <td>13:16:01</td>
+              <td><strong>13:16:03 (msg1397):</strong> "[13:10, 13/11/2026] Miguel Flores: prueba de equipos 1307 hs confirma contacto por radio Pablo y mayordomía Alem. Sin novedades..."</td>
+              <td>5 min 14 seg de latencia.</td>
+            </tr>
+            <tr>
+              <td><strong>8</strong></td>
+              <td>15:13:40 a 15:26:21 (Juan M. Sánchez: aviso de pase a modo automático)</td>
+              <td>15:28:16</td>
+              <td><strong>15:28:17 (msg1404):</strong> "15:11 hs: Se conmuta el sistema a modo de monitoreo automático. A fin de dar continuidad , se ejecuta la aprobación forzada por sistema... el operador ORAE (J. M. Sánchez) fuerza la transición..."</td>
+              <td>Asiento técnico que explica por qué se forzó la transición de Ola 1 a Ola 2 tras restablecer el escaneo automático.</td>
+            </tr>
+            <tr>
+              <td><strong>9</strong></td>
+              <td>14:00:22 y 15:04:30 (Miguel Flores: reprogramación de ronda para 16:30 hs)</td>
+              <td>15:32:13</td>
+              <td><strong>15:32:14 (msg1405):</strong> "[14:00, 13/11/2026] Miguel Flores: Entonces 15 hs hacemos otra ronda... Se decide La reprogramar para después del agua para tener novedades. Tipo 16:30"</td>
+              <td>Cargado inmediatamente después de normalizar el paso a modo automático.</td>
+            </tr>
+            <tr>
+              <td><strong>10</strong></td>
+              <td>Originado en consola por el reseteo de ACK de las 10 burbujas (15:22 a 15:42 hs)</td>
+              <td>15:42:24</td>
+              <td><strong>15:42:25 (msg1406):</strong> ": este CDE no replica la realidad . Al hacer el cambio a modo automatico las burbujas se resetearon autoamaticamente , en los hechos la situacion de las burbujas es previa al traspaso..."</td>
+              <td>Aclaración emitida 17 seg después del quinto aviso automático de "Pendientes de ACK (10/10)".</td>
+            </tr>
+            <tr>
+              <td><strong>11</strong></td>
+              <td>17:30:21 a 17:33:15 (Miguel Flores: última ronda VHF tras bajar a Amarillo)</td>
+              <td>17:35:06</td>
+              <td><strong>17:35:07 (msg1408):</strong> "[17:30, 13/11/2026] Miguel Flores: En vista del cambio de color de Alerta de Naranja a Amarillo por parte del SMN, se procede a la última ronda de pruebas de equipos de radio VHF..."</td>
+              <td>1 min 52 seg de latencia. Ya impacta bajo Estado Local: Amarillo.</td>
+            </tr>
+            <tr>
+              <td><strong>12</strong></td>
+              <td>17:35:02 (Miguel Flores: reconocimiento al personal de vigilancia)</td>
+              <td>17:36:24</td>
+              <td><strong>17:36:25 (msg1409):</strong> "MIguel Flores : Se destaca la disposición y atención de todo el personal de las mayordomías, que prestaron colaboración en la actividad no simulada..."</td>
+              <td>1 min 23 seg de latencia. Último parte emitido en Telegram.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Novedades Operativas del WhatsApp Completo (chat_2.txt) que NO impactaron en Telegram / Log ORAE</h2>
+      <ul style="padding-left:20px; font-size:0.86rem; color:#e2e8f0;">
+        <li style="margin-bottom:7px;"><strong>1. Jueves 12/11 — 22:11:59 hs (Acta manual de recomendación del CDE):</strong> Pedido de Miguel Flores de asentar en el log que a las 22:10 hs el Comité recomendaba suspender EPUNS toda la jornada y nivel universitario hasta las 12:00 hs con revisión a las 10:00 hs.</li>
+        <li style="margin-bottom:7px;"><strong>2. Jueves 12/11 — 22:19 a 23:04 hs (Operativo nocturno en Alem y BByF):</strong> Modulación con BByF, detección de que Mayordomía Alem tenía el handy apagado (22:55 hs), llamado al interno para encenderlo (23:02 hs), retiro de los 2 últimos estudiantes de la sala de lectura de Alem y confirmación de escucha 5/9 de Walter Cravero (23:04 hs).</li>
+        <li style="margin-bottom:7px;"><strong>3. Viernes 13/11 — 08:03 a 08:12 hs (Primera ronda VHF y estado hidráulico):</strong> Prueba de radio exitosa a las 08:03 hs con Complejo Alem, verificación de rejas cerradas en Escuelas Medias (06:15 hs) y reporte de reservorio de agua y cloacas operativos en Alem (el ORAE estuvo cerrado entre las 04:51 y las 09:42 hs).</li>
+        <li style="margin-bottom:7px;"><strong>4. Viernes 13/11 — 12:31:15 hs (Desborde telefónico 2222 -> 2009):</strong> Configuración realizada por Fernando Caba para que ante llamadas simultáneas al 4595222 / 2222 la llamada desborde automáticamente al interno 2009 contiguo.</li>
+        <li style="margin-bottom:7px;"><strong>5. Viernes 13/11 — 14:10:45 hs (Segundo reporte hidráulico):</strong> Informe de Miguel Flores confirmando recarga completa de agua en Alem y nivel de cloaca normal previo al frente de tormenta.</li>
+        <li style="margin-bottom:7px;"><strong>6. Viernes 13/11 — 18:41 a 19:16 hs (Chaparrón final, arribo de estudiantes de BByF y cese de Alerta Amarilla):</strong> Reporte de lluvia en Parque Norte por Fernando Caba (18:41 hs) y Miguel Flores (18:46 hs), confirmación de Walter Cravero (con Cintia) de que los estudiantes de BByF que volvían de Las Grutas llegaron bien a Bahía Blanca (18:55 hs), y aviso de Guillermo Dominella del cese del Alerta Amarilla (19:16 hs).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TAB 4: CRONOLOGÍA E HIPERDOCUMENTO -->
+  <div id="tab-cronologia" class="panel">
+    <div class="card">
+      <h2>Línea de Tiempo Integral Contrastada (12/11 10:23 hs al 13/11 20:08 hs)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha / Hora</th>
+              <th>Canal</th>
+              <th>Actor / Nivel</th>
+              <th>Evento Registrado y Contraste</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>12/11 12:05:42</td>
+              <td><span class="tag tag-tg">Telegram</span></td>
+              <td>ORAE Autónomo</td>
+              <td>Aviso Temprano Amarillo (24/72hs) detectado por Motor 2 (Selenium) para Área 760.</td>
+            </tr>
+            <tr>
+              <td>12/11 12:46 a 13:21</td>
+              <td><span class="tag tag-ws">WhatsApp</span></td>
+              <td>Operación Directa (Flores, Abalo, Tedesco, Caba)</td>
+              <td>Prueba satisfactoria de handies en Escuelas Medias; propuesta de estandarizar mensajes de Telegram y formulario manual de incidentes; relevamiento de enlace de 20 m en oficina ORAE.</td>
+            </tr>
+            <tr>
+              <td>12/11 15:34 a 16:28</td>
+              <td><span class="tag tag-ws">WhatsApp</span><span class="tag tag-tg">Telegram</span></td>
+              <td>Operación Directa (Flores, Sánchez)</td>
+              <td>Miguel informa ACP 3998. PC de Biología offline; Juan M. Sánchez inicia ORAE en PCJUAN, detecta y corrige en vivo el bug que interpretaba ACP como Alerta Roja, validando la corrección a las 16:28 hs (Amarillo ACP).</td>
+            </tr>
+            <tr>
+              <td>12/11 18:41 a 19:05</td>
+              <td><span class="tag tag-ws">WhatsApp</span></td>
+              <td>Autoridades (Cravero) + Nexo SHST (Dominella)</td>
+              <td>Advierten Alerta Naranja para el viernes, fijan ventana límite a las 21:00 / 22:00 hs y confirman paro nodocente sin mayordomos.</td>
+            </tr>
+            <tr>
+              <td>12/11 20:28 a 21:19</td>
+              <td><span class="tag tag-orae">Log ORAE</span><span class="tag tag-tg">Telegram</span></td>
+              <td>ORAE + CDE</td>
+              <td>Inicio ORAE v15.9 (20:28:19). A las 20:29:03 eleva cambio SMN de Amarillo a Naranja. Entre 20:33 y 21:19 votan NO 5 miembros (Tedesco, Flores, Sánchez, Dominella y Cravero) previo al parte municipal.</td>
+            </tr>
+            <tr>
+              <td>12/11 21:38 a 22:12</td>
+              <td><span class="tag tag-ws">WhatsApp</span><span class="tag tag-dci">Doc DCI</span></td>
+              <td>Autoridades (Vega, Cravero) + DCI (Tedesco)</td>
+              <td>21:38 Municipio suspende clases. 21:54 Cravero informa acuerdo de Rectorado (suspender EPUNS todo el día y UNS hasta las 12 hs). 22:09 sale disposición de SGA antes de la votación. 22:12 Daniel Vega marca corregir la secuencia.</td>
+            </tr>
+            <tr>
+              <td>12/11 22:02 a 22:36</td>
+              <td><span class="tag tag-tg">Telegram</span><span class="tag tag-orae">Log ORAE</span></td>
+              <td>CDE + ORAE</td>
+              <td>22:02 Cravero reanuda timer pero el bot bloquea el cambio de voto de NO a SÍ. 22:28:42 entra por radar el ACP N° 4009, abre nueva encuesta y votan SÍ 6 a 0 en 8 minutos.</td>
+            </tr>
+            <tr>
+              <td>12/11 22:46 a 23:04</td>
+              <td><span class="tag tag-ws">WhatsApp</span></td>
+              <td>Operación VHF (Flores) + Autoridades (Cravero)</td>
+              <td>Relevamiento nocturno: guardia BByF en escucha; Mayordomía Alem con handy apagado (22:55), activado por teléfono interno (23:02) y desalojo de los 2 últimos alumnos de la sala de lectura.</td>
+            </tr>
+            <tr>
+              <td>13/11 04:46 a 08:44</td>
+              <td><span class="tag tag-orae">Log ORAE</span><span class="tag tag-ws">WhatsApp</span></td>
+              <td>ORAE + Operación (Flores, Abalo) + Autoridades (Cravero)</td>
+              <td>04:46 recordatorio automático 6 hs Naranja. 08:03 prueba VHF OK en Alem y control agua/cloacas. 08:44 Cravero autoriza movimiento de equipos de Química con hidrogrúa a Pablo Abalo.</td>
+            </tr>
+            <tr>
+              <td>13/11 09:52 a 10:01</td>
+              <td><span class="tag tag-orae">Log ORAE</span><span class="tag tag-tg">Telegram</span></td>
+              <td>Operador ORAE (Sánchez) + CDE + Rector (Vega)</td>
+              <td>Apertura manual en ORAE (09:53), aprobación Ola 1 (09:59), escalamiento a Ola 2 (09:59:36) con 4 votos SÍ (Cravero, Sánchez, Flores, Dominella) y aprobación ejecutiva del Rector Daniel Vega a las 10:01:06 hs.</td>
+            </tr>
+            <tr>
+              <td>13/11 10:47 a 12:31</td>
+              <td><span class="tag tag-ws">WhatsApp</span><span class="tag tag-tg">Telegram</span></td>
+              <td>DCI (Tedesco) + SHST (Dominella) + Telecom (Caba)</td>
+              <td>10:48 publicación Disp. SGA 248. 11:11 relevamiento telefónico de Palihue por Dominella (Parte #4). 11:51 Caba habilita directo 4595222 al int. 2222 (probado 11:57 en Parte #6) y desborde al 2009 (12:31).</td>
+            </tr>
+            <tr>
+              <td>13/11 15:10 a 15:42</td>
+              <td><span class="tag tag-orae">Log ORAE</span><span class="tag tag-tg">Telegram</span></td>
+              <td>Operador ORAE (Sánchez)</td>
+              <td>Regreso a Modo Automático (15:10:34), disparo de recordatorio 6 hs y reseteo de ACK de burbujas; transición forzada a Ola 1 y Ola 2 documentada en Partes #8 y #10.</td>
+            </tr>
+            <tr>
+              <td>13/11 17:02 a 17:36</td>
+              <td><span class="tag tag-orae">Log ORAE</span><span class="tag tag-tg">Telegram</span></td>
+              <td>ORAE + Operación VHF (Flores)</td>
+              <td>17:02:28 ORAE detecta baja de Naranja a Amarillo en el SMN. 17:30 última ronda VHF sin novedades y reconocimiento al personal de vigilancia (Partes #11 y #12).</td>
+            </tr>
+            <tr>
+              <td>13/11 18:00 a 20:08</td>
+              <td><span class="tag tag-ws">WhatsApp</span><span class="tag tag-dci">Doc DCI</span></td>
+              <td>Todos los niveles (Debriefing y Cierre)</td>
+              <td>Balance del operativo, entrega del documento de evaluación DCI (18:07), lluvia en Parque Norte (18:41), confirmación de llegada sin novedad de estudiantes de BByF desde Las Grutas (18:55), lineamiento de introducción del informe (19:13), cese del Alerta Amarilla (19:16) y prompt de auditoría en GitHub (19:23).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Hiperdocumento Maestro Unificado (Con chat_2.txt completo hasta las 20:08 hs del 13/11)</h2>
+      <button type="button" class="btn" onclick="copyHyperdoc()" style="margin-bottom:12px;">📋 Copiar Hiperdocumento Maestro</button>
+      <pre id="hyperdocContent">=== HIPERDOCUMENTO DE AUDITORÍA CRUZADA POST-INCIDENTE (ORAE v15.9 / CDE - UNS) ===
+Operativo Alerta Naranja: Jueves 12 y Viernes 13 de Noviembre de 2026
+Estructura de Intervención:
+1) AUTORIDADES (Toma de Decisiones): Daniel A. Vega (Rector UNS), Walter Cravero (Secretario Técnico / CDE), Andrea Castellano (Vicerrectora UNS), Subse Gonzalo (Infraestructura).
+2) NEXO TÉCNICO-EJECUTIVO (Articulación): Guillermo Dominella (Jefe del Servicio de Higiene y Seguridad en el Trabajo - SHST / CDE).
+3) SUGERENCIA Y OPERACIÓN DIRECTA: Juan M. Sánchez (Operador en Guardia ORAE - Puesto PCJUAN), Miguel Flores (Operador Radio VHF / Lab. Hidráulica / CDE), Pablo Abalo (Operador Radio VHF / Lab. Hidráulica / CDE), Marcelo Tedesco (Dirección de Comunicación Institucional - DCI / CDE), Fernando Caba (Telecomunicaciones / CDE), y Personal de Mayordomías y Vigilancia (Complejo Alem, BByF San Juan 670 / 12 de Octubre, Campus Palihue y Escuelas Medias).
+
+ SÍNTESIS CRONOLÓGICA Y HALLAZGOS DE AUDITORÍA:
+- 12/11 12:05:42 [Telegram]: Aviso Temprano Amarillo (24/72hs) detectado por Motor 2 (Selenium) para Área 760.
+- 12/11 12:46 a 13:21 [WhatsApp]: Miguel Flores, Pablo Abalo, Patricia BByF y Juan M. Sánchez prueban handies en Escuelas Medias. Marcelo Tedesco propone estandarizar mensajes de Telegram y carga manual guiada de emergencias. Fernando Caba y Marcelo Tedesco evalúan enlace de 20 m entre oficina ORAE y cielo abierto.
+- 12/11 15:34 a 16:28 [WhatsApp / Telegram]: Miguel Flores informa ACP N° 3998. PC de Biología offline; Juan M. Sánchez levanta ORAE en PCJUAN, detecta y corrige en vivo el bug que interpretaba ACP como Alerta Roja, validado a las 16:28 hs (Amarillo ACP).
+- 12/11 18:41 a 20:36 [WhatsApp]: Walter Cravero y Guillermo Dominella advierten Alerta Naranja para mañana y tarde del viernes; Dominella confirma con Bittar que no habrá mayordomos por el paro nodocente y fija las 22:00 hs como límite de comunicación. Juan M. Sánchez implementa vencimientos por horario de corte (06, 10, 16, 22 hs), 20 min para ACP y comandos /situacion y /recomendacion.
+- 12/11 20:28 a 21:19 [Log ORAE / Telegram]: A las 20:29:03 ORAE detecta cambio SMN de Amarillo a Naranja. Votan NO 5 miembros antes del parte municipal: Tedesco (20:33), Flores (20:40), Sánchez (20:45), Dominella (21:07) y Cravero (21:19).
+- 12/11 21:38 a 22:12 [WhatsApp / Doc DCI]: El Municipio pasa a Naranja y suspende clases (21:38). Walter Cravero articula con Daniel Vega y Andrea Castellano (21:54) suspender EPUNS todo el día y nivel universitario hasta las 12:00 hs. A las 22:09 SGA emite la disposición antes de la votación del CDE; a las 22:12:05 el Rector Daniel Vega advierte: "Tenemos que trabajar en la secuencia. No debería haber salido antes de la votación".
+- 12/11 22:02 a 22:36 [Telegram / Log ORAE]: Cravero reanuda el reloj (22:02) pero el bot rechaza el cambio de voto de Cravero y Dominella. A las 22:28:42 ingresa el ACP N° 4009 por radar, se abre nueva encuesta y votan SÍ 6 a 0 en 8 minutos.
+- 12/11 22:46 a 23:04 [WhatsApp]: Miguel Flores contacta por VHF a BByF, detecta handy apagado en Mayordomía Alem (22:55), llama al interno, encienden la radio a las 23:02 y retiran a los 2 últimos estudiantes de la sala de lectura de Alem (copiado 5/9 por Walter Cravero desde su casa).
+- 13/11 08:03 a 08:44 [WhatsApp]: Miguel Flores realiza prueba VHF con Alem y verifica agua y cloacas operativas. Walter Cravero autoriza movimiento de equipos de Química con hidrogrúa a Pablo Abalo (finalizado 11:10 hs, Parte #3).
+- 13/11 09:52 a 10:01 [Log ORAE / Telegram]: Juan M. Sánchez activa Modo Manual (09:52:44), se vota y aprueba Ola 1 (09:59:11), se escala a Ola 2 (09:59:36) con votos SÍ de Cravero, Sánchez, Flores y Dominella, y el Rector Daniel Vega ejecuta la aprobación oficial a las 10:01:06 hs. A las 10:48 hs se difunde la Disposición SGA 248.
+- 13/11 11:11 a 12:31 [WhatsApp / Telegram]: Guillermo Dominella releva telefónicamente el Campus Palihue con el vigilador de San Juan 670 (documentado en Parte #4 de las 11:28 hs). Fernando Caba habilita el directo externo 4595222 al interno 2222 (11:51 hs, probado por Juan M. Sánchez a las 11:57 hs en Parte #6) y el desborde automático al 2009 (12:31 hs).
+- 13/11 15:10 a 15:42 [Log ORAE / Telegram]: Al volver a Modo Automático (15:10:34), salta el recordatorio de 6 hs y resetea los ACK de las 10 burbujas; Juan M. Sánchez restituye el estado aprobando Ola 1 y Ola 2 y aclara la situación en los Partes #8 y #10.
+- 13/11 17:02 a 20:08 [Log ORAE / Telegram / WhatsApp]: El ORAE detecta a las 17:02:28 el paso de Naranja a Amarillo en el SMN. Miguel Flores realiza la última ronda VHF (17:30 hs, Partes #11 y #12). En el cierre por WhatsApp: Marcelo Tedesco comparte el documento de evaluación crítica (18:07 hs), Fernando Caba reporta lluvia en Parque Norte (18:41 hs), Walter Cravero confirma con Cintia que los estudiantes de BByF que regresaban de Las Grutas llegaron bien a Bahía Blanca (18:55 hs), Guillermo Dominella propone la introducción del informe oficial (19:13 hs) e informa el cese del Alerta Amarilla (19:16 hs), y Miguel Flores comparte el prompt de auditoría en GitHub (19:23 hs).</pre>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const PRELOADED_QA = [{"category": "AUTORIDADES Y NEXO SHST", "role_badge": "Decisión Ejecutiva + Nexo SHST", "actors": "Daniel A. Vega (Rector), Walter Cravero (Sec. Técnico) y Guillermo Dominella (Jefe SHST)", "q": "1. ¿Cómo interactuaron las Autoridades y el Jefe de SHST en la toma de decisiones y qué autocríticas plantearon?", "a": "• SECUENCIA DEL JUEVES 12/11 (Noche): A las 18:57 hs Guillermo Dominella marcó que la definición debía comunicarse a las 22:00 hs y Walter Cravero (18:59 hs) propuso esperar el parte municipal o definir a las 21:00 hs para pasarle la posta al Rector Daniel Vega. Publicado el parte municipal (21:38 hs), Cravero articuló con Daniel Vega y Andrea Castellano (21:54 hs) la suspensión de EPUNS todo el viernes y nivel universitario hasta las 12:00 hs.\n• AUTOCRÍTICA DE SECUENCIA (Rector y Jefe SHST): A las 22:09 hs salió la Disposición de SGA antes de que el CDE votara en Telegram. Daniel Vega advirtió a las 22:12:05 hs: 'Tenemos que trabajar en la secuencia. No debería haber salido antes de la votación', coincidiendo con Guillermo Dominella ('Cuando la decisión está tomada la votación no tiene sentido').\n• EJECUCIÓN DEL VIERNES 13/11 (Ventana 10:00 hs): Cumpliendo el protocolo, el CDE votó en ORAE entre las 09:53 y las 10:00 hs, y Daniel Vega ejecutó el botón de aprobación ('acción de oro') a las 10:01:06 hs.\n• OBSERVACIONES DE WALTER CRAVERO: 1) Necesidad de plantillas de Resoluciones prefabricadas para salir en 5 minutos (el viernes demoró 47 min entre la aprobación en ORAE a las 10:01 y la Disp. SGA 248 a las 10:48 hs); 2) Formalizar ante Decanos y CEMS que el comité está en monitoreo continuo para contener presiones; 3) Simplificar las votaciones en Telegram ('voté como 6 veces'); 4) Incorporar a la Vicerrectora al canal y establecer consulta previa con UTN FRBB y Municipio."}, {"category": "NEXO SHST (ARTICULACIÓN)", "role_badge": "Nexo Autoridades ↔ Operación", "actors": "Guillermo Dominella (Jefe SHST)", "q": "2. ¿Qué rol cumplió el Jefe del SHST (Guillermo Dominella) como puente entre las Autoridades y el equipo operativo?", "a": "• ARTICULACIÓN DE VENTANAS Y PERSONAL: Confirmó con Bittar (jueves 20:33 hs) la ausencia de mayordomos por el paro nodocente e impulsó mantener radios encendidas y atención a Telegram.\n• RELEVAMIENTO DEL CAMPUS PALIHUE (Viernes 11:11 hs): Ante la falta de radio VHF en Palihue advertida por Miguel Flores y Walter Cravero, gestionó por teléfono con el vigilador de San Juan 670 el estado del Campus (guardias en Eléctrica, Agronomía y otra dependencia, posesión de llaves de acceso y refuerzo a las 14:00 hs en Aula 1), quedando asentado en el Parte Informativo #4.\n• PROTOCOLOS DE CONFINAMIENTO Y CONTROL DE VIAJES (Viernes 18:21 a 18:31 hs): Planteó qué protocolo aplicar si hubiera habido personal confinado dentro de los edificios (proponiendo que el ORAE físico de San Juan 670 centralice novedades por teléfono y luego radio) y respaldó registrar en un tablero de control los viajes de estudio y el contacto con el puesto de Argerich.\n• ENFOQUE DEL INFORME POST-INCIDENTE Y CIERRE (Viernes 19:13 a 19:16 hs): Propuso que la introducción del informe deje claro que el evento pudo ser muy grave y que Bahía Blanca evitó el impacto directo por el desvío explicable meteorológicamente (adjuntando evidencia de Punta Alta y la región), e informó formalmente el cese del Alerta Amarilla a las 19:16:07 hs."}, {"category": "VIAJES DE ESTUDIO Y EXTERNOS", "role_badge": "Autoridades + Nexo SHST", "actors": "Walter Cravero (Sec. Técnico) y Guillermo Dominella (Jefe SHST)", "q": "3. ¿Qué ocurrió con el contingente de estudiantes de BByF que volvía de Las Grutas y el predio de Argerich?", "a": "• CONTINGENTE BByF EN RUTA: El viernes a las 18:29:55 hs Walter Cravero advirtió que había estudiantes de BByF regresando desde Las Grutas que atravesaban una zona climáticamente complicada y solicitaban información, señalando la necesidad de contar con un registro previo de viajes de estudio activos ante alertas meteorológicas.\n• TABLERO Y ARGERICH: A las 18:30:50 hs Guillermo Dominella propuso incorporar esos viajes a un tablero de control y advirtió que el frente se desplazaba hacia Argerich sin tener contacto con el personal de ese predio.\n• CONFIRMACIÓN DE ARRIBO SEGURO (18:55:09 hs): En el tramo final del chat completo, Walter Cravero reportó a las 18:55:09 hs: 'Cintia me confirmó que los estudiantes de BByF llegaron bien a Bahía, sin novedad'."}, {"category": "OPERACIÓN DIRECTA — RADIO VHF", "role_badge": "Sugerencia y Operación Directa", "actors": "Miguel Flores y Pablo Abalo (Operadores de Radio VHF / Lab. Hidráulica)", "q": "4. ¿Cómo operó la red de radio VHF, el control de edificios/servicios y el enlace con radioaficionados?", "a": "• PRUEBAS PREVIAS Y RONDAS VHF: El jueves a las 12:46 hs Miguel Flores y Pablo Abalo (junto a Patricia BByF y Juan M. Sánchez) validaron handies en Escuelas Medias. Durante la emergencia ejecutaron todas las rondas VHF con las mayordomías de Complejo Alem y BByF (jueves 15:56, 22:19, 22:52 y 23:02; viernes 08:03, 10:54, 13:07 y 17:30 hs).\n• INTERVENCIÓN NOCTURNA EN SALA DE LECTURA ALEM (Jueves 22:46 a 23:04 hs): Tras el aviso de ACP N° 4009 (enviado por Pablo Abalo a las 22:42 hs), Miguel detectó que Mayordomía Alem tenía el handy apagado (22:55 hs); llamó al interno telefónico, logró que encendieran la radio a las 23:02 hs y que retiraran a los 2 últimos estudiantes de la sala de lectura (comunicación copiada 5/9 por Walter Cravero desde su domicilio).\n• INFRAESTRUCTURA Y MOVIMIENTO DE EQUIPOS: Miguel relevó el estado operativo de reservorios de agua y cloacas en Alem (viernes 08:12 y 14:10 hs). Pablo Abalo coordinó con autorización de Walter Cravero (08:33 / 08:44 hs) el movimiento de equipos de Química con hidrogrúa aprovechando la ventana meteorológica favorable, finalizando a las 11:10 hs (Parte #3).\n• ENLACE CON RADIOCLUBES Y CIERRE: Mantuvieron escucha en frecuencias del Radio Club DX Bahía Blanca (146.520 MHz, repetidora 146.820 MHz y UHF Cerro de la Carpa), reportaron el inicio de lluvias a las 18:46 hs y aportaron a las 19:23 hs el repositorio GitHub (PECI_UNS) con la estructura de auditoría."}, {"category": "OPERACIÓN DIRECTA — SISTEMA ORAE", "role_badge": "Operación del Sistema", "actors": "Juan M. Sánchez (Operador en Guardia ORAE - PCJUAN)", "q": "5. ¿Qué ajustes en vivo realizó el Operador ORAE y cómo se explica el comportamiento de las votaciones y burbujas?", "a": "• CONTINGENCIA DE HARDWARE Y FIX DE ACP (Jueves 15:39 a 16:28 hs): Ante la caída de la PC de Biología, levantó el servicio desde su equipo (PCJUAN), detectó y corrigió en vivo el bug lógico que interpretaba los Avisos a Corto Plazo (ACP) como Alerta Roja, e implementó a las 20:25 hs los vencimientos ajustados a las ventanas gatillo (06, 10, 16 y 22 hs), el plazo de 20 min para ACP y los comandos /situacion y /recomendacion.\n• CAUSA DEL RECHAZO DE VOTOS A LAS 22:02 HS: El botón 'Reanudar' extendió el reloj de la encuesta de las 20:29 hs sin limpiar los votos previos (impidiendo que Cravero y Dominella cambiaran su NO a SÍ hasta que entró el ACP por radar a las 22:28:42 hs).\n• TRANSICIÓN A MODO AUTOMÁTICO Y PARTES #1 AL #12 (Viernes 15:10 a 15:42 hs): Al conmutar de Modo Manual a Automático (15:10:34 hs), el sistema disparó el recordatorio de 6 hs y reseteó los ACK de las 10 burbujas. Para restituir el estado ya aprobado a la mañana, el Operador ORAE forzó Ola 1 (15:17:58) y Ola 2 (15:25:46, tras los 5 min de seguro del Rector) usando credenciales de prueba y asentó las aclaraciones en los Partes Informativos #8 y #10."}, {"category": "OPERACIÓN DIRECTA — COMUNICACIÓN Y TELECOM", "role_badge": "Sugerencia y Operación Directa", "actors": "Marcelo Tedesco (Comunicación Institucional) y Fernando Caba (Telecomunicaciones)", "q": "6. ¿Qué aportes críticos realizaron Comunicación Institucional (DCI) y Telecomunicaciones durante el operativo?", "a": "• TELECOMUNICACIONES (Fernando Caba): 1) El viernes a las 11:51 hs configuró el número directo externo 4595222 hacia el interno 2222 de la oficina ORAE en San Juan 670 (validado a las 11:57 hs por Juan M. Sánchez en el Parte #6); 2) A las 12:31 hs programó el desborde automático al interno 2009 ante llamadas simultáneas; 3) Detectó a las 10:02 hs el cierre automático de la encuesta tras la aprobación del Rector y a las 15:13 hs la falta de alta de su ID en el padrón del bot; 4) Reportó la llegada de la lluvia a Parque Norte a las 18:41:11 hs.\n• COMUNICACIÓN INSTITUCIONAL (Marcelo Tedesco): 1) Propuso estandarizar mensajes de Telegram y sumar carga manual guiada de incidentes (jueves 13:06 hs); 2) Alertó el horario de cierre de la sala de lectura de Alem (hasta las 00:00 hs); 3) Publicó los partes oficiales y entregó el documento de evaluación marcando: filtración previa de la disposición a ADUNS, omisión de DCI en el Art. 3°, falta de cláusula de continuidad pedagógica por Moodle, y necesidad de especificar tareas remotas nodocentes, Sanidad, Comedor e interaulas."}];
+const CHAT2_LINES = ["Los mensajes y las llamadas están cifrados de extremo a extremo. Nadie fuera de este chat, ni siquiera WhatsApp, puede leerlos ni escucharlos.", "[11/12/26, 10:23:00 AM] - Guillermo añadió a Pablo", "[11/12/26, 10:23:04 AM] Guillermo: <Mensaje de message_history_notice>", "[11/12/26, 10:23:45 AM] Guillermo: <documento omitido> POR FAVOR LEER", "[11/12/26, 12:45:58 PM] Miguel Flores: Buen día a todos", "[11/12/26, 12:46:52 PM] Miguel Flores: @Guillermo , junto a Pablo, Patricia BByF y Juan hicimos la prueba de equipos en Escuelas Medias con resultado satisfactorio con handies", "[11/12/26, 12:47:13 PM] Miguel Flores: la radiobase la reservaremos para la Escuela de Agricultura", "[11/12/26, 12:47:35 PM] Miguel Flores: estimamos que Alumnos y Estudios con handy se podrán manejar bien", "[11/12/26, 12:54:30 PM] Miguel Flores: Mínimamente se deberían destinar 3 equipos: Mayordomía, Operador de Nodo (personal de seguridad en puerta) y Servicio local (Burbuja que asista al inconveniente donde informe Mayordomía)", "[11/12/26, 12:55:13 PM] Miguel Flores: sería bueno que al menos dos servicios participaran de la actividad de burbuja", "[11/12/26, 1:05:42 PM] Marcelo Tedesco: Buenas", "[11/12/26, 1:06:16 PM] Marcelo Tedesco: Hace unos días hablamos con Juan la posibilidad de estandarizar los mensajes que emite el sistema a Telegram, para evitar confusiones.", "[11/12/26, 1:06:50 PM] Marcelo Tedesco: No sé si llegaremos a tenerlo para el simulacro pero al menos tenemos la experiencia del anterior sobre la secuencia de decisiones", "[11/12/26, 1:09:22 PM] Marcelo Tedesco: También hablamos la posibilidad de incorporar a futuro la carga manual de eventos (internos, externos, etc. como incendios, fugas de gas, manifestaciones, hechos violentos, etc) mediante un formulario que vaya guiando al operador por una secuencia de datos pre establecida", "[11/12/26, 1:09:42 PM] Marcelo Tedesco: La semana que viene si querés @Guillermo lo charlamos", "[11/12/26, 1:10:12 PM] Guillermo: <mensaje de voz omitido>", "[11/12/26, 1:11:08 PM] Marcelo Tedesco: Si, dale", "[11/12/26, 1:12:00 PM] Marcelo Tedesco: Hay que tener un cable de red para la computadora o una placa de wi fi en la CPU", "[11/12/26, 1:12:51 PM] Marcelo Tedesco: Simulamos que se corta a las 11, junto con el aviso, para evaluar tiempo de respuesta?", "[11/12/26, 1:13:48 PM] Fernando Caba: <mensaje de voz omitido>", "[11/12/26, 1:15:05 PM] Marcelo Tedesco: Tenés algún cable largo?", "[11/12/26, 1:15:18 PM] Miguel Flores: Y un alargue con zapatilla de igual longitud", "[11/12/26, 1:15:55 PM] Marcelo Tedesco: Me están pidiendo mucho ya... 🫩", "[11/12/26, 1:16:24 PM] Fernando Caba: No...hay que armarlo... lo veo en la semana que viene", "[11/12/26, 1:16:32 PM] Fernando Caba: Obvio!", "[11/12/26, 1:17:56 PM] Marcelo Tedesco: Qué distancia hay entre la oficina del ORAE y el cielo abierto?", "[11/12/26, 1:18:50 PM] Marcelo Tedesco: Audiovisuales debe tener alguno para prestarnos, déjame que averiguo", "[11/12/26, 1:18:51 PM] Fernando Caba: Me parece que alrededor de 20 mts.... como para llegar al lugar donde estuvo el trailer  con el grupo", "[11/12/26, 1:19:14 PM] Marcelo Tedesco: Debería llegar bien la señal de wifi si le ponemos una plaquita de red USB", "[11/12/26, 1:19:22 PM] Miguel Flores: El plano o mapa Complejo  Alem en Braile", "[11/12/26, 1:19:47 PM] Fernando Caba: Tal vez .... . no son de lo mas potentes....", "[11/12/26, 1:20:08 PM] Fernando Caba: Incluso, no se que potencia irradia el Starlink", "[11/12/26, 1:20:45 PM] Marcelo Tedesco: En linea recta 20 mt va bien, capaz mas", "[11/12/26, 1:21:31 PM] Marcelo Tedesco: En mi casa de la terraza (1 piso) al interior (PB) bajaba un 80% ... Quizás por eso ahora vienen con ese router extra", "[11/12/26, 1:21:35 PM] Marcelo Tedesco: Antes no venía", "[11/12/26, 3:34:15 PM] Miguel Flores: [Reenviado] <imagen omitida> AVISO METEOROLÓGICO A MUY CORTO PLAZO N° 3998", "CESE:  12/11/2026 a las 16:58:00 Hora Argentina.", "POR OCURRENCIA DE: TORMENTAS FUERTES CON LLUVIAS INTENSAS, RAFAGAS Y OCASIONAL CAIDA DE GRANIZO.", "AFECTANDO PARCIALMENTE LOS SIGUIENTES PARTIDOS: Bahia Blanca - Puan - Tornquist - Villarino.", "FUENTE: SMN", "[11/12/26, 3:37:14 PM] Miguel Flores: <imagen omitida>", "[11/12/26, 3:39:06 PM] Tú: El sistema ORAE que esta en la oficina de Biología,  no esta reportando..", "[11/12/26, 3:39:13 PM] Miguel Flores: https://www.instagram.com/reel/DfpjwB7CX4Z/?vrfl=MXB4ZWV1NXFkcjJvZw==", "[11/12/26, 3:39:20 PM] Tú: Al iniciar dual con mi pc reporta las alarmas.", "[11/12/26, 3:39:35 PM] Tú: Lo mantengo  asi... y monitoreo evolución", "[11/12/26, 3:41:49 PM] Tú: Ahora tiro un alerta roja.. no se si esta alucinando o hay alerta roja confirmada.  ?", "[11/12/26, 3:42:02 PM] Miguel Flores: Debe ser un bug", "[11/12/26, 3:42:21 PM] Tú: Inicio el contador en el grupo", "[11/12/26, 3:43:36 PM] Tú: Bueno , me viene de 10 para ir probando.", "[11/12/26, 3:44:04 PM] Miguel Flores: <imagen omitida> No es rojo", "[11/12/26, 3:45:23 PM] Miguel Flores: Voté que NO", "[11/12/26, 3:46:05 PM] Guillermo: Las tentó ver en windy y me da para el viernes a la tarde pero para la zona de Pedro luto", "[11/12/26, 3:46:10 PM] Miguel Flores: Preventivamente prendo la radio", "[11/12/26, 3:54:59 PM] Miguel Flores: <imagen omitida> Municipio alerta amarilla activa", "[11/12/26, 3:56:43 PM] Miguel Flores: Ahi llamé al Orae por radio y respondió", "[11/12/26, 3:57:00 PM] Miguel Flores: Paea una breve prueba de equipo para chequear conectividad", "[11/12/26, 3:57:14 PM] Miguel Flores: Creo q es el otro mayordomo de la tarde de BByF", "[11/12/26, 3:57:22 PM] Miguel Flores: Prueben de llamar al 2222", "[11/12/26, 3:58:19 PM] Tú: Ahi encontré la falla : detecto el ACP y lo interpreto como alerta roja , mala mía error de logica del código  . Lo cambio asi no pasa otra vez. Tal vez se reinicie . Y vuelva a tirar las alertas.", "[11/12/26, 4:00:56 PM] Walter CRAVERO: No me sale la votación.", "[11/12/26, 4:06:54 PM] Tú: Esta offline la pc de biología", "[11/12/26, 4:07:05 PM] Tú: Vuelvo a correr en mi pc", "[11/12/26, 4:07:57 PM] Tú: lo corregí,  salto un alerta roja por un error de logica en el código.  Ahora no deberia dar alerta roja. Asi que no habilita votación", "[11/12/26, 4:08:32 PM] Tú: 🤣bueno volvió a dar el rojo.", "[11/12/26, 4:09:07 PM] Tú: Si quieren solo para probar voten.. mientras veo por que me confunde el aviso de corto plazo con alerta roja.", "[11/12/26, 4:29:12 PM] Tú: Ahi esta..  detecto el aviso de corto plazo En  alerta amarilla.", "[11/12/26, 4:30:07 PM] Tú: Emitió al telegram la recomendación según alerta amarilla.. se reinició toda la votación.", "[11/12/26, 4:42:16 PM] Tú: Recuerden no hace falta tocar sobre los botones para las funciones escribiendo :", "/si : vota por si", "/no : vota por no", "/ack : estado burbujas", "/escrutinio : consulta votación", "[11/12/26, 6:41:04 PM] Guillermo: <imagen omitida>", "[11/12/26, 6:41:23 PM] Walter CRAVERO: Mañana no es simulacro, parece hay alerta naranja para la mañana Y la tarde", "[11/12/26, 6:42:17 PM] Guillermo: Si, lo acabo de ver y reenviar", "[11/12/26, 6:43:59 PM] Guillermo: Tratemos de estar con las radios prendidas y atentos al telegram. Si bien hay paro es una buena oportunidad para ensayar las comunicaciones", "[11/12/26, 6:49:28 PM] Guillermo: Más temprano lo veía más al sur más sobre Pedro Luro, ahora se ve un poquito más arriba", "[11/12/26, 6:50:42 PM] Walter CRAVERO: hay paro nodocente, pero clases y practicas va a haber.", "[11/12/26, 6:50:56 PM] Walter CRAVERO: o no. depende lo que se decida...", "[11/12/26, 6:52:22 PM] Miguel Flores: <imagen omitida> Ahora en radar", "[11/12/26, 6:53:05 PM] Miguel Flores: Teoricamente ADUNS convocó paro desde hoy a docentes hasta el miércoles", "[11/12/26, 6:53:28 PM] Guillermo: Vayamos preparando la sala virtual y tal vez sea conveniente que le hagamos un mensaje a Daniel o Andrea que tendrá que tomar la decisión", "[11/12/26, 6:53:51 PM] Walter CRAVERO: Sí pero no suele tener mucho apoyo fuera de las escuelas...", "[11/12/26, 6:54:17 PM] Tú: Le estoy corrigiendo el tema de las capturas de los AcP al orae .No esta corriendo ahora.", "[11/12/26, 6:54:23 PM] Walter CRAVERO: Ya lo puse en el chat de rectorado", "[11/12/26, 6:54:23 PM] Tú: Solo aviso", "[11/12/26, 6:57:38 PM] Guillermo: Si mañana continúa con este alerta, la decisión hay que comunicarla hoy a las 10 de la noche", "[11/12/26, 6:59:40 PM] Marcelo Tedesco: Podemos comunicar que se comunicará más adelante", "[11/12/26, 6:59:44 PM] Walter CRAVERO: sip. sugiero que veamos si hay algun mensaje del municipio antes y si no a las 21 deberiamos opninar y pasarle la posta a Daniel para que decida y comunique", "[11/12/26, 7:00:02 PM] Marcelo Tedesco: Y esperar a ver cómo evoluciona de acá a las 6 am por ejemplo", "[11/12/26, 7:00:43 PM] Marcelo Tedesco: Por lo que se ve no hay previsión de vientos con intensidad anormal", "[11/12/26, 7:01:08 PM] Marcelo Tedesco: <imagen omitida>", "[11/12/26, 7:01:11 PM] Guillermo: Si poniendo sobre aviso", "[11/12/26, 7:03:19 PM] Miguel Flores: Si es por lluvia, probabilidades altas de precupitación pero milimetrajes bajos (13 mm el acumulado )", "[11/12/26, 7:03:31 PM] Miguel Flores: Sí, pueden ser de intensidad", "[11/12/26, 7:04:30 PM] Miguel Flores: Aunque se rían... veamos que dice MeteoLucas", "[11/12/26, 7:05:00 PM] Guillermo: La Muni todavía no cambió nada", "[11/12/26, 7:06:04 PM] Marcelo Tedesco: Lo re banco a Meteolucas", "[11/12/26, 7:06:36 PM] Marcelo Tedesco: Y la combinación de ambos factores, lluvia +viento", "[11/12/26, 7:06:55 PM] Marcelo Tedesco: Exacto! \"Che, estate atento\"", "[11/12/26, 7:07:40 PM] Miguel Flores: https://www.instagram.com/reel/Dfp5AgLlKLE/?obrf=cmZ4am0yM2d2bjZn", "[11/12/26, 8:25:49 PM] Tú: ahi lo largo a correr , creo haber arreglado el tema de los ACP / alerta roja , ademas cambie algunas cosas : Elevación automática al CDE con plazo de votación hasta el prximo horario de corte fijo (06:00, 10:00, 16:00 o 22:00 hs), informado expresamente en el mensaje ej. \"Tiempo para votar: X hs Y min\". • Alertas ACP : Plazo de votación de 20 minutos. • Corrección en vivo ,Si el SMN modifica o escala la alerta mientras está en votación, el ORAE avisa en el grupo y corrige automáticamente la propuesta bajo votacion .", "[11/12/26, 8:27:12 PM] Tú: y Nuevos comandos en el grupo de Telegram: /situacion  >>Informa en el grupo el nivel actual de alerta en Bahía Blanca, detalle técnico del SMN y estado de la votación. /recomendacion>> Muestra la recomendación operativa según la Matriz UNS y el texto del Parte Oficial sugerido.", "[11/12/26, 8:28:30 PM] Miguel Flores: Juan, estas hecho un Colapinto con la compu", "[11/12/26, 8:28:55 PM] Tú: Gracias a la IA", "[11/12/26, 8:29:01 PM] Miguel Flores: Guardá energía para mañana, por si hay que actuar en caliente con algo", "[11/12/26, 8:29:16 PM] Miguel Flores: Descansá la cabeza un poco", "[11/12/26, 8:29:55 PM] Pablo Abalo: Mirá quien habla", "[11/12/26, 8:30:01 PM] Pablo Abalo: <sticker omitido>", "[11/12/26, 8:30:13 PM] Miguel Flores: Mañana cuando lleve mi nene a la escuela [ya que no avisaron nada], puedo pasar por Escuelas Medias y dejar al menos un Handy en mayordomía 11 de abril", "[11/12/26, 8:31:31 PM] Miguel Flores: El tema es que no habrá mayordomo por el paro", "[11/12/26, 8:32:41 PM] Miguel Flores: El guardia no esta capacitado para lo específico para la funcion de Brigadista de 1era ni de operador de nodo de comunicación", "[11/12/26, 8:33:22 PM] Guillermo: Con el paro Nodocente no va a haber mayordomos, lo acabo de confirmar con Bittar", "[11/12/26, 8:34:19 PM] Guillermo: Se eliminó este mensaje.", "[11/12/26, 8:36:08 PM] Guillermo: Hay que ver que se decide. Independiente de la decisión hay que comunicar", "[11/12/26, 8:38:52 PM] Tú: Bueno pueden votar... y queda en el log. Vi que Daniel V. , en la anterior vuelta , pidió el escrutinio varias veces pero no voto . El tiene el comando /aprobar habilitado. [Mas alla de lo que decidan pueden probar.]", "[11/12/26, 8:41:42 PM] Marcelo Tedesco: Reivindico a Miguel que estuvo recién 40 min tutoreándome cómo configurar el handy y haciendo las pruebas necesarias!", "[11/12/26, 8:43:48 PM] Miguel Flores: Ya vamos a organizar algo, abierto a la comunidad laboral, estudiantil para imtroducirlos en la radio y las buenas prácticas en la comunicación", "[11/12/26, 8:44:47 PM] Miguel Flores: Y sea motivador para quienes quieran iniciarse en el mundo de la radioafición y la obtención de sus licencias habilitantes", "[11/12/26, 8:45:06 PM] Miguel Flores: Articular con los radioclubes locales", "[11/12/26, 8:45:45 PM] Miguel Flores: No es solo la radio vhf, hay muchísimos modos analógicos, digitales, satelitales", "[11/12/26, 8:46:00 PM] Miguel Flores: Hasta hay comunicaciones por rebote lunar", "[11/12/26, 8:46:18 PM] Miguel Flores: Ahora hay mesh... de todo", "[11/12/26, 9:38:26 PM] Miguel Flores: <imagen omitida> Pasó a Naranja en municipio Bahía Blanca a partir de las 00 hs", "[11/12/26, 9:41:10 PM] Marcelo Tedesco: [Reenviado] Alerta naranja por tormentas para Bahía Blanca", "El Servicio Meteorológico Nacional emitió alerta naranja por tormentas para este viernes 13 de noviembre.", "Si bien no se esperan fenómenos de alta gravedad, las lluvias y  tormentas comenzarían en la noche de hoy y pueden continuar de forma intermitente por lo menos hasta las 18 hs del viernes aproximadamente. Los periodos donde son más probables las tormentas de mayor intensidad son entre la madrugada y las primeras horas de la mañana (6 a 9 hs) , y luego nuevamente entre las 14 y las 18 hs. Se estiman valores de precipitacion acumulada entre  20 y 50 mm, pudiendo ser superados de forma localizada. Además estas tormentas pueden estar acompañadas de ráfagas que pueden superar los 70 km/h y granizo de diversos tamaños.", "Las condiciones tenderán a mejorar hacia el final de la tarde y noche del viernes 13.", "Como se mencionó anteriormente, se espera que los picos de las tormentas transcurran en horario de ingreso y egreso escolar, por lo tanto quedarán suspendidas  las clases durante el dia de mañana. También se restringirá la circulación en espacios públicos.", "De manera preventiva, se activarán puntos de  seguros en Villa Rosas, Noroeste, Ingeniero White y  General Daniel Cerri.", "Transmitimos tranquilidad a la comunidad, ya que el pronóstico no anticipa un escenario comparable con el del 7 de marzo de 2025.", "Se recomienda mantenerse informado a través de los canales oficiales del Municipio, y seguir las indicaciones de las autoridades.", "Recordamos que a través de https://bahia.gob.ar/alertabahia/ se puede acceder a información sobre la situación climatológica y medidas preventivas.", "Ante cualquier emergencia comunicarse a las líneas 107 o 109.", "[11/12/26, 9:41:35 PM] Marcelo Tedesco: Se suspenden las clases mañana", "[11/12/26, 9:41:48 PM] Guillermo: A mi me parece que esto ya da letra para comunicar el seguimiento de la alerta y esperar el aviso de confirmación en el reporte de las 6 de la mañana no?", "[11/12/26, 9:43:17 PM] Walter CRAVERO: El municipio suspende las clases. Creo que escuelas habria que suspender... nivel umiversitario esperaría a mañana temprano, que opinan?", "[11/12/26, 9:44:34 PM] Pablo Abalo: Lo estaba leyendo, coincido con la suspensión en escuelas y esperar a mañana", "[11/12/26, 9:44:54 PM] Pablo Abalo: Por uns", "[11/12/26, 9:46:14 PM] Guillermo: Tal vez suspender en UNS hasta el reporte de las 10", "[11/12/26, 9:49:37 PM] Fernando Caba: de acuerdo", "[11/12/26, 9:49:52 PM] Walter CRAVERO: Alcanzaria con avisar ahora la suspensión del turno mañana de preuniversitarias. El resto puede esperar a mañana a las 6.", "[11/12/26, 9:50:02 PM] Miguel Flores: Consulta.. podemos hacer el orae blue y hacwr una reunion virtual?", "[11/12/26, 9:50:21 PM] Miguel Flores: Porque van a ser hilos e hilos de conversaciones", "[11/12/26, 9:50:56 PM] Miguel Flores: En Tornquist suspendieron también actividades educativas publicas y privadas", "[11/12/26, 9:51:39 PM] Fernando Caba: [Reenviado] Alerta naranja por tormentas para Bahía Blanca", "El Servicio Meteorológico Nacional emitió alerta naranja por tormentas para este viernes 13 de noviembre.", "Si bien no se esperan fenómenos de alta gravedad, las lluvias y  tormentas comenzarían en la noche de hoy y pueden continuar de forma intermitente por lo menos hasta las 18 hs del viernes aproximadamente. Los periodos donde son más probables las tormentas de mayor intensidad son entre la madrugada y las primeras horas de la mañana (6 a 9 hs) , y luego nuevamente entre las 14 y las 18 hs. Se estiman valores de precipitacion acumulada entre  20 y 50 mm, pudiendo ser superados de forma localizada. Además estas tormentas pueden estar acompañadas de ráfagas que pueden superar los 70 km/h y granizo de diversos tamaños.", "Las condiciones tenderán a mejorar hacia el final de la tarde y noche del viernes 13.", "Como se mencionó anteriormente, se espera que los picos de las tormentas transcurran en horario de ingreso y egreso escolar, por lo tanto quedarán suspendidas  las clases durante el dia de mañana. También se restringirá la circulación en espacios públicos.", "De manera preventiva, se activarán puntos seguros en Villa Rosas, Noroeste, Ingeniero White y  General Daniel Cerri.", "Transmitimos tranquilidad a la comunidad, ya que el pronóstico no anticipa un escenario comparable con el del 7 de marzo de 2025.", "Se recomienda mantenerse informado a través de los canales oficiales del Municipio, y seguir las indicaciones de las autoridades.", "Recordamos que a través de https://bahia.gob.ar/alertabahia/ se puede acceder a información sobre la situación climatológica y medidas preventivas.", "Ante cualquier emergencia comunicarse a las líneas 107 o 109.", "[11/12/26, 9:51:47 PM] Fernando Caba: se publicó esto en el canal de Alerta Bahía", "[11/12/26, 9:52:51 PM] Guillermo: Sí y lo reenviaron por el grupo de no docentes", "[11/12/26, 9:53:03 PM] Miguel Flores: Les pongo un ejemplo, tanto mi hijo como mis sobrinos van a La Salle. Ellos no informaron a la comunidad", "[11/12/26, 9:53:45 PM] Guillermo: Muchos publicaron en el estado de wapp", "[11/12/26, 9:53:49 PM] Miguel Flores: Es más mi sobrino está acantonado en la Villa La Inmaculada por fin de año esta noche", "[11/12/26, 9:53:50 PM] Marcelo Tedesco: Recién lo están publicando los colegios", "[11/12/26, 9:53:50 PM] Fernando Caba: En realidad, lo envio Graciela a una lista de difusión, donde no están todos los no docentes...", "[11/12/26, 9:54:04 PM] Walter CRAVERO: Si. Hablé con Daniel. Que habló con Andrea. Proponen para evitar problemas de coordinación suspender todas las actividades hasta las 12. Y informar mañana a la mañana que se hace con el turno tarde", "[11/12/26, 9:54:11 PM] Marcelo Tedesco: Tengan en cuenta que no tienen gente dedicada a comunicación", "[11/12/26, 9:54:25 PM] Marcelo Tedesco: En un rato publico", "[11/12/26, 9:55:26 PM] Miguel Flores: Si lo publicás @Marcelo Tedesco hagamos el protocolo para documentar todo segun lo previsto", "[11/12/26, 9:55:45 PM] Miguel Flores: Asi queda todo \"legal\"", "[11/12/26, 9:56:34 PM] Marcelo Tedesco: Me acaba de llegar la orden de rectorado", "[11/12/26, 9:56:47 PM] Miguel Flores: Se haga la reunion virtual, comite recomiende en votación, rector decide", "[11/12/26, 9:56:57 PM] Daniel A Vega: [Reenviado] <imagen omitida>", "[11/12/26, 9:56:57 PM] Daniel A Vega: [Reenviado] <audio omitido>", "[11/12/26, 9:57:04 PM] Miguel Flores: Se emite comunicado y activa protocolo", "[11/12/26, 9:59:41 PM] Miguel Flores: Estamos en horario gatillo 22 hs", "[11/12/26, 10:00:36 PM] Walter CRAVERO: Votamos por telegram para que quede registro?", "[11/12/26, 10:01:03 PM] Miguel Flores: Me parece que sí", "[11/12/26, 10:01:13 PM] Miguel Flores: Tiene q quedar registro de todo", "[11/12/26, 10:01:29 PM] Miguel Flores: Pppalmente para el psotevento, el análisis", "[11/12/26, 10:03:01 PM] Guillermo: El martes si les parece hacemos una reunión de análisis, pero en mi opinión estuvo muy espeditivo. Y da algunas pautas para incorporar", "[11/12/26, 10:05:32 PM] Miguel Flores: @orae, necesitamos una encuesta para validar la recomendación", "[11/12/26, 10:05:57 PM] Miguel Flores: El escrutinio anterior está contaminado de ejercicios de prueba", "[11/12/26, 10:06:03 PM] Marcelo Tedesco: @Juan M dispara una nueva encuesta por favor", "[11/12/26, 10:06:05 PM] Miguel Flores: Ahora necesitamos el real", "[11/12/26, 10:06:34 PM] Marcelo Tedesco: Suspensión total EPUNS y suspensión hasta las 12 nivel universitario", "[11/12/26, 10:06:46 PM] Marcelo Tedesco: Es lo que propone el Rectorado", "[11/12/26, 10:07:16 PM] Marcelo Tedesco: @Walter CRAVERO la idea de las autoridades es mantener edificios abiertos... Estamos de acuerdo con eso?", "[11/12/26, 10:07:57 PM] Walter CRAVERO: No a la mañana...", "[11/12/26, 10:08:39 PM] Marcelo Tedesco: Eviten la votación y demás.", "[11/12/26, 10:09:17 PM] Marcelo Tedesco: La SGA ya emitió la disposición suspendiendo toda la jornada en las EPUNS y \"durante la mañana\" en el nivel universitario", "[11/12/26, 10:09:25 PM] Marcelo Tedesco: Ya está...", "[11/12/26, 10:09:44 PM] Guillermo: Cuando la decisión está tomada la votación no tiene sentido", "[11/12/26, 10:11:59 PM] Miguel Flores: Entonces, se deje en los logs manuales del ORAE, siendo las 2210 hs, que el Comité recomienda por Mayoría la suspensión de las actividades de nivel inicial, primario y secundario por el día de mañana. Se hace también en sintonía por lo dispuesto por Educación Provincia", "[11/12/26, 10:12:05 PM] Daniel A Vega: Tenemos que trabajar en la secuencia.  No debería haber salido antes de la votación", "[11/12/26, 10:12:55 PM] Miguel Flores: Respecto a nivel universitario hasta las 12 hs, con revisión a las 10 hs por prórroga", "[11/12/26, 10:13:09 PM] Marcelo Tedesco: Exacto", "[11/12/26, 10:13:18 PM] Miguel Flores: en función al desarrollo del fenómeno meteorológico", "[11/12/26, 10:13:24 PM] Marcelo Tedesco: Y menos el secretario de ADUNS diciendo que se suspenden TODAS las actividades", "[11/12/26, 10:13:39 PM] Marcelo Tedesco: Porque no sabe leer el artículo 2 de la disposición", "[11/12/26, 10:15:44 PM] Guillermo: Yo creo que lo importante es recalcar cuál es la voz que deben esperar y no salir a tontas y a locas a replicar avisos o comunicados de otros lados", "[11/12/26, 10:15:49 PM] Walter CRAVERO: <mensaje de voz omitido>", "[11/12/26, 10:16:15 PM] Walter CRAVERO: Es una lucha cultural que hay que ir dando...", "[11/12/26, 10:17:19 PM] Daniel A Vega: <mensaje de voz omitido>", "[11/12/26, 10:19:02 PM] Miguel Flores: Recién me comuniqué por radio con el guardia en BByF, para pasarle la novedad del cambio de color del alerta a naranja", "[11/12/26, 10:19:16 PM] Miguel Flores: Respondió bien, rápido", "[11/12/26, 10:19:58 PM] Miguel Flores: Le dije que se quede atento por novedades y comparta la misma en el cambio de guardia, que mantenga la radio encendida", "[11/12/26, 10:20:35 PM] Walter CRAVERO: <mensaje de voz omitido>", "[11/12/26, 10:20:51 PM] Walter CRAVERO: <mensaje de voz omitido>", "[11/12/26, 10:21:20 PM] Daniel A Vega: Perfecto", "[11/12/26, 10:22:27 PM] Miguel Flores: El radioclub DX de bahia y sus socios, ya se encuentran qap (atento a la escucha) en la frecuencia de encuentro 146520", "[11/12/26, 10:23:02 PM] Miguel Flores: No todos, pero varios colaboran de esa manera solidariamente", "[11/12/26, 10:23:30 PM] Miguel Flores: Es una frecuencia \"universal\" de encuentro sin repetidora", "[11/12/26, 10:24:04 PM] Guillermo: Las radios nuestras no permiten escuchar en esa frecuencia no?", "[11/12/26, 10:24:11 PM] Miguel Flores: Si", "[11/12/26, 10:24:57 PM] Miguel Flores: Solo escuchar, para interactuar solo radioaficionados", "[11/12/26, 10:25:59 PM] Pablo Abalo: Es frecuencia de radioaficionado pero la escucha es libre", "[11/12/26, 10:27:15 PM] Tú: Estaba cenando..", "[11/12/26, 10:27:30 PM] Tú: Todos los que no llegaron a votar pueden hacerlo ahora. Reanude el tiempo", "[11/12/26, 10:27:33 PM] Pablo Abalo: Que suerte", "[11/12/26, 10:27:59 PM] Tú: @Daniel A Vega  vos tenes total habilitación para decidir , reanudar o aprobar cuando sea.", "[11/12/26, 10:28:13 PM] Miguel Flores: Mi voto fue negativo anteriormente en fase pruebas", "[11/12/26, 10:28:30 PM] Walter CRAVERO: Yo voté pero ya me registró el voto antes de que saliera el comunicado del municipio...", "[11/12/26, 10:28:39 PM] Tú: Ah", "[11/12/26, 10:28:39 PM] Miguel Flores: Ahora ya quedó así, aunque ahora va por afirmativo para suspensión", "[11/12/26, 10:29:17 PM] Tú: Pero ojo entro la nueva alerta..", "[11/12/26, 10:29:18 PM] Guillermo: Si requiere otra encuesta", "[11/12/26, 10:29:29 PM] Tú: Por eso pueden votar sobre la nueva situación", "[11/12/26, 10:30:22 PM] Tú: @all 👆🏾👆🏾", "[11/12/26, 10:37:24 PM] Marcelo Tedesco: La suspensión está publicada", "[11/12/26, 10:39:01 PM] Miguel Flores: 146820, repetidora del radioclub DX también en escucha", "[11/12/26, 10:41:05 PM] Miguel Flores: Repetidora en Cerro de la Carpa en el cordón de Sierra (uhf) también activa, funcionando", "[11/12/26, 10:41:18 PM] Miguel Flores: Operativa, llegada zonal", "[11/12/26, 10:41:33 PM] Pablo Abalo: Ahí llegó un aviso a muy corto plazo", "[11/12/26, 10:42:05 PM] Pablo Abalo: [Reenviado] <imagen omitida> AVISO METEOROLÓGICO A MUY CORTO PLAZO N° 4009", "CESE:  12/11/2026 A LAS 23:00 HORA.", "POR OCURRENCIA DE: TORMENTAS FUERTES CON LLUVIAS INTENSAS, RAFAGAS Y CAIDA DE GRANIZO.", "AFECTANDO PARCIALMENTE LOS SIGUIENTES PARTIDOS: BAHIA BLANCA - CORONEL ROSALES - VILLARINO.", "FUENTE: SMN", "[11/12/26, 10:43:49 PM] Walter CRAVERO: Se eliminó este mensaje.", "[11/12/26, 10:46:45 PM] Miguel Flores: Situación: ya en alerta naranja, ahora con aviso de corto plazo 23 hs: la gente que está en la UNS presente, que dice el protocolo", "[11/12/26, 10:46:55 PM] Miguel Flores: Hay que articular algo?", "[11/12/26, 10:47:09 PM] Tú: Confinamiento", "[11/12/26, 10:47:11 PM] Miguel Flores: Porque esto, lo que se decidió es para mañana", "[11/12/26, 10:47:44 PM] Miguel Flores: Quien hace la evaluación o relevamiento de la situación de los presentes?", "[11/12/26, 10:47:46 PM] Walter CRAVERO: si..pregunto si hay actividad ahora, yo creo que ya no deberia haber nadie", "[11/12/26, 10:48:08 PM] Miguel Flores: Tener la certeza q no haya nadie no esencial", "[11/12/26, 10:48:09 PM] Marcelo Tedesco: la sala de lectura de Alem no esta abierta hasta las 23?", "[11/12/26, 10:48:26 PM] Miguel Flores: Megafono a los remolones y afuera", "[11/12/26, 10:48:47 PM] Miguel Flores: Esto no sería simulacro", "[11/12/26, 10:50:06 PM] Marcelo Tedesco: me corrigen, la sala de Alem hasta las 00", "[11/12/26, 10:50:49 PM] Marcelo Tedesco: La de Palihue ya está cerrada desde las 22", "[11/12/26, 10:52:08 PM] Miguel Flores: En BByF via radio me confirma el guardia que tampoco y le transmite la novedad al sereno", "[11/12/26, 10:52:35 PM] Miguel Flores: Alerta naranja con aviso a corto plazo, no haya gente no esencial en el edificio", "[11/12/26, 10:53:42 PM] Miguel Flores: Mayordomía Alem tiene handy", "[11/12/26, 10:53:59 PM] Miguel Flores: Intento", "[11/12/26, 10:55:40 PM] Miguel Flores: Apagado... los llamo al interno y que lo prendan", "[11/12/26, 10:57:39 PM] Walter CRAVERO: si", "[11/12/26, 11:02:01 PM] Miguel Flores: Listo. Ya encendieron el equipo", "[11/12/26, 11:02:08 PM] Miguel Flores: Hicimos prueba de equipos", "[11/12/26, 11:02:18 PM] Miguel Flores: Permanecerá la radio encendida", "[11/12/26, 11:02:30 PM] Miguel Flores: Y pasará la novedad a su reemplazo", "[11/12/26, 11:02:47 PM] Miguel Flores: Los dos chicos que quedaban les dijo que se retiraran a su casa", "[11/12/26, 11:03:13 PM] Miguel Flores: Para que no quede nadie que no sea esencial dentro de la UNS", "[11/12/26, 11:04:09 PM] Walter CRAVERO: Escuché la comunicación 5/9 desde mi casa", "[11/12/26, 11:04:09 PM] Miguel Flores: Faltaría repirte de Campus", "[11/12/26, 11:04:20 PM] Miguel Flores: Reporte*", "[11/12/26, 11:04:46 PM] Miguel Flores: En el labo queda 1 handie y una radiobase con antena", "[11/12/26, 11:05:18 PM] Miguel Flores: A disposición", "[11/12/26, 11:07:17 PM] Miguel Flores: Ya empezó la actividad eléctrica ⚡⚡", "[11/12/26, 11:08:04 PM] Miguel Flores: Mañana se hace estado de situación a las 8 am ?", "[11/12/26, 11:08:42 PM] Miguel Flores: A las 10 am es la ventana gatillo para lo de la tarde", "[11/12/26, 11:21:01 PM] Guillermo: Entre las 8 y las 9 parece querer alejarse de la costa la tormenta,  yéndose más para villarino, veremos si efectivamente se aleja", "[11/12/26, 11:45:40 PM] Marcelo Tedesco: Luego de escribir media carilla de evaluación de lo que está pasando, me voy a planchar oreja. Mañana a las 8 nos reportamos. Dejen las velas a mano y cargando los celulares. Gracias por estar atentos! Que descansen!", "[11/12/26, 11:46:04 PM] Walter CRAVERO: Hasta mañana!", "[11/12/26, 11:46:33 PM] Guillermo: Hasta mañana!!!", "[11/12/26, 11:51:15 PM] Tú: hasta mañana", "[11/12/26, 11:52:12 PM] Miguel Flores: Dale, buen descanso a todos", "[11/13/26, 12:16:50 AM] Pablo Abalo: Hasta mañana, que descansen", "[11/13/26, 7:39:27 AM] Walter CRAVERO: Buenos Días. El alerta pasó a amarillo para la mañana. Sigue naranja por ahora para la tarde.", "[11/13/26, 7:39:56 AM] Marcelo Tedesco: Buen día!", "[11/13/26, 7:42:48 AM] Miguel Flores: A las 8 hs hacemos una prueba de equipos vhf a mayordomías y reporte de novedades", "[11/13/26, 7:43:00 AM] Marcelo Tedesco: Es raro porque se mantienen los mismos parámetros de precipitaciones, viento y ráfagas que ayer", "[11/13/26, 7:43:42 AM] Miguel Flores: Se continua en suspensión de actividades académicas universitarias hasta nuevo aviso", "[11/13/26, 7:43:55 AM] Walter CRAVERO: Pareciera que la tormenta mas fulera pasó al norte de Bahía.", "[11/13/26, 7:44:12 AM] Miguel Flores: Santa Rosa y Patagones", "[11/13/26, 7:44:49 AM] Walter CRAVERO: Sí. Igual si hubieramos esperado a las 6am, no hubiera cambiado. A esa hora era naranja.", "[11/13/26, 7:44:51 AM] Marcelo Tedesco: Escribi todo el concepto junto Miguel porque si no, nos asustamos! 🤣", "[11/13/26, 7:45:13 AM] Miguel Flores: Hay alta presión, actividad normal de la fauna ( estoy arriba desde las 530 hs para llevarla a mi sra al parque a tomar el micro )", "[11/13/26, 7:46:03 AM] Miguel Flores: Si los pájaros siguen su vida normal, es buen clima. Los tipos tienen sus smn propio y se guardan. Idem las moscas, miden la presión mejor que un barómetro", "[11/13/26, 7:47:17 AM] Miguel Flores: Todo iría a pasar de las 13 hs a 18 hs, combo lluvia viento", "[11/13/26, 8:03:49 AM] Miguel Flores: Todo ok prueba de equipos y sin novedad en Complejo Alem", "[11/13/26, 8:03:49 AM] Miguel Flores: <audio omitido>", "[11/13/26, 8:05:02 AM] Miguel Flores: No hubo aviso previo, asi que bien por el personal de seguridad", "[11/13/26, 8:07:29 AM] Miguel Flores: Nos queda colgado el reporte de Campus Palihue", "[11/13/26, 8:08:18 AM] Miguel Flores: Escuelas medias, cuando pasé a la mañana estaban cerradas las rejas. Debería estar el guardia adentro sin nadie", "[11/13/26, 8:08:44 AM] Miguel Flores: Tipo 615hs", "[11/13/26, 8:12:35 AM] Miguel Flores: Reservorio de agua ok complejo Alem y cloaca también. Operativos", "[11/13/26, 8:30:35 AM] Walter CRAVERO: No hay nadie con Handy en Palihue?", "[11/13/26, 8:33:19 AM] Pablo Abalo: Buen día, si dispongo de hidrogrura puedo hacer movimiento de equipo de química?", "[11/13/26, 8:44:43 AM] Walter CRAVERO: En la mañana, no habria problema  creo", "[11/13/26, 9:27:45 AM] Miguel Flores: <imagen omitida> Recién recibí este correo de SOSUNS", "[11/13/26, 9:28:25 AM] Miguel Flores: Concuerda con la municipalidad, ok pero no referencia nada a la UNS ?", "[11/13/26, 9:29:05 AM] Miguel Flores: Sigue esa linea, es autarquica la dependencia de UNS?", "[11/13/26, 9:30:08 AM] Miguel Flores: Hay un gris ahí, para reever en post evento", "[11/13/26, 9:31:07 AM] Walter CRAVERO: Sí, la obra social es otra persona juridica...  no es una dependencia de la UNS.", "[11/13/26, 9:31:42 AM] Walter CRAVERO: Deberiamos estar coordinados, pero en principio son dos organismos independientes.", "[11/13/26, 9:31:49 AM] Marcelo Tedesco: Es otra entidad aparte", "[11/13/26, 9:31:59 AM] Marcelo Tedesco: Lo mismo que la FUNS", "[11/13/26, 9:32:26 AM] Guillermo: Es otra cosa sibre la que tenemos que ir trabajando", "[11/13/26, 9:32:46 AM] Walter CRAVERO: gente estuve recorriendo pronosticos y todos coinciden en que habria tormenta fuerte entre las 13 y las 15 hs.", "[11/13/26, 9:33:13 AM] Guillermo: Si yo lo mismo", "[11/13/26, 9:33:20 AM] Walter CRAVERO: <imagen omitida> windy.com a las 13hs", "[11/13/26, 9:33:30 AM] Miguel Flores: A las 10 hs es otra ventana gatillo para programar el aviso de la tarde", "[11/13/26, 9:33:43 AM] Miguel Flores: En cumplimiento del protocolo realizado", "[11/13/26, 9:33:44 AM] Fernando Caba: La Municipalidad acaba de publicar nuevos mensajes  en Instagram", "[11/13/26, 9:34:10 AM] Miguel Flores: Sería una votación y recomendación a Rectorado", "[11/13/26, 9:34:44 AM] Subse Gonzalo: Buenos días.", "[11/13/26, 9:35:10 AM] Walter CRAVERO: Si, la muni dice que las tormentas de esta mañana se desviaron pero que a las 15 se esperan tormentas para esta zona. hasta las 18", "[11/13/26, 9:35:59 AM] Walter CRAVERO: yo recomendaría mantener la suspensión hasta las 18hs", "[11/13/26, 9:36:11 AM] Guillermo: Yo creo que se debería mantener la suspensión", "[11/13/26, 9:36:28 AM] Fernando Caba: Tal cual", "[11/13/26, 9:37:32 AM] Marcelo Tedesco: yo mantendría suspensión toda la jornada, las clases post 18 son muy pocas y las cátedras ya han tenido tiempode virtualizar en caso de ser posible", "[11/13/26, 9:38:39 AM] Walter CRAVERO: bueno, pero eso que lo decida académica... la emergencia climática cesa a las 18. si el rectorado decide mantener la suspensión mas allá de eso,  está bien.", "[11/13/26, 9:39:27 AM] Walter CRAVERO: obvio si no vino un vendaval y se llevó todo...  que calculo no va a ser el caso", "[11/13/26, 9:39:27 AM] Miguel Flores: Apeguemosno al protocolo, se arme votación por ORAE a las 10 hs", "[11/13/26, 9:39:40 AM] Walter CRAVERO: si.", "[11/13/26, 9:41:03 AM] Miguel Flores: Si resulta favorable la recomendacion de suspensión, 1030 o posterior a la Difusión Oficial, hacemos ronda por Radio con Novedad", "[11/13/26, 9:41:15 AM] Tú: Lo deje sin correr anoche asi no rompía a mensajes", "[11/13/26, 9:49:54 AM] Tú: Quedo [vencida] la votación del alerta que entró cerca de las 4am..", "[11/13/26, 9:50:13 AM] Tú: Envio una manual , minutos antes de las 10?", "[11/13/26, 9:50:57 AM] Walter CRAVERO: cuando quieras nomás Juan.", "[11/13/26, 9:57:12 AM] Walter CRAVERO: ya está la votación. voten", "[11/13/26, 9:57:50 AM] Tú: Hay un error ,al pasarlo manual la logica que veníamos manejando por alerta naranja son dos olas 1 suspensión actividades  aire libre y el orae entra fase monitoreo , luego aprobada esta 1era instancia se da 2da ola para suspensión definitiva.", "[11/13/26, 9:58:32 AM] Tú: Doy la orden de aprobación de la 1er ola ? Y largo la 2da ? Para votar definitivamente la suspensión?", "[11/13/26, 9:59:06 AM] Walter CRAVERO: si.", "[11/13/26, 9:59:37 AM] Tú: Ahi va", "[11/13/26, 9:59:50 AM] Tú: Ahora si @all  voten.", "[11/13/26, 10:01:42 AM] Tú: Daniel le dio al botón aprobar.", "[11/13/26, 10:02:23 AM] Tú: Simulo la comunicación a las burbujas.", "[11/13/26, 10:02:43 AM] Fernando Caba: Quise votar presionando si y telegram dice que la votación se encuentra cerrada o pausada", "[11/13/26, 10:03:09 AM] Tú: Por que ya le dio el ok Daniel", "[11/13/26, 10:03:21 AM] Tú: Una vez que se confirmó se cerró la votación", "[11/13/26, 10:03:41 AM] Tú: Todas esas cosas, si hay que cambiarlas tomemos nota", "[11/13/26, 10:03:49 AM] Walter CRAVERO: Y avotó Daniel con la accion de oro...", "[11/13/26, 10:05:03 AM] Miguel Flores: Cuando @Marcelo Tedesco difunda comunicado, contacto por radio 1030 hs a mayordomias, servicios y colaboradores en escucha la novedad y se reporten en prueba de equipo", "[11/13/26, 10:05:16 AM] Tú: @Miguel Flores  si podes hacer puente y pasarme reporte de las burbujas , asi voy cargando en el orae , las que tenemos", "[11/13/26, 10:05:18 AM] Walter CRAVERO: oki", "[11/13/26, 10:05:48 AM] Tú: Al privado si queres", "[11/13/26, 10:06:06 AM] Marcelo Tedesco: estoy esperando disposición de SGA", "[11/13/26, 10:07:16 AM] Miguel Flores: Al momento no hubo reporte de servicios o burbujas en escucha", "[11/13/26, 10:07:53 AM] Miguel Flores: Estaría bueno que ya para al mediodía algun referente del servicio se encuentre atento a la frecuencia", "[11/13/26, 10:08:23 AM] Miguel Flores: Solo las mayordomías BByF y Alem, Pablo y Marcelo en escucha", "[11/13/26, 10:08:38 AM] Miguel Flores: Que haya tenido contacto", "[11/13/26, 10:09:36 AM] Miguel Flores: Estamos en Naranja 🟠 y no es simulacro", "[11/13/26, 10:09:54 AM] Miguel Flores: Aunque temporalmente la mañana sea calma", "[11/13/26, 10:10:24 AM] Miguel Flores: Con naranja, al menos a la escucha", "[11/13/26, 10:11:17 AM] Miguel Flores: No significa estar en el laboral, en su posicion activa, sólo a la escucha en donde esté si técnicamente puede o reportar por whatsapp", "[11/13/26, 10:47:21 AM] Fernando Caba: [Reenviado] <documento omitido> Disp SGA 248-alerta naranja 13-11-26.pdf", "[11/13/26, 10:48:31 AM] Marcelo Tedesco: Ya esta enviado a los medios y publicado en las redes, junto con la disposición de la Subsecretaría de Gestión de Personal", "[11/13/26, 10:54:22 AM] Miguel Flores: @Juan M ya avisé por radio vhf", "[11/13/26, 10:54:32 AM] Tú: Perfecto 👌", "[11/13/26, 10:54:45 AM] Miguel Flores: Respondieron solo las mayordomías Alem y BByF", "[11/13/26, 10:54:50 AM] Miguel Flores: Sin novedades", "[11/13/26, 10:55:20 AM] Miguel Flores: Se les avisa que continua el alerta naranja, continuan suspendidas las actividades", "[11/13/26, 10:55:37 AM] Miguel Flores: Y que próximo a las 13 hs se hace una nueva prueba de equipos", "[11/13/26, 10:56:00 AM] Miguel Flores: Dado que se incrementarían los fenómenos meteorológicos", "[11/13/26, 10:56:22 AM] Miguel Flores: Que el canal está a la escucha de cualquier novedad cuando dispongan", "[11/13/26, 10:56:37 AM] Miguel Flores: 10:55 hs", "[11/13/26, 10:59:00 AM] Miguel Flores: Para Log de ORAE", "[11/13/26, 10:59:23 AM] Tú: Puedo pasar a mano estos informes por el orae , asi quedan en el log . Sirve?", "[11/13/26, 10:59:56 AM] Miguel Flores: No los grabé", "[11/13/26, 11:00:05 AM] Miguel Flores: Pero agregalos en forma manual", "[11/13/26, 11:00:13 AM] Tú: Ok..", "[11/13/26, 11:00:40 AM] Tú: Aviso que eso Va a replicarlo  el grupo de telegram", "[11/13/26, 11:00:59 AM] Miguel Flores: No tenemos novedades de Campus", "[11/13/26, 11:01:12 AM] Miguel Flores: Que es zona de riesgo", "[11/13/26, 11:01:49 AM] Guillermo: <mensaje de voz omitido>", "[11/13/26, 11:04:54 AM] Miguel Flores: Un simple reporte asincrónico por telefono alcanzaría de guardia o seguridad", "[11/13/26, 11:05:27 AM] Miguel Flores: Para verificar conectividad y actualizar novedades", "[11/13/26, 11:06:09 AM] Guillermo: <mensaje de voz omitido>", "[11/13/26, 11:07:10 AM] Miguel Flores: Dale, recuerdo que esto no es simulacro y técnicamente estamos en Naranja 🟠", "[11/13/26, 11:10:53 AM] Miguel Flores: Para ORAE, Pablo confirma que terminó el movimiento de equipos programado para esta ventana de tiempo favorable. Todo ok, sin novedades, ni actividad de nadie en complejo", "[11/13/26, 11:11:17 AM] Guillermo: <mensaje de voz omitido>", "[11/13/26, 11:13:08 AM] Miguel Flores: Buenisimo, ORAE tome la novedad", "[11/13/26, 11:25:47 AM] Fernando Caba: Lloviendo muy fuerte en Monte Hermoso", "[11/13/26, 11:38:05 AM] Guillermo: [Reenviado] <video omitido>", "[11/13/26, 11:38:05 AM] Guillermo: Monte hermoso", "[11/13/26, 11:40:49 AM] Fernando Caba: me hace acordar a los videos que andaban dando vuelta el dia de la tormenta de viento de Dic23", "[11/13/26, 11:51:22 AM] Fernando Caba: Gente... se configuró el 4595222 para hacer llamadas directas desde la red de telefonía pública al interno 2222", "[11/13/26, 11:51:44 AM] Fernando Caba: si desean llamar al 2222 desde fuera de la UNS, pueden llamar directamente al 4595222", "[11/13/26, 11:59:22 AM] Tú: Funciona ok", "[11/13/26, 12:01:21 PM] Miguel Flores: Registralo en log ORAE", "[11/13/26, 12:31:15 PM] Fernando Caba: Se configuró el 2222 para que si hay una llamada en curso en este interno y si se produce otro llamado simultáneo al 2222, este se desborde al 2009 (que está al lado).....", "[11/13/26, 12:32:28 PM] Fernando Caba: esto sucederá tanto para llamadas al 4595222 (desde líneas externas) o al 2222 (desde internos)", "[11/13/26, 1:10:49 PM] Miguel Flores: ORAE, prueba de equipos 1307 hs confirma contacto por radio Pablo y mayordomía Alem. Sin novedades", "[11/13/26, 1:11:23 PM] Miguel Flores: Queda frecuencia en reserva y escucha", "[11/13/26, 1:57:15 PM] Miguel Flores: [Reenviado] <imagen omitida> ⛈️ AVISO METEOROLÓGICO A CORTO PLAZO N° 1487/2026", "📍 Sudoeste de la PBA", "• Teniente Origone, Villarino — 13:30 hs", "• Médanos, Villarino — 13:40 hs", "• General Daniel Cerri, Bahía Blanca — 14:10 hs", "• Ingeniero White, Bahía Blanca — 14:20 hs", "• Bahía Blanca, Bahía Blanca — 14:25 hs", "• Villa General Arias, Coronel Rosales — 14:15 hs", "• Punta Alta, Coronel Rosales — 14:20 hs", "• Bajo Hondo, Coronel Rosales — 14:30 hs", "• Algarrobo, Villarino — 13:15 hs", "• Pehuen-Có, Coronel Rosales — 14:40 hs", "Fenómenos esperados: intensa actividad eléctrica, lluvias intensas en corto tiempo, fuertes ráfagas de viento, ocasional caída de granizo.", "Tormenta al sur de Algarrobo (Villarino), hacia el E a 60 km/h.", "🕑 Primeras lluvias y truenos desde las 14:25 h, más intensos al sur (Ingeniero White, Villa General Arias y Punta Alta). El núcleo de la tormenta pasa por el sur de Villarino.", "⛈️ No se descarta una segunda tanda de tormentas entre las 15:30 y las 16:30 con el paso del frente.", "🚗 Por las dudas, auto bajo techo hasta las 16:30.", "#MeteoLucas", "[11/13/26, 1:57:42 PM] Miguel Flores: 14:25 hs Bahía Blanca", "[11/13/26, 1:57:58 PM] Guillermo: <imagen omitida>", "[11/13/26, 1:58:45 PM] Guillermo: Alcoyana alcoyana", "[11/13/26, 2:00:22 PM] Miguel Flores: Entonces 15 hs hacemos otra ronda de novedades con los sectores", "[11/13/26, 2:00:41 PM] Miguel Flores: Palihue, por telefono", "[11/13/26, 2:10:45 PM] Miguel Flores: Venimos bien de agua Alem, ya recargó. Cloaca subió un poquito, lehos de ser alerta", "[11/13/26, 2:10:51 PM] Tú: hoy el sist. ORAE quedo de manual para poder habilitar las votaciones , vencidas . lo cambio a escaneo automatico para ver funcionamieto? , implica volver a votar , ya que no llegue a remodelar el codigo", "[11/13/26, 2:11:28 PM] Tú: o sigo de manera manul y cargo este ACP?", "[11/13/26, 2:13:21 PM] Miguel Flores: El próximo paso es de Naranja a Rojo para votar y pienso / deseo que no suceda", "[11/13/26, 2:14:11 PM] Miguel Flores: El otro escenario es la prórroga del alerta naranja para las actividades de tarde y noche", "[11/13/26, 2:14:46 PM] Miguel Flores: Para que entre en funcionamiento el mecanismo de votación", "[11/13/26, 2:15:38 PM] Miguel Flores: Velo como una oportunidad de testear en caliente el sistema e identificar puntos de mejora", "[11/13/26, 2:16:05 PM] Miguel Flores: sin estar en una situación de catástrofe", "[11/13/26, 2:17:45 PM] Miguel Flores: #Metolucas actualizó recién", "[11/13/26, 2:17:45 PM] Miguel Flores: [Reenviado] <imagen omitida> ⛈️ ACTUALIZACIÓN – #BahiaBlanca", "La primera tormenta pasó por el costado sur de Bahía Blanca: la nube de tormenta cruzó cerca de Cerri, pero lo más intenso (rayos y lluvia fuerte) avanzó por el sur de Villarino, la ría, Ingeniero White y Punta Alta, y sigue hacia Punta Alta, Pehuen-Có y el partido de Coronel Rosales.", "📌 Todavía no llegó la tormenta de mayor intensidad a la ciudad. Hay nuevas tormentas sobre Algarrobo que podrían alcanzar Cerri hacia las 15:25 y Bahía Blanca entre las 15:40 y las 16:25, y más tormentas formándose en Río Colorado que se siguen de cerca para el final de la tarde.", "⚡ Esperamos lluvias intensas en poco tiempo, actividad eléctrica y ráfagas. Seguimos bajo advertencia hasta las 18 h.", "👉 Mantené el auto bajo techo, evitá circular durante las tormentas y no cruces calles anegadas.", "#MeteoLucas #AdvertenciaMeteorológica", "[11/13/26, 2:42:57 PM] Miguel Flores: <imagen omitida> Nos esta pasando por el costado", "[11/13/26, 2:43:58 PM] Miguel Flores: Que sigan por ese corredor", "[11/13/26, 2:45:49 PM] Miguel Flores: Llueve fuerte fuerte en Ruta 33 entre Bahia y Tornquist me dice mi sra que viene en viaje", "[11/13/26, 2:46:19 PM] Miguel Flores: Ahora la busco en la parada del Parque", "[11/13/26, 2:46:22 PM] Tú: el corte es a las 16hs ?.", "[11/13/26, 2:46:50 PM] Tú: Se realiza votación otra vez ?.", "[11/13/26, 3:01:17 PM] Miguel Flores: Hay que seguir el protocolo", "[11/13/26, 3:02:15 PM] Miguel Flores: Si no es oportuna la votación, queda como observación para el análisis post evento", "[11/13/26, 3:02:36 PM] Miguel Flores: Igualmente la suspensión de clases se dio para todo el día", "[11/13/26, 3:04:30 PM] Miguel Flores: La reprogramamos para después del agua para tener novedades. Tipo 16:30", "[11/13/26, 3:05:04 PM] Miguel Flores: Puede tomar nota ORAE", "[11/13/26, 3:06:36 PM] Guillermo: [Reenviado] ⛈️ AVISO METEOROLÓGICO A CORTO PLAZO N° 1521/2026", "📍 Mar Argentino", "• Pehuen-Có, Coronel Rosales — 15:02 hs", "• Monte Hermoso — 15:07 hs", "• Balneario Sauce Grande, Monte Hermoso — 15:22 hs", "Fenómenos esperados: actividad eléctrica, fuertes ráfagas de viento.", "Tormenta a 11 km al sudeste de Pehuen-Có, Coronel Rosales, hacia el E a 32 km/h.", "#MeteoLucas #AvisoMeteorológico", "[11/13/26, 3:09:47 PM] Tú: Activo el modo automático, para ver si recoge los ACP", "[11/13/26, 3:11:11 PM] Guillermo: Este es de meteolucas no te lo va a levantar", "[11/13/26, 3:12:09 PM] Tú: pero vigila las condiciones de los partidos vecinos..", "[11/13/26, 3:12:22 PM] Tú: ahi lo pase y recogio el alerta naranja de hoy", "[11/13/26, 3:13:06 PM] Tú: hay que aprovechar la oportunidad para probar", "[11/13/26, 3:13:40 PM] Tú: paso el informe en el log asi queda expreso. le doy desde aca la confirmacion de todo asi quedamos como antes", "[11/13/26, 3:14:01 PM] Fernando Caba: <imagen omitida>", "[11/13/26, 3:14:41 PM] Tú: <imagen omitida>", "[11/13/26, 3:14:54 PM] Tú: nunca te registre", "[11/13/26, 3:15:40 PM] Tú: Ya se que se id sos vos lo anoto y cuando para esta ronda te cargo", "[11/13/26, 3:17:15 PM] Tú: entonces ahora doy confirmacion  manual 1 ola , y luego segunda ola , asi quedamos como veniamos .", "[11/13/26, 3:17:32 PM] Tú: quedaria de manera automatica , y probamos el monitoreo", "[11/13/26, 3:26:10 PM] Tú: Quedamos igual que antes. Pero con el monitoreo automático", "[11/13/26, 3:26:21 PM] Tú: Ahora paso toda la secuencia por el log", "[11/13/26, 3:40:44 PM] Miguel Flores: <imagen omitida> El agua está sobre Punta Alta y Pehuen Co y sigue ese camino. Sobre las sierras desde hoy cae.. en 48 hs tenemos el Napostá más elevado", "[11/13/26, 3:41:25 PM] Tú: Si se llovió todo recién aca", "[11/13/26, 3:41:28 PM] Tú: Ahora paro", "[11/13/26, 3:41:45 PM] Miguel Flores: No cantemos victoria pero zafamos", "[11/13/26, 3:44:59 PM] Walter CRAVERO: Sí en Pehuencó veo que está lloviendo fuerte.", "[11/13/26, 3:52:11 PM] Miguel Flores: <imagen omitida> Pienso que ya pasó... problemas tienen los del sur de Córdoba y Rosario con la lluvia", "[11/13/26, 3:53:51 PM] Subse Gonzalo: Faaa", "[11/13/26, 3:53:51 PM] Miguel Flores: Ya para las 18 hs podemos hacer el cierre del operativo y reunión virtual para el análisis post evento para concluir por el día de hoy", "[11/13/26, 3:54:01 PM] Subse Gonzalo: En Salta estaba viendo que hubo quilombo", "[11/13/26, 3:54:35 PM] Subse Gonzalo: [Reenviado] https://www.instagram.com/reel/DfrvmnUBXzG/?rpxt=Y2N5dDg3MnRmeXdm", "[11/13/26, 3:58:21 PM] Guillermo: Terrible", "[11/13/26, 4:03:02 PM] Walter CRAVERO: Tremendo!", "[11/13/26, 4:36:33 PM] Marcelo Tedesco: No, ya está todo suspendido por lo que resta de la jornada", "[11/13/26, 4:53:51 PM] Marcelo Tedesco: [Reenviado] https://www.facebook.com/share/r/1DVPJfVYeS/", "[11/13/26, 4:54:01 PM] Marcelo Tedesco: Punta Alta", "[11/13/26, 4:54:09 PM] Fernando Caba: Con que obtienen esas imágenes?", "[11/13/26, 4:54:59 PM] Miguel Flores: Son imagenes satelitales", "[11/13/26, 4:55:04 PM] Miguel Flores: Goes 16", "[11/13/26, 4:57:14 PM] Miguel Flores: Esta gente además de lo meteorologico tiene problemas con los pluviales y la hidráulica", "[11/13/26, 4:57:28 PM] Subse Gonzalo: [Reenviado] https://www.instagram.com/reel/Dfrz5qqsbKx/?cplk=MW1sZHJic2szcjhidg==", "[11/13/26, 4:57:34 PM] Subse Gonzalo: 🫤", "[11/13/26, 4:58:42 PM] Fernando Caba: Concretamente.... habrá tormentas y lluvia hoy en Bahia? El SMN sigue mostrando la alerta naranja", "[11/13/26, 5:00:08 PM] Miguel Flores: Para Bahía, el satelite no muestra más", "[11/13/26, 5:01:38 PM] Guillermo: Entre las 18 y las 20 debería terminar el alerta naranja y pasar a amarilla", "[11/13/26, 5:02:00 PM] Miguel Flores: La otra ventana gatillo era a las 16 hs, creo", "[11/13/26, 5:02:46 PM] Miguel Flores: No recuerdo bien o a las 18 hs", "[11/13/26, 5:03:06 PM] Tú: El ORAE detecto el cambio de alerta automáticamente", "[11/13/26, 5:03:18 PM] Tú: Naranja 》 amarillo", "[11/13/26, 5:03:38 PM] Miguel Flores: Buenísimo, justo", "[11/13/26, 5:04:21 PM] Miguel Flores: Si confirma comité y rectorado, hago la última ronda por vhf y llevo la novedad", "[11/13/26, 5:04:43 PM] Tú: Lo malo es que , nunca se programo que al suspender las actividades previamente no inicie votación", "[11/13/26, 5:05:01 PM] Miguel Flores: Luego hacemos una breve reunion por zoom y damos por cerrado el evento por protocolo", "[11/13/26, 5:10:12 PM] Miguel Flores: <imagen omitida> 16:47 hs pasó a Amarillo", "[11/13/26, 5:10:58 PM] Miguel Flores: Podríamos sacar comunicado antes que AlertaBahía o sería mojarles la oreja ?", "[11/13/26, 5:11:39 PM] Tú: 17,02 lo detecto el ORAE", "[11/13/26, 5:11:44 PM] Tú: Por si solo", "[11/13/26, 5:16:04 PM] Marcelo Tedesco: No hace falta comunicaras nada Miguel porque no hay cambio de situación. Cambio la clasificación del alerta pero se mantiene la suspensión de clases y actividades así que no hay nada para comunicar...", "[11/13/26, 5:17:29 PM] Miguel Flores: Cómo se cerraría entonces esta actividad para la comunidad ? Al cambio de día", "[11/13/26, 5:18:34 PM] Miguel Flores: Desde lo operativo le podemos dar el corte ahora con el cambio de color", "[11/13/26, 5:19:11 PM] Fernando Caba: Yo no veo el cambio de naranja a amarillo...", "[11/13/26, 5:19:35 PM] Fernando Caba: <imagen omitida>", "[11/13/26, 5:20:22 PM] Miguel Flores: Hay inconsistencia entonces en el SMN", "[11/13/26, 5:20:33 PM] Miguel Flores: <imagen omitida> 16:47 hs pasó a Amarillo", "[11/13/26, 5:22:09 PM] Marcelo Tedesco: Para mí todo esto se cierra con una birra", "[11/13/26, 5:23:28 PM] Fernando Caba: Esta imagen de donde la obtuvieron?", "[11/13/26, 5:23:40 PM] Miguel Flores: Del smn", "[11/13/26, 5:23:54 PM] Fernando Caba: <imagen omitida>", "[11/13/26, 5:23:55 PM] Miguel Flores: Y vamos con la moción de @Marcelo Tedesco", "[11/13/26, 5:24:02 PM] Fernando Caba: Ahira siii!!!!! Amarillo", "[11/13/26, 5:24:29 PM] Fernando Caba: Recien cambio", "[11/13/26, 5:25:50 PM] Miguel Flores: Ultima ronda vhf y paso reporte si me dan bolilla las mayordomías", "[11/13/26, 5:28:13 PM] Fernando Caba: Esta es de la App", "[11/13/26, 5:30:21 PM] Miguel Flores: ORAE: En vista del cambio de color de Alerta de Naranja a Amarillo por parte del SMN, se procede a la última ronda de pruebas de equipos de radio VHF para la validación de conectividad y reporte de las novedades", "[11/13/26, 5:30:42 PM] Miguel Flores: Ambas mayordomías de complejo Alem se reportan sin novedad", "[11/13/26, 5:32:02 PM] Miguel Flores: Se notifica que a pesar del cambio de color, continua con la restricción de actividades previstas en el comunicado emitido por las autoridades en horas de la mañana", "[11/13/26, 5:33:15 PM] Miguel Flores: Quedan en escucha igualmente, atentos y dispuestos", "[11/13/26, 5:34:14 PM] Pablo Abalo: <sticker omitido>", "[11/13/26, 5:35:02 PM] Miguel Flores: Se destaca la disposición y atención de todo el personal de las mayordomías, que prestaron colaboración en la actividad no simulada, sin ser propios de la institución", "[11/13/26, 5:35:22 PM] Pablo Abalo: <sticker omitido>", "[11/13/26, 5:37:55 PM] Miguel Flores: Si, hay que destacarlo cuando se hacen las cosas bien. Que lo sepan sus superiores", "[11/13/26, 5:38:28 PM] Miguel Flores: Tranquilamente podrian haberse limitado a sus funciones a reglamento", "[11/13/26, 5:42:35 PM] Miguel Flores: Vamos con el Debriefing, AAR, Lecciones aprendidas, evaluación post incidente o como gusten llamarle para dar el cierre de la actividad", "[11/13/26, 5:43:26 PM] Miguel Flores: Tendremos el log del ORAE", "[11/13/26, 5:43:48 PM] Miguel Flores: Alerthor no se utilizó", "[11/13/26, 5:44:52 PM] Tú: Cuando termienmos comparto el log", "[11/13/26, 5:45:06 PM] Miguel Flores: Faltó radio en Palihue pero el mayordomo articuló con sus pares para reporte", "[11/13/26, 5:45:26 PM] Fernando Caba: A que cervecería hay que concurrir para hacer el cierre de la actividad?", "[11/13/26, 5:45:29 PM] Miguel Flores: Los servicios o burbujas no aportaron", "[11/13/26, 5:45:30 PM] Tú: Con su permiso , tambien podria tomar toda esta conversación de ws para costastar. Lo paso por la IA.", "[11/13/26, 5:46:37 PM] Miguel Flores: AlertaBahía estuvo caída temprano en la mañana como el sitio oficial de la municipalidad", "[11/13/26, 5:46:52 PM] Miguel Flores: <Mensaje de album>", "[11/13/26, 5:46:52 PM] Miguel Flores: <imagen omitida>", "[11/13/26, 5:46:53 PM] Miguel Flores: <imagen omitida>", "[11/13/26, 5:47:31 PM] Miguel Flores: A las 6 am", "[11/13/26, 5:47:45 PM] Tú: Se borraron por las dudas", "[11/13/26, 5:49:15 PM] Miguel Flores: La primera vez que no es simulacro y se tomaron las decisiones en las ventanas y gatillo en forma expeditiva", "[11/13/26, 5:49:44 PM] Miguel Flores: No hubo sala de crisis virtual", "[11/13/26, 5:50:22 PM] Miguel Flores: (No hubo necesidad)", "[11/13/26, 5:50:35 PM] Miguel Flores: Telegram funcionó", "[11/13/26, 5:50:58 PM] Miguel Flores: Whatsapp fue el canal blue para lo operativo", "[11/13/26, 5:51:14 PM] Miguel Flores: No hubo degradación en las comunicaciones", "[11/13/26, 5:53:00 PM] Miguel Flores: Hay y hubo vehiculos estacionados en playon Alem", "[11/13/26, 5:53:17 PM] Walter CRAVERO: Hola Gente! Estaba con otras cuestiones. Felicitaciones. Hay obviamente cosas para mejorar pero creo que salió todo muy bien. Tanto que la tormenta se asuntó y se fué para otro lado!!😁", "[11/13/26, 5:55:38 PM] Guillermo: Si fue una suerte que se fue para otro lado, me preocupa que quienes no vieron las imágenes de punta alta o la pampa subestimen el hecho de haber suspendido", "[11/13/26, 5:56:53 PM] Marcelo Tedesco: Coincido con Guillermo, pero eso se va a viralizar muy rápido. Zafamos por suerte", "[11/13/26, 5:57:45 PM] Walter CRAVERO: Y... algo de eso puede pasar... pero bueno es una verdadera batalla cultural. La meterologia tiene sus limitaciones si se quiere avisar con 10 hs de anticipación...", "[11/13/26, 6:00:03 PM] Miguel Flores: 🔎 ¿Por qué las tormentas no llegaron con fuerza a la ciudad?", "Cerca de las 11 hs registramos una merma del viento, que cambió de dirección y empezó a soplar del este, desde el mar. Ese aire más fresco y estable quedó sobre Bahía Blanca y funcionó como un “escudo”: las tormentas no pudieron desarrollarse sobre la ciudad y se desviaron hacia el sur, por donde el aire seguía cálido y húmedo.", "Durante toda la tarde las tormentas avanzaron por ese corredor, desde Río Colorado, por el sur de Villarino y la ría, y pasaron entre 10 y 30 km al sur de la ciudad.", "[11/13/26, 6:01:12 PM] Miguel Flores: Eso es lo que dice este chico MeteoLucas", "[11/13/26, 6:01:56 PM] Miguel Flores: Sumen sus comentarios, valoraciones, puntos a favor y en contra para hacer el análisis de lo actuado", "[11/13/26, 6:02:11 PM] Miguel Flores: En 72 hs por protocolo se tiene que tener el informe", "[11/13/26, 6:02:25 PM] Miguel Flores: Obviamente con la ayuda de la IA", "[11/13/26, 6:02:56 PM] Miguel Flores: Asi se levanta toda la conversación del chat de aqui y telegram", "[11/13/26, 6:03:19 PM] Miguel Flores: Log del Orae, entre otros elementos", "[11/13/26, 6:05:11 PM] Tú: Si quieren lo paso por la IA.", "[11/13/26, 6:05:17 PM] Tú: Luego comparto", "[11/13/26, 6:06:13 PM] Guillermo: Tal vez podemos sumar comentarios para mejorar, o después", "[11/13/26, 6:06:24 PM] Walter CRAVERO: Puntos a favor: se pudieron publicar avisos en la ventana de tiempo previsto. Se mantuvo ocmunicación entre los integrantes del comité, fluyó la información. Telegram funcionó.  En contra: falta aceitar la comunicación con autoridades de decisión que están sometidas a presiones y ansiedades de la comunidad. Faltan modelos de Resoluciones prefabricadas para tomar deción y salir en 5minutos con la reso firmada y la comunicación posteada.", "[11/13/26, 6:07:52 PM] Walter CRAVERO: Telegram funcionó pero a mi juicio sigue siendo un poco complicado. No es agil en esos 10-15 min que hay que tomar decisiones", "[11/13/26, 6:07:59 PM] Marcelo Tedesco: <documento omitido> Evaluación situación jueves 12 y viernes 13 de noviembre.docx", "[11/13/26, 6:08:52 PM] Guillermo: Si, se intentaron seguir los protocolos, pero la disposición de SGA salió antes de la decisión", "[11/13/26, 6:09:34 PM] Guillermo: La votación cuando está la decisión no es relevante", "[11/13/26, 6:09:35 PM] Walter CRAVERO: Un punto importante que falta. hay que formalizar esto para que TODAS las autoridades ( decanos, CEMS etc.) conozcan que estamos monitoreando la situación y esperen a que se tomen las decsiones.", "[11/13/26, 6:10:11 PM] Miguel Flores: No se necesitaron porque la situacion se desarrolló sin ellos pero ninguno se contactó por medio digital ni encendieron las radios de burbuja/Servicio. Reforzar el compromiso a la actividad. Hoy fue alerta naranja", "[11/13/26, 6:10:47 PM] Walter CRAVERO: La vicerrectora aun no estuvo incorporada en esta oportunidad porque no estaba.", "[11/13/26, 6:11:22 PM] Walter CRAVERO: en Bahía cuando estabamos armando el telegram del ORAE.", "[11/13/26, 6:12:31 PM] Guillermo: Si es importante que la comunidad universitaria sepa de esta actividad y también dónde buscar la info de la uni, no de la Muni, ni del servicio metereológico", "[11/13/26, 6:12:52 PM] Marcelo Tedesco: esto es fundamental, yo lo pongo en ese .doc en rojo", "[11/13/26, 6:13:19 PM] Marcelo Tedesco: y que las decisiones se van a tomar, que hay que manejar la ansiedad", "[11/13/26, 6:13:19 PM] Walter CRAVERO: No contar con info de la municipalidad antes de que todo el publico la conozca es un problema, porque inmediatamente se desatan las consultas y la presión para decidir en 5 minutos...  es algo que hay que tratar de solucionar", "[11/13/26, 6:13:49 PM] Marcelo Tedesco: No sé, hay que decirles \"me vas a tener que esperar 10 minutos\" y listo", "[11/13/26, 6:14:07 PM] Marcelo Tedesco: comunicar a las 22:00, a las 22:30 o a las 23:00 es lo mismo cuando es una suspensión para el día siguiente.", "[11/13/26, 6:15:35 PM] Walter CRAVERO: Sí, y creo que puede ayudar que SEPAN que estamos monitoreando la situación. nosotros informamos de los alertas pero no especificamente de nuestro monitoreo continuo", "[11/13/26, 6:15:56 PM] Marcelo Tedesco: es lo que le expliqué anoche a Zaninelli que estaba como loco", "[11/13/26, 6:16:26 PM] Walter CRAVERO: Estaba dolido porque su hijo perdió feo en la elección...😁", "[11/13/26, 6:16:57 PM] Guillermo: También rever las votaciones del sistema de telegram cuando hay decisiones tomadas de suspensión", "[11/13/26, 6:18:00 PM] Miguel Flores: Tema UNS UTN FRBB, hubo comunicación o coordinación en algo?", "[11/13/26, 6:18:18 PM] Walter CRAVERO: Si creo que hay que revisar todo eso. Porque para Daniel y Andrea es muy dificil ( para mi es dificil) saber qué estamos votando, yo voté como 6 veces.", "[11/13/26, 6:18:55 PM] Miguel Flores: Como estuvo la comunicacion UNS MBB ? Coordinacion ?", "[11/13/26, 6:19:06 PM] Walter CRAVERO: Si hubo comunicación con UTN peeeero despues de tomadas las decisiones. a nivel rectorado. No a nivel consultas previas. algo a mejorar.", "[11/13/26, 6:19:31 PM] Miguel Flores: Hay telefono rojo?", "[11/13/26, 6:19:36 PM] Walter CRAVERO: afortunadamente decidimos lo mismo. suspensión turno mañana y revisión nosotros a las 10 ellos 10 y media...", "[11/13/26, 6:19:52 PM] Walter CRAVERO: sí con UTN normalmente lo hay.", "[11/13/26, 6:20:25 PM] Miguel Flores: Hubiese sido conveniente articular con alguna otra institución para la toma de decisiones o coordinar esfuerzos?", "[11/13/26, 6:20:35 PM] Miguel Flores: Telfono rojo con MBB?", "[11/13/26, 6:20:58 PM] Walter CRAVERO: con MBB  la tuvo Andrea ( que no tenia comunicacion con nosotros!)  pero ella me pasaba lo que le informaban. Pero se limitó a contarle lo que ya habian publicado", "[11/13/26, 6:21:10 PM] Guillermo: También deberíamos preguntarnos qué hubiese pasado si ya teníamos gente adentro y lo hubiésemos tenido que confinar", "[11/13/26, 6:22:41 PM] Miguel Flores: En el caso de mi sobrino, que estaban en la experiencia de fin de año durmiendo en la Villa La Inmaculada, cerca de la Coca Cola. Los subieron a u colectivo y los entregaron a los padres en la escuela a las 2330 hs de ayer", "[11/13/26, 6:22:45 PM] Guillermo: Hay muchos protocolos a armar con el Orae", "[11/13/26, 6:22:52 PM] Miguel Flores: Son chicos de 12 años", "[11/13/26, 6:23:57 PM] Tú: ​Voy a unificar este chat de WS, Telegram y el log del ORAE en un solo hiper  documento para cruzar todo con IA. Pásenme 3 preguntas cada uno sobre lo que quieran contrastar o verificar de hoy (tiempos, datos, secuencia). Yo lo proceso y después les comparto los resultados. Después podemos hacer otra ronda de preguntas.", "[11/13/26, 6:26:46 PM] Guillermo: En el caso de personal confinado el ORAE físico de SJ670 tendrá que levantar todas las novedades de los edificios, por lo pronto por teléfono después iremos mejorando eso para poner radios etc", "[11/13/26, 6:28:05 PM] Miguel Flores: Por mi parte, esta todo escrito", "[11/13/26, 6:28:43 PM] Miguel Flores: Borrale lo de la juntada a tomar cerveza", "[11/13/26, 6:28:53 PM] Marcelo Tedesco: Yo pasé en un doc las notas que fui tomando desde anoche", "[11/13/26, 6:29:29 PM] Guillermo: Para mí lo más importante es establecer los pasos cumplidos y los tiempos que demoramos el suspender", "[11/13/26, 6:29:55 PM] Walter CRAVERO: Otro tema que tengo que ver como se resolvió. Teniamos estudiantes de BBYF volviendo de Las Grutas y potencialmente pasando por una zona complicada y pedian info. O sea deberiamos tener información de viajes de estudio que puedan quedar afectados en la zona en caso de un evento meteorologico", "[11/13/26, 6:30:50 PM] Guillermo: Eso debería quedar registrado en un tablero de control", "[11/13/26, 6:31:11 PM] Guillermo: Después el temporal se iba para Argerich", "[11/13/26, 6:31:56 PM] Guillermo: Tampoco teníamos info del gaucho de allá", "[11/13/26, 6:32:25 PM] Walter CRAVERO: POr suerte podemos mejorar esas cosas sin que estemos ahora viendo como sacar el agua de los subsuelos...", "[11/13/26, 6:34:06 PM] Walter CRAVERO: Si se me ocurre algo mas lo escribo. Por ahora los dejo y me voy a atender otra crisis ( digital) que aun no se resuelve del todo...  Buen fin de semana!", "[11/13/26, 6:35:59 PM] Miguel Flores: Aviso parroquial: el martes no podemos ir con Pablo a la reunión presencial ni virtual porque tenemos otro compromiso (visita a DOW)", "[11/13/26, 6:37:30 PM] Miguel Flores: Quedaría pendiente una reunión técnica previa al simulacro del viernes en Escuelas Medias, Alumnos y Estudios y Escuela de Agricultura", "[11/13/26, 6:41:11 PM] Fernando Caba: Se largo!!!", "[11/13/26, 6:41:16 PM] Fernando Caba: Parque Norte", "[11/13/26, 6:46:20 PM] Miguel Flores: <video omitido> Habemus lluvia ☔ por aquí también", "[11/13/26, 6:47:36 PM] Guillermo: Recuerden que ayer colgué un Word en este chat con el ejercicio del próximo viernes, lo puse en destacado, no sé si será destacado para todos", "[11/13/26, 6:55:09 PM] Walter CRAVERO: Cintia me confirmó que los esudiantes de BByF llegaron bien a Bahía, sin novedad", "[11/13/26, 6:57:56 PM] Fernando Caba: yo no lo veo destacado en el chat", "[11/13/26, 7:00:44 PM] Guillermo: Tal vez lo tengamos que destacar cada uno en su respectivo chat, porque lo destaque y lo encuentro de una entre todos los chat", "[11/13/26, 7:13:06 PM] Guillermo: Cuando armemos el Informe de esta emergencia deberíamos hacer una introducción para dejar claro que el evento pudo ser muy grave y se tuvo mucha suerte dadas las circunstancias que explico meteolucas para que la tormenta se derivara para otro lado, adjuntarle info de lo que pasó en otros lados", "[11/13/26, 7:16:07 PM] Guillermo: Ceso la alerta amarilla", "[11/13/26, 7:23:02 PM] Miguel Flores: https://github.com/mf2465/PECI_UNS/blob/main/promptAuditoriaSimulacro20261030.md", "[11/13/26, 7:23:28 PM] Miguel Flores: 👆🏻este fue el prompt para el simulacro anterior", "[11/13/26, 7:24:05 PM] Miguel Flores: Para reciclar en esta actividad y recibir un informe", "[11/13/26, 7:25:19 PM] Miguel Flores: Cargale el protocolo y todos los anexos técnicos como fuentes también", "[11/13/26, 8:08:36 PM] Subse Gonzalo: [Reenviado] https://www.instagram.com/reel/DfsDepWynqu/?cplk=MXM3Z240NXRxODF0Zw==", "[11/13/26, 6:37:30 PM] Miguel Flores: Quedaría pendiente una reunión técnica previa al simulacro del viernes en Escuelas Medias, Alumnos y Estudios y Escuela de Agricultura", "[11/13/26, 6:41:11 PM] Fernando Caba: Se largo!!!", "[11/13/26, 6:41:16 PM] Fernando Caba: Parque Norte", "[11/13/26, 6:46:20 PM] Miguel Flores: <video omitido> Habemus lluvia ☔ por aquí también", "[11/13/26, 6:47:36 PM] Guillermo: Recuerden que ayer colgué un Word en este chat con el ejercicio del próximo viernes, lo puse en destacado, no sé si será destacado para todos", "[11/13/26, 6:55:09 PM] Walter CRAVERO: Cintia me confirmó que los esudiantes de BByF llegaron bien a Bahía, sin novedad", "[11/13/26, 6:57:56 PM] Fernando Caba: yo no lo veo destacado en el chat", "[11/13/26, 7:00:44 PM] Guillermo: Tal vez lo tengamos que destacar cada uno en su respectivo chat, porque lo destaque y lo encuentro de una entre todos los chat", "[11/13/26, 7:13:06 PM] Guillermo: Cuando armemos el Informe de esta emergencia deberíamos hacer una introducción para dejar claro que el evento pudo ser muy grave y se tuvo mucha suerte dadas las circunstancias que explico meteolucas para que la tormenta se derivara para otro lado, adjuntarle info de lo que pasó en otros lados", "[11/13/26, 7:16:07 PM] Guillermo: Ceso la alerta amarilla", "[11/13/26, 7:23:02 PM] Miguel Flores: https://github.com/mf2465/PECI_UNS/blob/main/promptAuditoriaSimulacro20261030.md", "[11/13/26, 7:23:28 PM] Miguel Flores: 👆🏻este fue el prompt para el simulacro anterior", "[11/13/26, 7:24:05 PM] Miguel Flores: Para reciclar en esta actividad y recibir un informe", "[11/13/26, 7:25:19 PM] Miguel Flores: Cargale el protocolo y todos los anexos técnicos como fuentes también", "[11/13/26, 8:08:36 PM] Subse Gonzalo: [Reenviado] https://www.instagram.com/reel/DfsDepWynqu/?cplk=MXM3Z240NXRxODF0Zw=="];
+const FEED_ITEMS = PRELOADED_QA.slice();
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function renderFeed(items) {
+  const list = items || FEED_ITEMS;
+  const container = document.getElementById('qaFeed');
+  if (!container) return;
+  container.innerHTML = list.map(function(item) {
+    return '<div class="qa-item">' +
+      '<div class="qa-meta">' +
+        '<span><strong class="role-pill">' + escapeHtml(item.role_badge) + '</strong> &nbsp;👥 <strong>' + escapeHtml(item.actors) + '</strong></span>' +
+        '<span class="cat-tag">' + escapeHtml(item.category) + '</span>' +
+      '</div>' +
+      '<div class="qa-q">' + escapeHtml(item.q) + '</div>' +
+      '<div class="qa-a">' + escapeHtml(item.a) + '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function resetFeed() {
+  document.getElementById('questionInput').value = "";
+  renderFeed(PRELOADED_QA);
+}
+
+function quickAsk(idx) {
+  const item = PRELOADED_QA[idx];
+  if (!item) return;
+  renderFeed([item].concat(PRELOADED_QA.filter(function(_, i) { return i !== idx; })));
+}
+
+function handleAsk() {
+  const qInput = document.getElementById('questionInput');
+  const q = qInput.value.trim();
+  if (!q) {
+    renderFeed(PRELOADED_QA);
+    return;
+  }
+
+  const stopWords = ['como','para','que','del','las','los','una','con','por','fue','hubo','cual','cuales','quien','quienes','donde','cuando','sobre','entre'];
+  const terms = q.toLowerCase()
+    .replace(/[¿?¡!.,;:()]/g, ' ')
+    .split(/\s+/)
+    .filter(function(w) { return w.length > 2 && stopWords.indexOf(w) === -1; });
+
+  const searchTerms = terms.length > 0 ? terms : [q.toLowerCase()];
+
+  const qaMatches = PRELOADED_QA.filter(function(item) {
+    const text = (item.q + " " + item.a + " " + item.actors + " " + item.category).toLowerCase();
+    return searchTerms.some(function(t) { return text.indexOf(t) !== -1; });
+  });
+
+  const chatMatches = CHAT2_LINES.filter(function(line) {
+    const l = line.toLowerCase();
+    return searchTerms.some(function(t) { return l.indexOf(t) !== -1; });
+  });
+
+  let answerText = "";
+  if (qaMatches.length > 0) {
+    answerText += qaMatches.map(function(m) { return "📌 " + m.q + "\n" + m.a; }).join("\n\n────────────────────\n\n");
+  }
+  if (chatMatches.length > 0) {
+    if (answerText) answerText += "\n\n────────────────────\n";
+    answerText += "💬 Mensajes literales encontrados en el chat de WhatsApp completo (" + chatMatches.length + " coincidencias, mostrando hasta 12):\n" +
+      chatMatches.slice(0, 12).map(function(l) { return "• " + l; }).join("\n");
+  }
+
+  if (!answerText) {
+    answerText = "No se encontraron coincidencias exactas para '" + q + "'. Probá buscando por apellido (Vega, Cravero, Dominella, Flores, Abalo, Tedesco, Caba, Sánchez) o por tema (Las Grutas, Cintia, Palihue, 4595222, ADUNS, Moodle, SGA, partes, burbujas, VHF).";
+  }
+
+  const customCard = {
+    category: "RESULTADO DE BÚSQUEDA CRUZADA",
+    role_badge: "Filtro sobre Base Completa",
+    actors: "WhatsApp (chat_2.txt) + Telegram + Bitácora ORAE + DCI",
+    q: "Consulta: " + q,
+    a: answerText
+  };
+
+  renderFeed([customCard].concat(PRELOADED_QA));
+}
+
+function copyHyperdoc() {
+  const text = document.getElementById('hyperdocContent').innerText;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      alert("Hiperdocumento copiado al portapapeles.");
+    });
+  }
+}
+</script>
+</body>
+</html>
