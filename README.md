@@ -161,3 +161,15 @@ Entre el 29 y el 30 de octubre de 2026 se ejecutó el **primer ejercicio de conf
 > **Nota de cierre del ciclo:** las conclusiones de ambos informes, junto con la transcripción del debriefing, constituyen la base empírica de la próxima revisión del protocolo: revisión de la capa digital primaria (Telegram vs. sistema propio/AlertUNS), institucionalización de la prueba radial semanal, refinamiento de los mensajes de difusión con franjas horarias explícitas y formalización de la cadena de delegación del gatillo de decisión.
 
 ---
+
+### Operativo Real por Alerta Naranja – Primera Activación no Simulada del PECl-UNS (12–13/11/2026)
+
+Entre el jueves 12 y el viernes 13 de noviembre de 2026 el protocolo se activó por primera vez ante un **evento meteorológico real** (alerta naranja por tormentas fuertes con vientos intensos), hecho independiente y posterior al ciclo de simulacro del 29–30/10 (entradas 22 a 27). El análisis post-incidente completo puede leerse en la [Auditoría Cruzada Post-Incidente — CDE / ORAE v15.9 (UNS)](auditoria_orae_cde_uns_evento13nov2026.md), que se incorpora a esta bitácora como entrada 28.
+
+28. **Auditoría Cruzada Post-Incidente – Operativo Real Alerta Naranja (12–13/11/2026):** [auditoria_orae_cde_uns_evento13nov2026.md](auditoria_orae_cde_uns_evento13nov2026.md) – Debriefing post-incidente (protocolo 72 hs) con auditoría cruzada del operativo real.
+    - **Audiencia:** CDE, Rectorado, SHST, DCI, Telecomunicaciones, operadores ORAE y de radio VHF / Laboratorio de Hidráulica.
+    - **Contenido:** Auditoría cruzada construida al contrastar el WhatsApp completo, Telegram, la bitácora ORAE v15.9 y la evaluación de DCI. Documenta la estructura de intervención por niveles, seis consultas contrastadas, la trazabilidad de los 12 partes informativos del 13/11 y una línea de tiempo contrastada al segundo. Destaca la autocrítica de secuencia (disposición SGA previa a la votación del CDE), el bug de votación en Telegram y su corrección en vivo por el operador ORAE, y la operación VHF con mayordomías durante el paro. Cierra con un hiperdocumento maestro unificado listo para el motor de auditoría.
+    - **Vinculación:** alimenta el ciclo PDCA del Anexo Operativo 07-A y las actualizaciones del Anexo 07-B y del AT-02; complementa el ciclo del simulacro (entradas 22 a 27) como primera validación del protocolo en evento real.
+    - **Nota:** entrada registrada deliberadamente fuera del hilo del simulacro: corresponde a una activación real, con impacto meteorológico efectivo en la región (desvío del núcleo de tormenta hacia el sur, evidenciado en Punta Alta).
+
+> **Nota de cierre del operativo real:** los hallazgos de la [auditoría](auditoria_orae_cde_uns_evento13nov2026.md) (secuencia de decisión, votación en Telegram, refinamiento de mensajes con franjas horarias, registro previo de viajes de estudio y cobertura VHF de Palihue) constituyen, junto con las conclusiones del simulacro de octubre, la base empírica de la próxima revisión del protocolo.
